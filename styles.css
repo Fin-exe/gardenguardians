@@ -1,3 +1,123 @@
-h1 {
-    color: #C4F5A0; /* Colour from brand guide */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --light_yellow: #F4F6C2;
+    --light_green: #C0E8AC;
+}
+
+body.main{
+    background-color: var(--light_green);
+}
+
+#landing_page {
+    background-image: url(default_bush.svg);
+}
+
+.katibeh-regular {
+    font-family: "Katibeh", serif;
+    font-weight: 400;
+    font-style: normal;
+  }  
+
+.coiny-regular {
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.title {
+    font-family: "Coiny", system-ui;
+    font-size: 80px;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 0 0 0;
+}
+
+.img_mascot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    margin: 0 10% 10% 10%;
+    background-image: url(default_bush.img);
+}
+
+.welcome_message {
+    background-color: var(--light_yellow);
+    margin: 5%;
+    padding: 8%;
+    border-radius: 50px;
+    border: 1px solid black;
+    font-size: 1.8em;
+}
+
+.welcome_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 0 5%;
+    gap: 1%
+}
+
+.start {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.start_button, .tutorial_button {
+    font-family: "Katibeh", serif;
+    font-size: 6vh;
+    padding: 3% 3% 1% 3%;
+    width: 100%;
+    border-radius: 30px;
+    background-color: var(--light_yellow);
+    border: 1px solid black;
+}
+
+
+.start_button:hover,
+.tutorial_button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #C4F5A0;
+}
+
+/* Tutorial */
+
+.back_to_mainpage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 90vh;
+    width: 100vw;
+    margin: 2em;
+}
+
+.back_to_home_button {
+    font-family: "Katibeh", serif;
+    font-size: 6vh;
+    padding: 3% 3% 1% 3%;
+    width: 30%;
+    border-radius: 30px;
+    background-color: var(--light_yellow);
+    border: 1px solid black;
+}
+
+/* Main Home Page  */
+
+.main_plant{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
 }
