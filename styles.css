@@ -84,7 +84,6 @@ body.main{
     border: 1px solid black;
 }
 
-
 .start_button:hover,
 .tutorial_button:hover {
     text-decoration: none;
@@ -114,8 +113,6 @@ body.main{
 }
 
 /* Main Home Page  */
-
-
 
 /* margins  */
 * {
@@ -192,9 +189,7 @@ body {
     top: 50%; 
     left: 10px; 
     transform: translateY(-50%); 
-    
 }
-
 
 .top-left-healthbar {
     align-items: flex-start; 
@@ -207,7 +202,6 @@ body {
     width: 200px; /*used to change size of all icons*/
     height: auto;
 }
-
 
 .healthbar {
     width: 700px; /* needed specifically for healthbar, bigger htan others*/
