@@ -212,3 +212,15 @@ body {
     width: 80px; /*needed for arrow, smaller than otehrs*/
     height: auto;
 }
+
+/*virtual garden*/
+
+#virtual_garden {
+    background-image: url(vbackground.svg);
+}
+
+.vg_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
