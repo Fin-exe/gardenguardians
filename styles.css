@@ -13,9 +13,10 @@ body.main{
     background-color: var(--light_green);
 }
 
-#landing_page {
-    background-image: url(default_bush.svg);
-}
+/*#landing_page {
+    background-image: url(img/default_bush.svg);
+    background-repeat: no-repeat;
+}*/
 
 .katibeh-regular {
     font-family: "Katibeh", serif;
@@ -214,13 +215,37 @@ body {
 }
 
 /*virtual garden*/
-
-#virtual_garden {
-    background-image: url(vbackground.svg);
-}
-
 .vg_title {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 100vh; 
+    width: 100vw;
+    z-index: 1000;
+    margin-left: 7em;
+}
+
+.virtual_title {
+    font-family: "Katibeh", serif;
+    font-size: 3em;
+    padding: 2% 0 0 0;
+}
+
+.virtual_background {
+    position: absolute;
+    left: 3%;
+    z-index: -1000;
+    top: -5%;
+}
+
+.back_button {
+    transform: rotate(180deg);
+    align-items: flex-start;
+}
+
+.right_button {
+    width: 5em;
+    margin-left: 1em;
+    margin-bottom: 10em;
 }
