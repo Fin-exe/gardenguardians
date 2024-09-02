@@ -188,7 +188,7 @@ body {
 .middle_left_icons {
     align-items: flex-start;
     top: 50%; 
-    left: 10px; 
+    left: 30px; 
     transform: translateY(-50%); 
 }
 
