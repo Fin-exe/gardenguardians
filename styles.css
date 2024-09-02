@@ -184,7 +184,7 @@ body {
     left: 0px; 
 }
 
-/*left arrpow*/
+/*left arrow*/
 .middle_left_icons {
     align-items: flex-start;
     top: 50%; 
@@ -211,7 +211,7 @@ body {
 }
 
 .arrowleft {
-    width: 80px; /*needed for arrow, smaller than otehrs*/
+    width: 80px; /*needed for arrow, smaller than others*/
     height: auto;
 }
 
@@ -230,7 +230,7 @@ body {
 .virtual_title {
     font-family: "Katibeh", serif;
     font-size: 3em;
-    padding: 2% 0 0 0;
+    padding: 1% 0 0 0;
 }
 
 .virtual_background {
@@ -250,3 +250,62 @@ body {
     margin-left: 1em;
     margin-bottom: 3em;
 }
+
+.plant_one {
+    z-index: 1000;
+    position: fixed;
+    bottom: 5vh;
+    left: 22vw;
+    width: 15vw;
+    height: auto;
+}
+
+/* Popup Cards */
+
+.modal {
+    z-index: 10000;
+    display: flex;
+    display: block;
+    position: fixed;
+    background-color: var(--light_green);
+    border-radius: 20px;
+}
+
+.modal, .plant_name{
+    padding: 3% 4%;
+    border: black solid 1px;
+    font-family: "Katibeh", serif;
+}
+
+.greencard, .yellowcard {
+    display: flex;
+    flex-direction: column;
+}
+
+.plant_title, .plant_name, .display_img {
+    display: flex;
+    justify-content: center;
+}
+
+.yellowcard {
+    background-color: var(--light_yellow);
+    padding: 3em 0.5em;
+    border-radius: 20px;
+    border: black solid 1px;
+    margin-bottom: 5px;;
+}
+
+.display_img {
+    width: 15em;
+}
+
+.plant_name {
+    font-size: 0.8em;
+    background-color: var(--light_yellow);
+    border-radius: 10px;
+}
+
+.plant_title {
+    margin-bottom: 0.5em;
+}
+

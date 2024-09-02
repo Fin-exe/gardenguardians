@@ -8,21 +8,40 @@
         <title>Garden Guardians - My Virtual Garden</title>
     </head>
     <body id="virtual_garden">
+
         <header class="vg_title">
             <h1 class="virtual_title">My Virtual Garden</h1> 
-            <h2>Drag and Drop your plants!</h2>
+            <h2>Drag and drop your plants!</h2>
         </header>
+
         <!-- Background -->
         <div class="virtual_background">
             <img src="img/vbackground.svg" alt="virtual_background">
         </div>
+
+        <div class="plant_one">
+            <img src="img/default_bush.svg" class="bush" alt="Default Bush">
+        </div>
     
         <div class="back_button">
             <a href="mainpage.html">
-                <img src="img/arrowleft.png" class="right_button" alt="Back to Mainpage">
+                <img src="img/back_arrow.png" class="right_button" alt="Back to Mainpage">
             </a>
         </div>
-            <!-- <h1>Drag and drop plants here!</h1>  -->
 
+        <!-- PopUp Cards -->
+        <section id="plant_one_popup" class="modal">
+            <div class="greencard">
+                <div class="plant_title">
+                    <h2>Flip to see more!</h2>
+                </div>
+                <div class="yellowcard">
+                    <img src="img/default_bush.svg" class="display_img" alt="Image of plant">
+                </div>
+                <div class="plant_name">
+                    <h2>Native Violet (Viola banksii)</h2>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
