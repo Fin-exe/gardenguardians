@@ -144,55 +144,55 @@ body {
     position: relative;
 }
 
-.center-content {
+.center_content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
 }
 
-.hanging-pot {
+.hanging_pot {
     width: 63%; /*only works at this width??*/
 }
 
-.top-right-icons,
-.bottom-right-icons,
-.bottom-left-icons,
-.middle-left-icons,
-.top-left-healthbar {
+.top_right_icons,
+.bottom_right_icons,
+.bottom_left_icons,
+.middle_left_icons,
+.top_left_healthbar {
     display: flex;
     flex-direction: column; 
     position: absolute; 
     gap: 10px; 
 }
 
-.top-right-icons {
+.top_right_icons {
     align-items: flex-end; 
     top: 10px;
     right: 0px; 
 }
 
-.bottom-right-icons {
+.bottom_right_icons {
     align-items: flex-end; 
     bottom: 10px;
     right: 0px; 
 }
 
-.bottom-left-icons {
+.bottom_left_icons {
     align-items: flex-start; 
     bottom: 10px;
     left: 0px; 
 }
 
 /*left arrpow*/
-.middle-left-icons {
+.middle_left_icons {
     align-items: flex-start;
     top: 50%; 
     left: 10px; 
     transform: translateY(-50%); 
 }
 
-.top-left-healthbar {
+.top_left_healthbar {
     align-items: flex-start; 
     top: 10px; 
     left: 10px; 
@@ -247,5 +247,5 @@ body {
 .right_button {
     width: 5em;
     margin-left: 1em;
-    margin-bottom: 10em;
+    margin-bottom: 3em;
 }
