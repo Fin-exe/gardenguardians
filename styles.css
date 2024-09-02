@@ -190,6 +190,7 @@ body {
     top: 50%; 
     left: 30px; 
     transform: translateY(-50%); 
+    z-index: 1000;
 }
 
 .top_left_healthbar {
@@ -205,7 +206,7 @@ body {
 }
 
 .healthbar {
-    width: 700px; /* needed specifically for healthbar, bigger htan others*/
+    width: 700px; /* needed specifically for healthbar, bigger than others*/
     height: auto;
 }
 
