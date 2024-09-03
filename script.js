@@ -26,3 +26,12 @@ overlay.addEventListener("click", function(event){
         overlay.style.display = "none"; 
     }
 });
+
+// Flip Plant Popup 
+const removeButton = document.getElementById("plant_one_popup");
+const elementToRemoveOne = document.getElementById("popup_background");
+
+
+modalPlantOne.addEventListener("click", function() {
+    elementToRemoveOne.remove();
+});
