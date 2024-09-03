@@ -1,18 +1,28 @@
 // Plant Popup Card
 
-const popupBuzzkid = document.getElementById("buzzkid");
+const popupPlantOne = document.getElementById("plantOne");
+const modalPlantOne = document.getElementById("plant_one_popup");
+const closePlantOne = document.getElementById("close_plant_one");
+const overlay = document.getElementById("overlay");
 
-
-
-
-popupBuzzkid.addEventListener("click", function() {
-    if (modalBuzzkid.style.display === "none") {
-      modalBuzzkid.style.display = "block";
+popupPlantOne.addEventListener("click", function() {
+    if (modalPlantOne.style.display === "none") {
+      modalPlantOne.style.display = "block";
+      overlay.style.display = "block";
     } else {
-      modalBuzzkid.style.display = "none";
+      modalPlantOne.style.display = "none";
+      overlay.style.display = "none";
     }
-  })
+});
 
-  closeBuzzkid.addEventListener("click", function(){
-    modalBuzzkid.style.display = "none";
+closePlantOne.addEventListener("click", function(){
+    modalPlantOne.style.display = "none";
+    overlay.style.display = "none"; 
+});
+
+overlay.addEventListener("click", function(event){
+    if (event.target === overlay) {
+        modalPlantOne.style.display = "none";
+        overlay.style.display = "none"; 
+    }
 });

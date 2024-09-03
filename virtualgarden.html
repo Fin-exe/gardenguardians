@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link href="styles.css" rel="stylesheet">
-        <title>Garden Guardians - My Virtual Garden</title>
+        <title> Garden Guardians - My Virtual Garden </title>
     </head>
     <body id="virtual_garden">
 
@@ -19,7 +19,7 @@
             <img src="img/vbackground.svg" alt="virtual_background">
         </div>
 
-        <div class="plant_one">
+        <div id="plantOne" class="plant_one">
             <img src="img/default_bush.svg" class="bush" alt="Default Bush">
         </div>
     
@@ -29,11 +29,16 @@
             </a>
         </div>
 
+        <div id="overlay"></div>
+
+        
+
         <!-- PopUp Cards -->
         <section id="plant_one_popup" class="modal">
             <div class="greencard">
                 <div class="plant_title">
                     <h2>Flip to see more!</h2>
+                    <span class="close" id="close_plant_one" aria-label="Close">&times;</span>
                 </div>
                 <div class="yellowcard">
                     <img src="img/default_bush.svg" class="display_img" alt="Image of plant">
@@ -43,5 +48,6 @@
                 </div>
             </div>
         </section>
+        <script src="script.js"></script>
     </body>
 </html>
