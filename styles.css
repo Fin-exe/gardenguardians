@@ -13,9 +13,10 @@ body.main{
     background-color: var(--light_green);
 }
 
-#landing_page {
-    background-image: url(default_bush.svg);
-}
+/*#landing_page {
+    background-image: url(img/default_bush.svg);
+    background-repeat: no-repeat;
+}*/
 
 .katibeh-regular {
     font-family: "Katibeh", serif;
@@ -143,55 +144,56 @@ body {
     position: relative;
 }
 
-.center-content {
+.center_content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
 }
 
-.hanging-pot {
+.hanging_pot {
     width: 63%; /*only works at this width??*/
 }
 
-.top-right-icons,
-.bottom-right-icons,
-.bottom-left-icons,
-.middle-left-icons,
-.top-left-healthbar {
+.top_right_icons,
+.bottom_right_icons,
+.bottom_left_icons,
+.middle_left_icons,
+.top_left_healthbar {
     display: flex;
     flex-direction: column; 
     position: absolute; 
     gap: 10px; 
 }
 
-.top-right-icons {
+.top_right_icons {
     align-items: flex-end; 
     top: 10px;
     right: 0px; 
 }
 
-.bottom-right-icons {
+.bottom_right_icons {
     align-items: flex-end; 
     bottom: 10px;
     right: 0px; 
 }
 
-.bottom-left-icons {
+.bottom_left_icons {
     align-items: flex-start; 
     bottom: 10px;
     left: 0px; 
 }
 
-/*left arrpow*/
-.middle-left-icons {
+/*left arrow*/
+.middle_left_icons {
     align-items: flex-start;
     top: 50%; 
-    left: 10px; 
+    left: 30px; 
     transform: translateY(-50%); 
+    z-index: 1000;
 }
 
-.top-left-healthbar {
+.top_left_healthbar {
     align-items: flex-start; 
     top: 10px; 
     left: 10px; 
@@ -204,23 +206,136 @@ body {
 }
 
 .healthbar {
-    width: 700px; /* needed specifically for healthbar, bigger htan others*/
+    width: 700px; /* needed specifically for healthbar, bigger than others*/
     height: auto;
 }
 
 .arrowleft {
-    width: 80px; /*needed for arrow, smaller than otehrs*/
+    width: 80px; /*needed for arrow, smaller than others*/
     height: auto;
 }
 
 /*virtual garden*/
-
-#virtual_garden {
-    background-image: url(vbackground.svg);
-}
-
 .vg_title {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 100vh; 
+    width: 100vw;
+    z-index: 1000;
+    margin-left: 7em;
+}
+
+.virtual_title {
+    font-family: "Katibeh", serif;
+    font-size: 3em;
+    padding: 1% 0 0 0;
+}
+
+.virtual_background {
+    position: absolute;
+    left: 3%;
+    z-index: -1000;
+    top: -5%;
+}
+
+.back_button {
+    transform: rotate(180deg);
+    align-items: flex-start;
+}
+
+.right_button {
+    width: 5em;
+    margin-left: 1em;
+    margin-bottom: 3em;
+}
+
+.plant_one {
+    z-index: 1000;
+    position: fixed;
+    bottom: 5vh;
+    left: 22vw;
+    width: 15vw;
+    height: auto;
+}
+
+/* Popup Cards */
+
+.modal {
+    z-index: 10000;
+    display: flex;
+    display: none;
+    position: fixed;
+    background-color: var(--light_green);
+    border-radius: 20px;
+}
+
+.modal, .plant_name{
+    padding: 3% 4%;
+    border: black solid 1px;
+    font-family: "Katibeh", serif;
+}
+
+.greencard, .yellowcard {
+    display: flex;
+    flex-direction: column;
+}
+
+.plant_title, .plant_name, .display_img {
+    display: flex;
     justify-content: center;
 }
+
+.yellowcard {
+    background-color: var(--light_yellow);
+    padding: 3em 0.5em;
+    border-radius: 20px;
+    border: black solid 1px;
+    margin-bottom: 5px;;
+}
+
+.display_img {
+    width: 15em;
+}
+
+.plant_name {
+    font-size: 0.8em;
+    background-color: var(--light_yellow);
+    border-radius: 10px;
+}
+
+.plant_title {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.plant_one {
+    cursor: pointer; 
+}
+
+.close {
+    cursor: pointer; 
+    font-size: 2em;
+    order: 2;
+}
+
+#plantOne {
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    z-index: 999;
+  }
+
+  /* Flipped Flashcard*/
