@@ -1,37 +1,40 @@
-// Plant Popup Card
+// Card Flip Animation
+const card = document.querySelector(".card__inner");
 
-const popupPlantOne = document.getElementById("plantOne");
-const modalPlantOne = document.getElementById("plant_one_popup");
-const closePlantOne = document.getElementById("close_plant_one");
-const overlay = document.getElementById("overlay");
-
-popupPlantOne.addEventListener("click", function() {
-    if (modalPlantOne.style.display === "none") {
-      modalPlantOne.style.display = "block";
-      overlay.style.display = "block";
-    } else {
-      modalPlantOne.style.display = "none";
-      overlay.style.display = "none";
-    }
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
 });
 
-closePlantOne.addEventListener("click", function(){
-    modalPlantOne.style.display = "none";
-    overlay.style.display = "none"; 
-});
+ document.addEventListener('DOMContentLoaded', function() {
+     const plantOne = document.getElementById('plantOne');
+     const infoCard = document.getElementById('info_card');
+     const closeBtnFront = document.querySelector('.close_btn');
+     const closeBtnBack = document.querySelector('.close_btn_back');
 
-overlay.addEventListener("click", function(event){
-    if (event.target === overlay) {
-        modalPlantOne.style.display = "none";
-        overlay.style.display = "none"; 
-    }
-});
+     // Function to hide the info card
+     function hideInfoCard() {
+         infoCard.style.display = 'none';
+     }
 
-// Flip Plant Popup 
-const removeButton = document.getElementById("plant_one_popup");
-const elementToRemoveOne = document.getElementById("popup_background");
+     // Clicking on the plant image
+     plantOne.addEventListener('click', hideInfoCard);
 
+     // Clicking on the close buttons
+     closeBtnFront.addEventListener('click', hideInfoCard);
+     closeBtnBack.addEventListener('click', hideInfoCard);
 
-modalPlantOne.addEventListener("click", function() {
-    elementToRemoveOne.remove();
+     function showInfoCard() {
+         infoCard.style.display = 'flex';  // Maintain the centering
+     }
+
+     hideInfoCard();
+
+     // Toggle the card visibility on plant click
+     plantOne.addEventListener('click', function() {
+         if (infoCard.style.display === 'none') {
+             showInfoCard();
+         } else {
+             hideInfoCard();
+         }
+    });
 });

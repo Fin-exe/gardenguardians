@@ -216,126 +216,243 @@ body {
 }
 
 /*virtual garden*/
-.vg_title {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    height: 100vh; 
-    width: 100vw;
-    z-index: 1000;
-    margin-left: 7em;
-}
 
-.virtual_title {
-    font-family: "Katibeh", serif;
-    font-size: 3em;
-    padding: 1% 0 0 0;
-}
-
-.virtual_background {
-    position: absolute;
-    left: 3%;
-    z-index: -1000;
-    top: -5%;
-}
-
-.back_button {
-    transform: rotate(180deg);
-    align-items: flex-start;
-}
-
-.right_button {
-    width: 5em;
-    margin-left: 1em;
-    margin-bottom: 3em;
-}
-
-.plant_one {
-    z-index: 1000;
-    position: fixed;
-    bottom: 5vh;
-    left: 22vw;
-    width: 15vw;
-    height: auto;
-}
-
-/* Popup Cards */
-
-.modal {
+section {
+    width: 100%;
+    min-height: 100vh;
     z-index: 10000;
-    display: flex;
-    display: none;
-    position: fixed;
-    background-color: var(--light_green);
-    border-radius: 20px;
 }
-
-.modal, .plant_name{
-    padding: 3% 4%;
-    border: black solid 1px;
-    font-family: "Katibeh", serif;
+  
+.card {
+    margin: 100px auto 0;
+    width: 400px;
+    height: 600px;
+    perspective: 1000px;
 }
-
-.greencard, .yellowcard {
-    display: flex;
-    flex-direction: column;
-}
-
-.plant_title, .plant_name, .display_img {
-    display: flex;
-    justify-content: center;
-}
-
-.yellowcard {
-    background-color: var(--light_yellow);
-    padding: 3em 0.5em;
-    border-radius: 20px;
-    border: black solid 1px;
-    margin-bottom: 5px;;
-}
-
-.display_img {
-    width: 15em;
-}
-
-.plant_name {
-    font-size: 0.8em;
-    background-color: var(--light_yellow);
-    border-radius: 10px;
-}
-
-.plant_title {
-    margin-bottom: 0.5em;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.plant_one {
-    cursor: pointer; 
-}
-
-.close {
-    cursor: pointer; 
-    font-size: 2em;
-    order: 2;
-}
-
-#plantOne {
-    cursor: pointer;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+  
+.card__inner {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: none; 
-    z-index: 999;
-  }
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+}
+  
+.card__inner.is-flipped {
+    transform: rotateY(180deg);
+}
+  
+.card__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+  
+.card__face--front {
+    background-color: #C0E8AC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.card__face--front h2 {
+    color: black;
+    font-size: 32px;
+    margin-bottom: 3px;
+}
+  
+.card__face--back {
+    background-color: #C0E8AC;
+    transform: rotateY(180deg);
+}
+  
+.card__content {
+    width: 100%;
+    height: 100%;
+}
+  
+.card__body {
+    padding: 30px;
+    background-color: #F4F6C2;
+    border-radius: 2em;
+    border: black solid 1px;
+    position: relative;
+    top: 3em;
+    left: 2em;
+    height: 20em;
+    max-width: 18em;
+    max-height: 25em; /*Optional*/
+}
+  
+.yellowcard {
+      background-color: #F4F6C2;
+      padding: 8%;
+      border-radius: 2em;
+      border: black solid 1px;
+}
+  
+.card_instructions {
+      font-family: "Katibeh", serif;
+}
+  
+.plant_name {
+      font-family: "Katibeh", serif;
+      background-color: #F4F6C2;
+      border-radius: 1em;
+      border: black solid 1px;
+      padding: 5%;
+      margin-top: 0.2em;
+      width: 9.6em;
+}
+  
+#info_card {
+      z-index: 10000;
+      display: none;
+}
+  
+  /* Back of the card */
+  
+.charecteristics_attribute {
+      font-family: "Katibeh", serif;
+      font-size: 1em;
+      background-color: #C0E8AC;
+      border-radius: 1em;
+      border: black solid 1px;
+      padding: 2%;
+      margin-top: 0.3em;
+      width: 12em;
+      text-align: center;
+}
+  
+.attribute {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 1em;
+      max-width: 20em;
+}
+  
+.charecteristics_instance {
+      font-size: 1em;
+}
+  
+.plant_name_back {
+      font-family: "Katibeh", serif;
+      background-color: #F4F6C2;
+      border-radius: 1em;
+      border: black solid 1px;
+      padding: 5%;
+      margin-top: 2.2em;
+      margin-left: 1.4em;
+      width: 12em;
+}
+  
+.close_btn_back {
+      position: relative;
+      top: 1em;
+      margin-left: 5.5em;
+      font-size: 2em;
+}
+  
+.close_btn {
+      position: relative;
+      font-size: 2em;
+}
+  
+.vg_title {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; 
+      align-items: center; 
+      height: 100vh; 
+      width: 100vw;
+      z-index: 1000;
+      margin-left: 1em;
+}
+  
+.virtual_title {
+      font-family: "Katibeh", serif;
+      font-size: 3em;
+      padding: 1% 0 0 0;
+}
+  
+.virtual_background {
+      position: absolute;
+      left: 3%;
+      z-index: -1000;
+      top: -5%;
+}
+  
+.back_button {
+      transform: rotate(180deg);
+      align-items: flex-start;
+}
+  
+.right_button {
+      width: 5em;
+      margin-left: 1em;
+      margin-bottom: 3em;
+}
+  
+.plant_one {
+      z-index: 1000;
+      position: fixed;
+      bottom: 5vh;
+      left: 22vw;
+      width: 15vw;
+      height: auto;
+}
+  
+body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+}
 
-  /* Flipped Flashcard*/
+#virtual_garden {
+      position: relative;
+      width: 100%;
+      height: 100%;
+}
+
+#info_card {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card {
+      background-color: #C0E8AC;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 80%;
+      max-height: 80%;
+      overflow: auto;
+}
+  
+#overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 999;  /* Just below the info_card */
+}
