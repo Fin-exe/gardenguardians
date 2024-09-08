@@ -169,7 +169,8 @@ body {
 .top_right_icons {
     align-items: flex-end; 
     top: 10px;
-    right: 0px; 
+    right: 0px;
+    cursor: pointer; 
 }
 
 .bottom_right_icons {
