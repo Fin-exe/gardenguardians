@@ -38,3 +38,28 @@ card.addEventListener("click", function (e) {
          }
     });
 });
+
+function checkAnswer(button, isCorrect) {
+    const feedback = document.getElementById('feedback');
+    const tryAgainMessage = document.getElementById('try-again');
+
+    // If the answer is correct
+    if (isCorrect) {
+        button.style.backgroundColor = '#a3e3a1'; // Change button to green
+        feedback.style.display = 'none'; // hide feedback
+    } else {
+        button.style.backgroundColor = '#f4a19e'; // Change button to red for wrong
+        feedback.style.display = 'flex'; // show feedback
+    }
+}
+
+function resetQuiz() {
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = 'none'; 
+    // Reset all option buttons
+    const options = document.querySelectorAll('.option');
+    options.forEach(button => {
+        button.style.backgroundColor = '#f7d8a8'; 
+        button.disabled = false; 
+    });
+}
