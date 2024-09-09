@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
         <link href="styles.css" rel="stylesheet">
         <title> Garden Guardians - My Virtual Garden </title>
     </head>
@@ -31,37 +30,48 @@
 
         <div id="overlay"></div>
 
-        
+    <section id="info_card">
+        <div class="card">
+            <div class="card__inner">
+                <div class="card__face card__face--front">
+                    <span class="close_btn" id="close_plant_one" aria-label="Close">&times;</span>
+                    <h2 class="card_instructions">Flip to see more!</h2>
+                    <div id="popup_content" class="yellowcard">
+                        <img src="img/default_bush.svg" class="display_img" alt="Image of plant">
+                    </div>
+                    <h2 class="plant_name">Native Violet (Viola banksii)</h2>
+                </div>
 
-        <!-- PopUp Cards -->
-        <section id="plant_one_popup" class="modal">
-            <div id="popup_background" class="greencard">
-                <!-- <div class="plant_title">
-                    <h2>Flip to see more!</h2>
-                    <span class="close" id="close_plant_one" aria-label="Close">&times;</span>
+                <!-- Flip-->
+                <div class="card__face card__face--back">
+                    <div class="card__content">
+                        <div id="popup_content_back">
+                            <span class="close_btn_back" id="close_plant" aria-label="Close">&times;</span>
+                            <div class="card__body">
+                                <div class="attribute">
+                                    <h2 class="charecteristics_attribute">Charecteristics:</h2>
+                                    <h4 class="charecteristics_instance">Pink and Green Leaves</h4s>
+                                </div>
+                                <div class="attribute">
+                                    <h2 class="charecteristics_attribute">Growth Span:</h2>
+                                    <h4 class="charecteristics_instance">Pink and Green Leaves</h4s>
+                                </div>
+                                <div class="attribute">
+                                    <h2 class="charecteristics_attribute">Living Requirements:</h2>
+                                    <h4 class="charecteristics_instance">Pink and Green Leaves</h4s>
+                                </div>
+                                <div class="attribute">
+                                    <h2 class="charecteristics_attribute">Fun Fact!:</h2>
+                                    <h4 class="charecteristics_instance">Pink and Green Leaves</h4s>
+                                </div>
+                            </div>
+                            <h2 class="plant_name_back">Native Violet (Viola banksii)</h2>
+                        </div>
+                    </div>
                 </div>
-                <div id="popup_content" class="yellowcard">
-                    <img src="img/default_bush.svg" class="display_img" alt="Image of plant">
-                </div>
-                <div class="plant_name">
-                    <h2>Native Violet (Viola banksii)</h2>
-                </div> -->
             </div>
-                <div class="plant_title">
-                    <span class="close" id="close_plant_one" aria-label="Close">&times;</span>
-                </div>
-                <div id="fliped_popup" class="yellowcard"> 
-                    <div class="plant_charecteristics">
-                        <h2>Charecteristics:</h2>
-                        <h2>Pink and Green Leaves:</h2>
-                    </div>
-                    <div class="link_to_quizz">
-                        <h2>Test My Knowledge!</h2>
-                    </div>
-                </div>
-        </section>
-
-
+        </div>
         <script src="script.js"></script>
-    </body>
+    </section>
+</body>
 </html>
