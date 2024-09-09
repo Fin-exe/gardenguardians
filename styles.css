@@ -13,11 +13,6 @@ body.main{
     background-color: var(--light_green);
 }
 
-/*#landing_page {
-    background-image: url(img/default_bush.svg);
-    background-repeat: no-repeat;
-}*/
-
 .katibeh-regular {
     font-family: "Katibeh", serif;
     font-weight: 400;
@@ -550,13 +545,27 @@ body {
     position: absolute; 
     top: 45vh; 
     left: 1vh; 
-    
-    
     width: 100px; 
-    
-    
 }
 
 .back-icon {
     width: 85px;
+}
+
+.link_to_quiz {
+    font-family: "Katibeh", serif;
+    background-color: #FEFFE5;
+    font-size: 1.2em;
+    border-radius: 1em;
+    border: black solid 1px;
+    margin-top: 0.5em;
+    padding: 1.5%;
+    width: 12em;
+    text-align: center;
+}
+
+.link_to_quiz:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #C0E8AC;
 }
