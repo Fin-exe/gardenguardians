@@ -1,3 +1,4 @@
+const plantsData = https://l.facebook.com/l.php?u=https%3A%2F%2Fdata.brisbane.qld.gov.au%2Fexplore%2Fdataset%2Ffree-native-plants-species%2Ftable%2F%3Fsort%3D-index%26dataChart%3DeyJxdWVyaWVzIjpbeyJjb25maWciOnsiZGF0YXNldCI6ImZyZWUtbmF0aXZlLXBsYW50cy1zcGVjaWVzIiwib3B0aW9ucyI6e319LCJjaGFydHMiOlt7ImFsaWduTW9udGgiOnRydWUsInR5cGUiOiJjb2x1bW4iLCJmdW5jIjoiQVZHIiwieUF4aXMiOiJpbmRleCIsInNjaWVudGlmaWNEaXNwbGF5Ijp0cnVlLCJjb2xvciI6IiMwMDY3YjEifV0sInhBeGlzIjoidHlwZSIsIm1heHBvaW50cyI6NTAsInNvcnQiOiIifV0sInRpbWVzY2FsZSI6IiIsImRpc3BsYXlMZWdlbmQiOnRydWUsImFsaWduTW9udGgiOnRydWV9%26fbclid%3DIwZXh0bgNhZW0CMTAAAR3ICFFTQ-u6jF1uRryQWb3TPu3CMh-aBg5MwgTQw9NplYAHqowz5JmFHjQ_aem_v2XUUglhiBcwqGAgT9zVyA&h=AT3XAKib0Q47V83QakhervqtwLDJWsNlh2Uzqfk8A1mol8C3r_7jGKNenoziafuCod9jDte1GTABrIQwh04k2PNcAGh7Dpl2p2XMmcohmRh8KNV14VVz1QGnK5D9zh96oHTfLg
 // Card Flip Animation
 const card = document.querySelector(".card__inner");
 
@@ -63,3 +64,35 @@ function resetQuiz() {
         button.disabled = false; 
     });
 }
+
+async function fetchAndStoreTableData(apiUrl) {
+    try {
+      // Fetch data from the API
+      const response = await fetch(apiUrl);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      // Parse the response as JSON
+      const data = await response.json();
+      
+      // Assuming the API returns an array of objects, each representing a row
+      // If the structure is different, you may need to adjust this part
+      const tableData = data.map(row => {
+        // Convert each row to a JSON string
+        return JSON.stringify(row);
+      });
+      
+      // Store the table data in localStorage
+      localStorage.setItem('tableData', JSON.stringify(tableData));
+      
+      console.log('Table data stored successfully');
+      return tableData;
+    } catch (error) {
+      console.error('Error fetching or storing data:', error);
+      throw error;
+    }
+}
+
+console.log(fetchAndStoreTableData())
