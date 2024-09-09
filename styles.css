@@ -537,8 +537,8 @@ body {
 
 .mascot {
     position: absolute; 
-    bottom: 20em; /* em is relative to screen!!!*/
-    left: 40em; 
+    bottom: 10vw; /* em is relative to screen!!!*/
+    left: 15vw; 
 }
 
 .mascot img {
