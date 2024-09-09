@@ -574,3 +574,7 @@ body {
     text-decoration: none;
     color: #000;
 }
+
+.display_img:hover {
+    cursor: pointer;
+}
