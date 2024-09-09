@@ -13,11 +13,6 @@ body.main{
     background-color: var(--light_green);
 }
 
-/*#landing_page {
-    background-image: url(img/default_bush.svg);
-    background-repeat: no-repeat;
-}*/
-
 .katibeh-regular {
     font-family: "Katibeh", serif;
     font-weight: 400;
@@ -456,4 +451,122 @@ body {
       background-color: rgba(0, 0, 0, 0.5);
       display: none;
       z-index: 999;  /* Just below the info_card */
+}
+
+.quiz-container {
+    background-color: #C0E8AC;
+    border-radius: 20px;
+    width: 1000px;
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-title {
+    font-size: 2em;
+    font-family: "Katibeh", serif;
+    font-size: 6vh;
+
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.question-box {
+    background-color: #f8e2a1;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 1.7em;
+    color: #333;
+    font-weight: bold;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    height: 200px; 
+    justify-content: space-between; 
+}
+
+.option {
+    background-color: #f7d8a8;
+    border: none;
+    padding: 15px 10px; 
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    height: 100%; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+.option:hover {
+    background-color: #e6c491;
+}
+
+.feedback {
+    display: none; /* Hide feedback until needed */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.try-again {
+    background-color: #f8e2a1;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;    
+}
+
+.mascot {
+    position: absolute; 
+    bottom: 10vw; /* em is relative to screen!!!*/
+    left: 15vw; 
+}
+
+.mascot img {
+    width: 200px;
+    height: auto;
+}
+
+.back-button {
+    position: absolute; 
+    top: 45vh; 
+    left: 1vh; 
+    width: 100px; 
+}
+
+.back-icon {
+    width: 85px;
+}
+
+.link_to_quiz {
+    font-family: "Katibeh", serif;
+    background-color: #FEFFE5;
+    font-size: 1.2em;
+    border-radius: 1em;
+    border: black solid 1px;
+    margin-top: 0.5em;
+    padding: 1.5%;
+    width: 12em;
+    text-align: center;
+}
+
+.link_to_quiz:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #C0E8AC;
 }

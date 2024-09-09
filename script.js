@@ -17,7 +17,7 @@ card.addEventListener("click", function (e) {
      }
 
      // Clicking on the plant image
-     plantOne.addEventListener('click', hideInfoCard);
+     plantOne.addEventListener('dblclick', hideInfoCard);
 
      // Clicking on the close buttons
      closeBtnFront.addEventListener('click', hideInfoCard);
@@ -30,7 +30,7 @@ card.addEventListener("click", function (e) {
      hideInfoCard();
 
      // Toggle the card visibility on plant click
-     plantOne.addEventListener('click', function() {
+     plantOne.addEventListener('dblclick', function() {
          if (infoCard.style.display === 'none') {
              showInfoCard();
          } else {
@@ -38,6 +38,7 @@ card.addEventListener("click", function (e) {
          }
     });
 });
+
 
 const icon = document.getElementsByClassName('top_right_icons')[0]; // Access the first element
 const target = document.getElementsByClassName('center_content')[0]; // Access the first element
@@ -88,4 +89,29 @@ function dropIcon(e) {
         icon.style.left = '0px';
         icon.style.top = '0px';
     }, 200); // Delay before resetting, allowing the watering action to be visible*/
+}
+
+function checkAnswer(button, isCorrect) {
+    const feedback = document.getElementById('feedback');
+    const tryAgainMessage = document.getElementById('try-again');
+
+    // If the answer is correct
+    if (isCorrect) {
+        button.style.backgroundColor = '#a3e3a1'; // Change button to green
+        feedback.style.display = 'none'; // hide feedback
+    } else {
+        button.style.backgroundColor = '#f4a19e'; // Change button to red for wrong
+        feedback.style.display = 'flex'; // show feedback
+    }
+}
+
+function resetQuiz() {
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = 'none'; 
+    // Reset all option buttons
+    const options = document.querySelectorAll('.option');
+    options.forEach(button => {
+        button.style.backgroundColor = '#f7d8a8'; 
+        button.disabled = false; 
+    });
 }
