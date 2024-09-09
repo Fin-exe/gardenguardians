@@ -17,7 +17,7 @@ card.addEventListener("click", function (e) {
      }
 
      // Clicking on the plant image
-     plantOne.addEventListener('click', hideInfoCard);
+     plantOne.addEventListener('dblclick', hideInfoCard);
 
      // Clicking on the close buttons
      closeBtnFront.addEventListener('click', hideInfoCard);
@@ -30,7 +30,7 @@ card.addEventListener("click", function (e) {
      hideInfoCard();
 
      // Toggle the card visibility on plant click
-     plantOne.addEventListener('click', function() {
+     plantOne.addEventListener('dblclick', function() {
          if (infoCard.style.display === 'none') {
              showInfoCard();
          } else {
