@@ -452,6 +452,7 @@ body {
       z-index: 999;  /* Just below the info_card */
 }
 
+/*quiz stuff*/
 .quiz-container {
     background-color: #C0E8AC;
     border-radius: 20px;
@@ -532,7 +533,7 @@ body {
 
 .mascot {
     position: absolute; 
-    bottom: 10vw; /* em is relative to screen!!!*/
+    bottom: 10em; /* em is relative to screen!!!*/
     left: 15vw; 
 }
 
