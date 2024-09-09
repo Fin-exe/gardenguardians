@@ -211,7 +211,7 @@ body {
     height: auto;
 }
 
-/*virtual garden*/
+/*VIRTUAL GARDEN*/
 
 section {
     width: 100%;
@@ -313,7 +313,7 @@ section {
       display: none;
 }
   
-  /* Back of the card */
+/* Back of the card */
   
 .charecteristics_attribute {
       font-family: "Katibeh", serif;
@@ -453,6 +453,34 @@ body {
       z-index: 999;  /* Just below the info_card */
 }
 
+.link_to_quiz {
+    font-family: "Katibeh", serif;
+    background-color: #FEFFE5;
+    font-size: 1.2em;
+    border-radius: 1em;
+    border: black solid 1px;
+    margin-top: 0.5em;
+    padding: 1.5%;
+    width: 12em;
+    text-align: center;
+}
+
+.link_to_quiz:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #C0E8AC;
+}
+
+.links {
+    text-decoration: none;
+    color: #000;
+}
+
+.display_img:hover {
+    cursor: pointer;
+}
+
+/*QUIZ*/
 .quiz-container {
     background-color: #C0E8AC;
     border-radius: 20px;
@@ -465,7 +493,7 @@ body {
 
 .quiz-title {
     font-size: 2em;
-    font-family: "Katibeh", serif;
+    font-family: "Coiny", serif;
     font-size: 6vh;
 
     color: #000;
@@ -533,7 +561,7 @@ body {
 
 .mascot {
     position: absolute; 
-    bottom: 10vw; /* em is relative to screen!!!*/
+    bottom: 10em; /* em is relative to screen!!!*/
     left: 15vw; 
 }
 
@@ -551,22 +579,4 @@ body {
 
 .back-icon {
     width: 85px;
-}
-
-.link_to_quiz {
-    font-family: "Katibeh", serif;
-    background-color: #FEFFE5;
-    font-size: 1.2em;
-    border-radius: 1em;
-    border: black solid 1px;
-    margin-top: 0.5em;
-    padding: 1.5%;
-    width: 12em;
-    text-align: center;
-}
-
-.link_to_quiz:hover {
-    text-decoration: none;
-    cursor: pointer;
-    background-color: #C0E8AC;
 }
