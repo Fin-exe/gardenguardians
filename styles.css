@@ -314,7 +314,14 @@ section {
 }
   
 /* Back of the card */
-  
+
+.plant_information{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5em;
+}
+
 .charecteristics_attribute {
       font-family: "Katibeh", serif;
       font-size: 1em;
@@ -323,13 +330,13 @@ section {
       border: black solid 1px;
       padding: 2%;
       margin-top: 0.3em;
-      width: 12em;
+      width: 7.5em;
       text-align: center;
 }
   
 .attribute {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       gap: 5px;
       margin-bottom: 1em;
@@ -337,9 +344,14 @@ section {
 }
   
 .charecteristics_instance {
-      font-size: 1em;
+      font-size: 0.8em;
+      margin-bottom: 0.5em;
 }
-  
+
+.instance {
+    width: 20em;
+}
+
 .plant_name_back {
       font-family: "Katibeh", serif;
       background-color: #F4F6C2;
@@ -479,6 +491,57 @@ body {
 .display_img:hover {
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*QUIZ*/
 .quiz-container {

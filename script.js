@@ -39,6 +39,7 @@ card.addEventListener("click", function (e) {
     });
 });
 
+// DRAG DROP FUNCTION
 
 const icon = document.getElementsByClassName('top_right_icons')[0]; // Access the first element
 const target = document.getElementsByClassName('center_content')[0]; // Access the first element
