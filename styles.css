@@ -150,6 +150,13 @@ body {
     width: 63%; /*only works at this width??*/
 }
 
+.plant {
+    width: 63%;
+    
+    z-index: 1000;
+    position: fixed;
+    top: -4.5em;
+}
 .top_right_icons,
 .bottom_right_icons,
 .bottom_left_icons,
