@@ -16,17 +16,19 @@
         <div class="question-box">
             <p class="question" id="question">What color are the flowers of the Cut Leaf Daisy?</p>
             <div class="options" id="options">
-                <button class="option" onclick="checkAnswer(this, false)">Yellow</button>
-                <button class="option" onclick="checkAnswer(this, true)">Purple</button>
-                <button class="option" onclick="checkAnswer(this, false)">Red</button>
+                <!-- Removed inline onclick attributes; will add event listeners using JavaScript -->
+                <button class="option" data-correct="false">Yellow</button>
+                <button class="option" data-correct="true">Purple</button>
+                <button class="option" data-correct="false">Red</button>
             </div>
         </div>
         
         <div class="mascot">
             <img src="img/mascot.svg" alt="Mascot">
         </div>
-        <div class="feedback" id="feedback">
-            <p class="try-again" id="try-again" onclick="resetQuiz()">Try Again!</p>
+        <div class="feedback" id="feedback" style="display: none;">
+            <!-- The Try Again button acts as the reset button -->
+            <p class="try-again" id="try-again">Try Again!</p>
         </div>
     </div>
     
