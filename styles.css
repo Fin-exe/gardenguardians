@@ -144,19 +144,22 @@ body {
     justify-content: center;
     align-items: center;
     flex: 1;
+    position: relative;
 }
 
 .hanging_pot {
-    width: 63%; /*only works at this width??*/
+    width: 63%;
+    position: relative;
 }
 
 .plant {
-    width: 63%;
+    width: 100%; 
+    position: absolute; 
+    bottom: -18.5em; 
+    left: 0;
     
-    z-index: 1000;
-    position: fixed;
-    top: -4.5em;
 }
+
 .top_right_icons,
 .bottom_right_icons,
 .bottom_left_icons,
