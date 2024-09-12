@@ -117,6 +117,9 @@ body.main{
     box-sizing: border-box; /
 }
 
+
+
+
 body {
     margin: 0;
     padding: 0;
@@ -128,6 +131,18 @@ body {
     background-color: white;
     overflow: hidden; 
 }
+
+/* target only mainpage with gif */
+body.mainpage {
+    background-image: url("img/rain.gif"); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+
+/* Main Container */
+
+
 
 .container {
     display: flex;
