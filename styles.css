@@ -153,11 +153,11 @@ body {
 }
 
 .plant {
-    width: 80%; 
+    width: 70%; 
     position: absolute; 
-    bottom: -8.7em; 
-    left: 10em;
-    
+    bottom: -2.5em; 
+    left: 13em;
+;
 }
 
 .top_right_icons,
