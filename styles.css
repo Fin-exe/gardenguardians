@@ -626,9 +626,7 @@ body {
     text-align: center; 
 }
 
-.option:hover {
-    background-color: #e6c491;
-}
+
 
 .feedback {
     display: none; /* Hide feedback until needed */
@@ -647,6 +645,33 @@ body {
     cursor: pointer;    
 }
 
+/* Add these styles to your styles.css file */
+.correct {
+    background-color:#C4F5A0;
+    ;
+    color: black;
+}
+
+.incorrect {
+    background-color: #E48C80CC;
+    ;
+    color: black;
+}
+
+.result-title {
+    font-size: 2em; /* Large font size for the title */
+    color: #2c3e50; /* Darker color for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Add space below the title */
+}
+
+.result-score {
+    font-size: 1.5em; /* Slightly smaller font size for the score */
+    color: #16a085; /* Different color for the score */
+    text-align: center; /* Center the score text */
+    margin-top: 10px; /* Add space above the score */
+    font-weight: bold; /* Make the score bold */
+}
 .mascot {
     position: absolute; 
     bottom: 10em; /* em is relative to screen!!!*/

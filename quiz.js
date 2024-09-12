@@ -1,61 +1,80 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //please put all event listeners here
     
     setupQuiz();
-    
 });
+
+const quizData = [
+    {
+        question: "What color are the flowers of the Cut Leaf Daisy?",
+        options: ["Yellow", "Purple", "Red"],
+        answer: "Purple"
+    },
+    {
+        question: "What is the scientific name for the Cut Leaf Daisy?",
+        options: ["Brachyscome multifida", "Daisyus cutleafus", "Purpleus daisyus"],
+        answer: "Brachyscome multifida"
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
 
 function setupQuiz() {
     
-    const feedback = document.getElementById('feedback');
-    const options = document.querySelectorAll('.option'); 
-    const tryAgainButton = document.getElementById('try-again'); 
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("options");
 
     
-    if (!feedback) {
-        console.error("Feedback element not found.");
-        return;
-    }
+    showQuestion(questionElement, optionsElement);
+}
 
-   
-    options.forEach(button => {
-        button.addEventListener('click', function () {
-            
-            const isCorrect = button.getAttribute('data-correct') === 'true';  
-            checkAnswer(button, isCorrect);
-        });
+function showQuestion(questionElement, optionsElement) {
+    const question = quizData[currentQuestion];
+    questionElement.innerText = question.question;
+
+    optionsElement.innerHTML = "";
+    question.options.forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.classList.add('option'); 
+        optionsElement.appendChild(button);
+        button.addEventListener("click", selectAnswer);
     });
+}
 
-   
-    function checkAnswer(button, isCorrect) {
-        if (isCorrect) {
-            button.style.backgroundColor = '#a3e3a1'; //green
-            feedback.style.display = 'none'; 
+function selectAnswer(e) {
+    const selectedButton = e.target;
+    const answer = quizData[currentQuestion].answer;
+
+    if (selectedButton.innerText === answer) {
+        selectedButton.classList.add('correct');  
+        score++;
+    } else {
+        selectedButton.classList.add('incorrect');  
+    }
+
+ 
+    const optionButtons = document.querySelectorAll('.option');
+    optionButtons.forEach(button => button.disabled = true);
+
+  
+    setTimeout(() => {
+        currentQuestion++;
+
+        if (currentQuestion < quizData.length) {
+            const questionElement = document.getElementById("question");
+            const optionsElement = document.getElementById("options");
+            showQuestion(questionElement, optionsElement);
         } else {
-            button.style.backgroundColor = '#f4a19e'; 
-            feedback.style.display = 'flex'; // Show try again if the answer is wrong
+            showResult();
         }
-        
-        
-        options.forEach(opt => {
-            opt.disabled = true;
-        });
-    }
+    }, 2000); 
+}
 
-    
-    function resetQuiz() {
-        
-        feedback.style.display = 'none'; 
-        
-        
-        options.forEach(button => {
-            button.style.backgroundColor = '#f7d8a8'; 
-            button.disabled = false; 
-        });
-    }
-
-    
-    if (tryAgainButton) {
-        tryAgainButton.addEventListener('click', resetQuiz);
-    }
+function showResult() {
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = `
+      <h1 class="result-title">Quiz Completed!</h1>
+      <p class="result-score">Your score: ${score}/${quizData.length}</p>
+    `;
 }
