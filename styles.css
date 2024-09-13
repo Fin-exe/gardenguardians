@@ -109,75 +109,18 @@ body.main{
 }
 
 /* Seed Page */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
 
-#choose {
-    background-color: #F4F6C2;
-    font-style: italic;
-    }
-
-.flex-container1{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: normal;
-    align-content: normal;
-    height:20vh;
-    }
-
-.flex-container2{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: normal;
-    align-content: normal;
-    height: 70vh;
-    }
-
-.flex-container3{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: normal;
-    align-content: normal;
-    height: 10vh;
-    }
-    
-#seed-title{
-    color: black;
-    text-align: center;
-    vertical-align: middle;
-    padding: 5% 0;
-    }
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    }
 
 /* Main Home Page  */
 
 /* margins  */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box; /
 }
 
-
-
-
-body {
+body{
     margin: 0;
     padding: 0;
     display: flex;
