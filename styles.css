@@ -191,6 +191,7 @@ body.mainpage {
     top: 10px;
     right: 0px;
     cursor: pointer; 
+    z-index: 1000;
 }
 
 .bottom_right_icons {
@@ -224,6 +225,7 @@ body.mainpage {
 .icon {
     width: 200px; /*used to change size of all icons*/
     height: auto;
+    user-select: none;
 }
 
 .healthbar {

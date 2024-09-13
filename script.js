@@ -72,60 +72,77 @@ function handleCardFlip() {
     if (closeBtnBack) closeBtnBack.addEventListener('click', hideInfoCard);
 }
 
+
+
 function setupDragDrop() {
-    const icon = document.getElementsByClassName('top_right_icons')[0]; 
-    const target = document.getElementsByClassName('center_content')[0]; 
-    let initialX, initialY;
+    const icons = document.querySelectorAll('.top_right_icons img'); 
+    const target = document.querySelector('.center_content'); 
 
-    if (!icon || !target) return;
+    if (!icons || !target) return;
 
-    icon.addEventListener('mousedown', (e) => {
-        initialX = e.clientX - icon.offsetLeft;
-        initialY = e.clientY - icon.offsetTop;
+    icons.forEach((icon) => {
+        let startX, startY; 
+        let currentX = 0, currentY = 0; 
 
-        icon.src = 'img/watercan1.png'; 
+        icon.addEventListener('mousedown', (e) => {
+            e.preventDefault();
 
-        document.addEventListener('mousemove', moveIcon);
-        document.addEventListener('mouseup', dropIcon);
-    });
+            startX = e.clientX;
+            startY = e.clientY;
 
-    function moveIcon(e) {
-        icon.style.left = `${e.clientX - initialX}px`;
-        icon.style.top = `${e.clientY - initialY}px`;
-    }
+            icon.style.transition = 'none';
+            icon.style.zIndex = 1000; 
 
-    function dropIcon(e) {
-        document.removeEventListener('mousemove', moveIcon);
-        document.removeEventListener('mouseup', dropIcon);
+           
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        });
 
-        const canRect = icon.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
+        function onMouseMove(e) {
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
 
-        if (
-            canRect.right > targetRect.left &&
-            canRect.left < targetRect.right &&
-            canRect.bottom > targetRect.top &&
-            canRect.top < targetRect.bottom
-        ) {
+            currentX = deltaX;
+            currentY = deltaY;
+
             
-            const targetCenterX = targetRect.left + targetRect.width / 2;
-            const targetCenterY = targetRect.top + targetRect.height / 2;
-
-            const canHalfWidth = canRect.width / 2;
-            const canHalfHeight = canRect.height / 2;
-
-            icon.style.left = `${targetCenterX - canHalfWidth}px`;
-            icon.style.top = `${targetCenterY - canHalfHeight}px`;
+            icon.style.transform = `translate(${currentX}px, ${currentY}px)`;
         }
 
-       
-        setTimeout(() => {
-            icon.src = 'img/watercan1.png';
-            icon.style.left = '0px';
-            icon.style.top = '0px';
-        }, 200);
-    }
+        function onMouseUp(e) {
+            
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+
+            icon.style.transition = ''; 
+            icon.style.zIndex = ''; 
+
+            
+            const iconRect = icon.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+
+            
+            if (
+                iconRect.right > targetRect.left &&
+                iconRect.left < targetRect.right &&
+                iconRect.bottom > targetRect.top &&
+                iconRect.top < targetRect.bottom
+            ) {
+                
+                console.log('Icon dropped over the target!');
+            }
+
+            
+            icon.style.transform = '';
+        }
+    });
 }
+
+
+window.onload = function() {
+    setupDragDrop();
+};
+
 
 function setupQuiz() {
     
