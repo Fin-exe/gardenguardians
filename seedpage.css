@@ -4,10 +4,9 @@
     box-sizing: border-box;
     }
 
-#choose {
+.fullseedpage {
     background-color: #F4F6C2;
-    font-style: italic;
-    }
+}
 
 .flex-container1{
     display: flex;
@@ -44,4 +43,6 @@
     text-align: center;
     vertical-align: middle;
     padding: 5% 0;
+    font-family: "Katibeh", serif;
+    font-size: 30%;
     }
