@@ -13,23 +13,12 @@
         </a>
 
         <h1 class="quiz-title">Quick Quiz</h1>
-        <div class="question-box">
-            <p class="question" id="question">What color are the flowers of the Cut Leaf Daisy?</p>
-            <div class="options" id="options">
-                <button class="option" onclick="checkAnswer(this, false)">Yellow</button>
-                <button class="option" onclick="checkAnswer(this, true)">Purple</button>
-                <button class="option" onclick="checkAnswer(this, false)">Red</button>
-            </div>
-        </div>
-        
-        <div class="mascot">
-            <img src="img/mascot.svg" alt="Mascot">
-        </div>
-        <div class="feedback" id="feedback">
-            <p class="try-again" id="try-again" onclick="resetQuiz()">Try Again!</p>
+        <div class="quiz" id="quiz">  
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="quiz.js"></script>
 </body>
 </html>

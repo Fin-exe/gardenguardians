@@ -108,16 +108,19 @@ body.main{
     border: 1px solid black;
 }
 
+/* Seed Page */
+
+
 /* Main Home Page  */
 
 /* margins  */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box; /
 }
 
-body {
+body{
     margin: 0;
     padding: 0;
     display: flex;
@@ -128,6 +131,18 @@ body {
     background-color: white;
     overflow: hidden; 
 }
+
+/* target only mainpage with gif */
+body.mainpage {
+    background-image: url("img/rain.gif"); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+
+/* Main Container */
+
+
 
 .container {
     display: flex;
@@ -144,10 +159,20 @@ body {
     justify-content: center;
     align-items: center;
     flex: 1;
+    position: relative;
 }
 
 .hanging_pot {
-    width: 63%; /*only works at this width??*/
+    width: 63%;
+    position: relative;
+}
+
+.plant {
+    width: 70%; 
+    position: absolute; 
+    bottom: -2.5em; 
+    left: 13em;
+;
 }
 
 .top_right_icons,
@@ -166,6 +191,7 @@ body {
     top: 10px;
     right: 0px;
     cursor: pointer; 
+    z-index: 1000;
 }
 
 .bottom_right_icons {
@@ -199,6 +225,7 @@ body {
 .icon {
     width: 200px; /*used to change size of all icons*/
     height: auto;
+    user-select: none;
 }
 
 .healthbar {
@@ -314,7 +341,14 @@ section {
 }
   
 /* Back of the card */
-  
+
+.plant_information{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5em;
+}
+
 .charecteristics_attribute {
       font-family: "Katibeh", serif;
       font-size: 1em;
@@ -323,13 +357,13 @@ section {
       border: black solid 1px;
       padding: 2%;
       margin-top: 0.3em;
-      width: 12em;
+      width: 7.5em;
       text-align: center;
 }
   
 .attribute {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       gap: 5px;
       margin-bottom: 1em;
@@ -337,9 +371,14 @@ section {
 }
   
 .charecteristics_instance {
-      font-size: 1em;
+      font-size: 0.8em;
+      margin-bottom: 0.5em;
 }
-  
+
+.instance {
+    width: 20em;
+}
+
 .plant_name_back {
       font-family: "Katibeh", serif;
       background-color: #F4F6C2;
@@ -480,6 +519,7 @@ body {
     cursor: pointer;
 }
 
+
 /*QUIZ*/
 .quiz-container {
     background-color: #C0E8AC;
@@ -538,9 +578,7 @@ body {
     text-align: center; 
 }
 
-.option:hover {
-    background-color: #e6c491;
-}
+
 
 .feedback {
     display: none; /* Hide feedback until needed */
@@ -559,6 +597,33 @@ body {
     cursor: pointer;    
 }
 
+/* Add these styles to your styles.css file */
+.correct {
+    background-color:#C4F5A0;
+    ;
+    color: black;
+}
+
+.incorrect {
+    background-color: #E48C80CC;
+    ;
+    color: black;
+}
+
+.result-title {
+    font-size: 2em; /* Large font size for the title */
+    color: #2c3e50; /* Darker color for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Add space below the title */
+}
+
+.result-score {
+    font-size: 1.5em; /* Slightly smaller font size for the score */
+    color: #16a085; /* Different color for the score */
+    text-align: center; /* Center the score text */
+    margin-top: 10px; /* Add space above the score */
+    font-weight: bold; /* Make the score bold */
+}
 .mascot {
     position: absolute; 
     bottom: 10em; /* em is relative to screen!!!*/
