@@ -4,6 +4,26 @@
     box-sizing: border-box;
     }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 .fullseedpage {
     background-color: #F4F6C2;
 }
@@ -57,3 +77,24 @@
     height: 100%;
     padding: 2% 2%
     }
+
+#plant1, #plant2, #plant3, #plant4, #plant5, #plant6, #plant7, #plant8, 
+#plant9, #plant10, #plant11, #plant12, #plant13, #plant14, #plant15{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.namestyle{
+    font-family: "Katibeh", serif;
+    font-size: 2.5vh;
+    padding: 0 0 2% 0;
+    background-color: #A8D5A1; /* Light green background */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    border: 1px solid black; /* Thin black border */
+    text-align: center;
+    width: fit-content;
+    margin: 20px auto;
+}
