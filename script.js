@@ -125,7 +125,6 @@ async function fetchData(URL) {
             const firstJSON = await firstResponse.json();
             //Return the second key of the JSON containing the array needed
             const Result = firstJSON
-            localStorage.setItem('data', JSON.stringify(Result))
             return Result
         } catch (error) {
             console.error('Couldnt fetch the data :(');
@@ -155,7 +154,7 @@ async function cardProperties() {
         attract: plant.attracts
     }));
 
-    saveCache('cardData', indexAndSpecies)
+    localStorage.setItem('data', JSON.stringify(indexAndSpecies))
     console.log(indexAndSpecies)
 }
 
@@ -166,32 +165,5 @@ async function weatherProperties() {
     weatherData
 }
 
-async function saveCache(filename, data) {
-    try {
-        // Ensure filename includes .json extension
-        const filePath = filename.endsWith('.json') ? filename : `${filename}.json`;
-        const fullPath = path.resolve(filePath);
-        
-        // Write data to the file, pretty-print JSON
-        await writeFile(fullPath, JSON.stringify(data, null, 2), 'utf-8');
-        
-    } catch (error) {
-        console.error("Error saving cache:", error);
-    }
-}
-
-async function readCache(filename) {
-    if (enableReadCache) {
-        try {
-            const data = await fs.readFile(filename, 'utf-8'); // Read file content as a string
-            
-            return JSON.parse(data); // Parse the JSON string back into an object
-            
-        } catch (error) {
-            console.error("Error reading cache:", error);
-            return null;
-        }
-    }
-    return null;
-}
+cardProperties()
 
