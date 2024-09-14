@@ -125,7 +125,8 @@ async function fetchData(URL) {
             const firstJSON = await firstResponse.json();
             //Return the second key of the JSON containing the array needed
             const Result = firstJSON
-            console.log(Result)
+            localStorage.setItem('data', JSON.stringify(Result))
+            return Result
         } catch (error) {
             console.error('Couldnt fetch the data :(');
         }
@@ -153,6 +154,8 @@ async function cardProperties() {
         descript: plant.description_and_growing_requirements,
         attract: plant.attracts
     }));
+
+    saveCache('cardData', indexAndSpecies)
     console.log(indexAndSpecies)
 }
 
@@ -165,11 +168,12 @@ async function weatherProperties() {
 
 async function saveCache(filename, data) {
     try {
-        // Ensure filename includes file extension if needed
-        const filePath = `${filename}`;
+        // Ensure filename includes .json extension
+        const filePath = filename.endsWith('.json') ? filename : `${filename}.json`;
+        const fullPath = path.resolve(filePath);
         
         // Write data to the file, pretty-print JSON
-        await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+        await writeFile(fullPath, JSON.stringify(data, null, 2), 'utf-8');
         
     } catch (error) {
         console.error("Error saving cache:", error);
