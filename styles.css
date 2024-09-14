@@ -482,7 +482,7 @@ body {
 }
   
 #overlay {
-      position: fixed;
+      position:static;
       top: 0;
       left: 0;
       width: 100%;
@@ -521,6 +521,11 @@ body {
 
 
 /*QUIZ*/
+
+#quiz_body {
+    background-color: #F7F8DD;
+}
+
 .quiz-container {
     background-color: #C0E8AC;
     border-radius: 20px;
@@ -629,15 +634,12 @@ body {
     margin-top: 10px; /* Add space above the score */
     font-weight: bold; /* Make the score bold */
 }
-.mascot {
-    position: absolute; 
-    bottom: 10em; /* em is relative to screen!!!*/
-    left: 15vw; 
-}
 
-.mascot img {
-    width: 200px;
-    height: auto;
+.mascot_quiz {
+    position: relative; 
+    bottom: 20em;
+    right: 26em;
+    width: 17em;
 }
 
 .back-button {
