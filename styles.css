@@ -17,7 +17,7 @@ body.main{
     font-family: "Katibeh", serif;
     font-weight: 400;
     font-style: normal;
-  }  
+}  
 
 .coiny-regular {
   font-family: "Coiny", system-ui;
@@ -529,19 +529,26 @@ body {
     padding: 20px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px black solid;
+}
+
+.quiz {
+    background-color: #F4F6C2;
+    margin: 2% 3%;
+    padding: 5% 8%;
+    border-radius: 20px;
+    border: 1px black solid;
 }
 
 .quiz-title {
-    font-size: 2em;
-    font-family: "Coiny", serif;
+    font-family: "Katibeh", serif;
     font-size: 6vh;
-
     color: #000;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .question-box {
-    background-color: #f8e2a1;
+    background-color: #F4F6C2;
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -570,15 +577,14 @@ body {
     cursor: pointer;
     font-weight: bold;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
     height: 100%; 
     display: flex;
     align-items: center; 
     justify-content: center; 
     text-align: center; 
+    border: 1px black solid;
 }
-
-
 
 .feedback {
     display: none; /* Hide feedback until needed */
@@ -597,7 +603,6 @@ body {
     cursor: pointer;    
 }
 
-/* Add these styles to your styles.css file */
 .correct {
     background-color:#C4F5A0;
     ;

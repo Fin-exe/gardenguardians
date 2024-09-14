@@ -13,7 +13,22 @@ const quizData = [
         question: "What is the scientific name for the Cut Leaf Daisy?",
         options: ["Brachyscome multifida", "Daisyus cutleafus", "Purpleus daisyus"],
         answer: "Brachyscome multifida"
-    }
+    }, 
+    {
+        question: "How tall does the Cut leaf Daisy Grow?",
+        options: ["15cm", "60cm", "1m"],
+        answer: "60cm"
+    }, 
+    {
+        question: "Where is the best place to grow a Cut Leaf Daisy?",
+        options: ["Shady Spots", "Well-drained soil in full sun", "Wet areas"],
+        answer: "Well-drained soil in full sun"
+    }, 
+    {
+        question: "Which animals are attracted to the Cut Leaf Daisy?",
+        options: ["Birds and frogs", "Bees and Lizards", "Butterflies and insects"],
+        answer: "Bees and Lizards"
+    },
 ];
 
 let currentQuestion = 0;
