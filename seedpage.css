@@ -44,5 +44,16 @@
     vertical-align: middle;
     padding: 5% 0;
     font-family: "Katibeh", serif;
-    font-size: 30%;
+    font-size: 5vh;
+    }
+
+.parentbox {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
+    width: 100%;
+    height: 100%;
+    padding: 2% 2%
     }
