@@ -76,13 +76,14 @@ function handleCardFlip() {
 
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
-    const target = document.querySelector('.center_content'); 
+    const plantImage = document.getElementById('plant-image'); 
 
-    if (!icons || !target) return;
+    if (!icons || !plantImage) return;
 
     icons.forEach((icon) => {
         let startX, startY; 
         let currentX = 0, currentY = 0; 
+        let isOverPlant = false; 
 
         icon.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -93,7 +94,6 @@ function setupDragDrop() {
             icon.style.transition = 'none';
             icon.style.zIndex = 1000; 
 
-           
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
@@ -105,35 +105,48 @@ function setupDragDrop() {
             currentX = deltaX;
             currentY = deltaY;
 
-            
             icon.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+            
+            const iconRect = icon.getBoundingClientRect();
+            const plantRect = plantImage.getBoundingClientRect();
+
+            
+            const isOverlapping = !(
+                iconRect.right < plantRect.left ||
+                iconRect.left > plantRect.right ||
+                iconRect.bottom < plantRect.top ||
+                iconRect.top > plantRect.bottom
+            );
+
+            
+            if (icon.classList.contains('watercan')) {
+                if (isOverlapping && !isOverPlant) {
+                    
+                    icon.src = 'img/watercan2.png';
+                    isOverPlant = true;
+                } else if (!isOverlapping && isOverPlant) {
+                    
+                    icon.src = 'img/watercan1.png';
+                    isOverPlant = false;
+                }
+            }
         }
 
         function onMouseUp(e) {
-            
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
 
             icon.style.transition = ''; 
             icon.style.zIndex = ''; 
+            icon.style.transform = '';
 
             
-            const iconRect = icon.getBoundingClientRect();
-            const targetRect = target.getBoundingClientRect();
-
-            
-            if (
-                iconRect.right > targetRect.left &&
-                iconRect.left < targetRect.right &&
-                iconRect.bottom > targetRect.top &&
-                iconRect.top < targetRect.bottom
-            ) {
-                
-                console.log('Icon dropped over the target!');
+            if (icon.classList.contains('watercan')) {
+                icon.src = 'img/watercan1.png';
             }
 
             
-            icon.style.transform = '';
         }
     });
 }
