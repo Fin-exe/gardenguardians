@@ -111,9 +111,24 @@ body.main{
 /* Seed Page */
 
 
-/* Main Home Page  */
 
-/* margins  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main Home Page */
+
 *{
     margin: 0;
     padding: 0;
@@ -141,8 +156,6 @@ body.mainpage {
 }
 
 /* Main Container */
-
-
 
 .container {
     display: flex;
@@ -653,3 +666,169 @@ body {
 .back-icon {
     width: 85px;
 }
+
+
+/* NAV BAR */
+
+#top.bar {
+    width: 30em;
+    z-index: 999;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  div#header div {
+    display: inline;
+    text-align: center;
+    height: 70%;
+    border: 4px none;
+    font-size: 2em;
+  }
+  
+  body {
+    margin: 3em;
+    padding-top: 8%;
+    /* Add padding to the top of the body to prevent overlap with the fixed header */
+    background-color: rgb(254, 254, 254);
+    text-align: center;
+  }
+  
+  /* The Close Button */
+  .close {
+    display: flex;
+    position: right;
+    top: 15px;
+    right: 35px;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* The sidebar menu */
+  .sidenav {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 100000; 
+    top: 0;
+    left: 0;
+    background-color: #FEFFE5;
+    border-left: #000000;
+    overflow-x: hidden; 
+    padding-top: 150px; 
+    transition: 0.5s; 
+    border-right: #000 1px solid;
+  }
+  
+  .link {
+    font-family: "Katibeh", serif;
+  }
+
+  /* The sidebar links and dropdown buttons */
+  .sidenav a{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-decoration: none;
+    color: #000000;
+    background-color: #FEFFE5;
+    border: none;
+    transition: 0.3s;
+    gap: 10px;
+  }
+  
+  /* Chnages color of navigation links when hovered over */
+  .sidnav a:hover{
+    color: rgb(241, 241, 241);
+    background-color: rgb(80, 136, 255);
+  }
+  
+  /* Changes color of the links in the sidenav when hovered over*/
+  .sidnav a:hover,
+  .link:hover {
+    color: black;
+    background-color: #C5E7B4;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    display: block;
+    position: absolute;
+    top: -1%;
+    left: 80%;
+    font-size: 3vw;
+    width: 10%;
+  }
+  
+  /*Lightens the color of the close button when hovered over*/
+  .sidenav .closebtn:hover {
+    color: #F7F8DD;
+  }
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 100%;
+    height: auto;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: none;
+  }
+  
+  /* Changes the color of the button as the mouse hovers over it */
+  .openbtn:hover {
+    color: #F7F8DD;
+  }
+  
+  /* Style page content */
+  #main {
+    transition: margin-left 0.5s; /* transition effect */
+    padding: 20px;
+  }
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: white;
+    color: rgb(59, 87, 149);
+  }
+  
+  /* Changes font-size when the browser's width is 601px or more*/
+  @media screen and (min-width: 601px) {
+    .sidenav a {
+      font-size: 24px;
+    }
+  }
+  /*Changes font-size when the browser's width is 600px wide or less*/
+  @media screen and (max-width: 600px) {
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+  /*On smaller screens, where height is less than 450px */
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+      width: 30%;
+    }
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+  
