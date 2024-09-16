@@ -29,7 +29,7 @@
 }
 
 img{border-radius: 8px;
-  }
+    }
 
 .flex-container1{
     display: flex;
@@ -87,7 +87,7 @@ img{border-radius: 8px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-}
+    }
 
 .namestyle{
     font-family: "Katibeh", serif;
@@ -100,4 +100,15 @@ img{border-radius: 8px;
     text-align: center;
     width: fit-content;
     margin: 20px auto;
+    }
+
+
+
+.btn:hover {
+    background-color: #ddd;
+    }
+    
+.btn.active {
+background-color: #666;
+color: white;
 }
