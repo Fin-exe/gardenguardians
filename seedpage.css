@@ -102,13 +102,28 @@ img{border-radius: 8px;
     margin: 20px auto;
     }
 
-
+.left_button{
+    width: 5em;
+    height: 5em;
+    vertical-align: center
+}
 
 .btn:hover {
     background-color: #ddd;
     }
     
 .btn.active {
-background-color: #666;
+background-color: #7db845;
 color: white;
 }
+
+.btn{
+    font-size: 3vh;
+    font-family: "Katibeh", serif;
+    border: none;
+    outline: none;
+    padding: 15px 32px;
+    border-radius: 15px;
+}
+
+.back-
