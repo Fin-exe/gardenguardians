@@ -236,16 +236,16 @@ function initializeDataFetch() {
                 descript: plant.description_and_growing_requirements,
                 attract: plant.attracts
             }));
-            console.log(indexAndSpecies);
+            return indexAndSpecies;
         }
     }
 
-    async function weatherProperties() {
+    /*async function weatherProperties() {
         const data = await fetchData(weatherURL);
         if (data) {
             console.log(data.hourly);
         }
-    }
+    }*/
 
 }
 
