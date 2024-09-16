@@ -76,11 +76,29 @@ function handleCardFlip() {
 
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
-    const plantImage = document.getElementById('plant-image'); 
+    const plantImage = document.getElementById('plant-image'); // Access the plant image
 
     if (!icons || !plantImage) return;
 
+    
+    const iconOverPlantImages = {
+        'watercan': {
+            default: 'img/watercan1.png',
+            overPlant: 'img/watercan2.png'
+        },
+        'umbrella': {
+            default: 'img/umbrella.png',
+            overPlant: 'img/umbrella1.png'
+        }
+        // add whatever icons you wan6
+    };
+
     icons.forEach((icon) => {
+        const iconType = icon.getAttribute('data-icon-type');
+        if (!iconType || !iconOverPlantImages[iconType]) {
+            return; 
+        }
+
         let startX, startY; 
         let currentX = 0, currentY = 0; 
         let isOverPlant = false; 
@@ -111,7 +129,7 @@ function setupDragDrop() {
             const iconRect = icon.getBoundingClientRect();
             const plantRect = plantImage.getBoundingClientRect();
 
-            
+            // Check for overlap
             const isOverlapping = !(
                 iconRect.right < plantRect.left ||
                 iconRect.left > plantRect.right ||
@@ -119,17 +137,14 @@ function setupDragDrop() {
                 iconRect.top > plantRect.bottom
             );
 
-            
-            if (icon.classList.contains('watercan')) {
-                if (isOverlapping && !isOverPlant) {
-                    
-                    icon.src = 'img/watercan2.png';
-                    isOverPlant = true;
-                } else if (!isOverlapping && isOverPlant) {
-                    
-                    icon.src = 'img/watercan1.png';
-                    isOverPlant = false;
-                }
+            if (isOverlapping && !isOverPlant) {
+                
+                icon.src = iconOverPlantImages[iconType].overPlant;
+                isOverPlant = true;
+            } else if (!isOverlapping && isOverPlant) {
+                
+                icon.src = iconOverPlantImages[iconType].default;
+                isOverPlant = false;
             }
         }
 
@@ -142,11 +157,7 @@ function setupDragDrop() {
             icon.style.transform = '';
 
             
-            if (icon.classList.contains('watercan')) {
-                icon.src = 'img/watercan1.png';
-            }
-
-            
+            icon.src = iconOverPlantImages[iconType].default;
         }
     });
 }
