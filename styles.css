@@ -117,7 +117,7 @@ body.main{
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /
+    box-sizing: border-box; 
 }
 
 body{
@@ -652,4 +652,128 @@ body {
 
 .back-icon {
     width: 85px;
+}
+
+/*plant conditions box*/
+#plant-condition-heading {
+    font-family: 'Katibeh', cursive; /* Katibeh font */
+    font-size: 48px;
+    margin: 0;
+    margin-left: 35px;
+    text-align: center;
+}
+
+#plant-condition {
+    width: 319px;
+    height: 138px; /* Adjusted height to fit both rows */
+    border-radius: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column; /* Column direction for rows */
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Space between heading and widget */
+    margin-left: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sunlight {
+    height: 50%; /* Half of the widget height */
+}
+
+.water {
+    height: 50%; /* Half of the widget height */
+}
+
+.sunlight img {
+    width: 61.01px;
+    height: 61.01px;
+}
+
+.water img {
+    width: 49px;
+    height: 49px;
+}
+
+/*weather box*/
+/* Weather widget styling */
+#weather-box-container {
+    position: relative;
+}
+
+#weather-box-heading {
+    font-family: 'Katibeh', cursive; /* Katibeh font */
+    font-size: 48px;
+    margin: 0;
+    text-align: center;
+}
+
+#weather-box {
+    width: 319px;
+    height: 138px;
+    border-radius: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Space between heading and widget */
+    overflow: hidden; /* Ensure content does not overflow */
+    margin-left: 10px;
+}
+
+#temperature-weather-box {
+    flex: 1;
+    font-family: 'Katibeh', cursive; /* Katibeh font */
+    font-size: 40px; /* Adjusted font size to fit well */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#weather-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; /* Align items to the right */
+    overflow: hidden; /* Ensure content does not overflow */
+}
+
+.info-row-weather {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Space between rows */
+   
+}
+
+.icon {
+    margin-left: 10px; /* Space between icon and text */
+}
+
+.sunlight-icon {
+    width: 61.01px;
+    height: 61.01px;
+}
+
+.water-icon {
+    width: 49px;
+    height: 49px;
+}
+
+.cloud-icon {
+    width: 49px;
+    height: 49px;
+}
+
+.info-row-weather span {
+    font-size: 30px;
+    font-weight: 100;
 }
