@@ -66,19 +66,19 @@ const quizData = [
         type: 'color',
         question: "What color are the flowers of the Cut Leaf Daisy?",
         options: ["Yellow", "Purple", "Red"],
-        answer: getPlantData(["Yellow", "Purple", "Red"], 'color', 1)
+        answer: 1
     },
     {
         type: 'species',
         question: "What is the scientific name for the Cut Leaf Daisy?",
         options: ["Brachyscome multifida", "Daisyus cutleafus", "Purpleus daisyus"],
-        answer: getPlantData(["Brachyscome multifida", "Daisyus cutleafus", "Purpleus daisyus"], 'species', 1)
+        answer: 2
     }, 
     {
         type: 'height',
         question: "How tall does the Cut leaf Daisy Grow?",
         options: ["15cm", "60cm", "1m"],
-        answer: getPlantData(["15cm", "60cm", "1m"], 'height', 1)
+        answer: 3
     }, 
     {
         type: 'descript',
@@ -90,7 +90,7 @@ const quizData = [
         type: 'attract',
         question: "Which animals are attracted to the Cut Leaf Daisy?",
         options: ["Birds and frogs", "Bees and Lizards", "Butterflies and insects"],
-        answer: getPlantData(["Birds and frogs", "Bees and Lizards", "Butterflies and insects"], 'attract', 1)
+        answer: 5
     },
 ];
 
