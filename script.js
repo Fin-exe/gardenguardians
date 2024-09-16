@@ -89,6 +89,10 @@ function setupDragDrop() {
         'umbrella': {
             default: 'img/umbrella.png',
             overPlant: 'img/umbrella1.png'
+        },
+        'sun': {
+            default: 'img/sun.png',
+            overPlant: 'img/sun.png'
         }
         // add whatever icons you wan6
     };
