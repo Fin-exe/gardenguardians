@@ -101,11 +101,3 @@ img{border-radius: 8px;
     width: fit-content;
     margin: 20px auto;
 }
-
-.backarrow{
-    position: absolute;
-    left: 0;
-    width: 0.5vw;
-    height: 5vh;
-    align-self: flex-start;
-}
