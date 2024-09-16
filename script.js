@@ -207,7 +207,6 @@ function initializeDataFetch() {
         try {
             const response = await fetch(URL);
             const data = await response.json();
-            console.log(data); // Log the fetched data
             return data;
         } catch (error) {
             console.error('Couldn\'t fetch the data :(', error);
@@ -235,6 +234,6 @@ function initializeDataFetch() {
         }
     }
 
-    cardProperties();
-    weatherProperties();
 }
+
+
