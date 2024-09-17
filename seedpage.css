@@ -126,4 +126,10 @@ color: white;
     border-radius: 15px;
 }
 
-.back-
+.back-icon {
+    width: 100px; 
+    height: auto;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+}
