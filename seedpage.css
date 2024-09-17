@@ -78,7 +78,7 @@ img{border-radius: 8px;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: normal;
+    align-items: center;
     align-content: normal;
     height: 10vh;
     }
