@@ -141,3 +141,8 @@ color: white;
     border-radius: 15px;
 }
 
+.back_button{
+    width: 5em;
+    height: 5em;
+    vertical-align: center
+}
