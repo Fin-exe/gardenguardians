@@ -200,6 +200,31 @@ body.mainpage {
     right: 0px; 
 }
 
+.seed_icon {
+    width: 15em;
+    height: auto;
+    transition: transform 0.3s ease; 
+    transform-origin: center center; 
+}
+
+
+.seed_icon:hover {
+    transform: scale(1.3); 
+}
+
+
+.book_icon {
+    width: 15em; /
+    height: auto;
+    transition: transform 0.3s ease; 
+    transform-origin: center center; 
+}
+
+.book_icon:hover {
+    transform: scale(1.2); 
+}
+
+
 .bottom_left_icons {
     align-items: flex-start; 
     bottom: 10px;
