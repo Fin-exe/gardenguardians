@@ -167,6 +167,14 @@ body.main{
     z-index: 1;
 }
 
+.navbtn_quiz {
+    position: relative;
+    bottom: 11.3em;
+    font-size: 40px;
+    cursor: pointer;
+    left: -10.5em; 
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
