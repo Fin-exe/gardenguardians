@@ -103,6 +103,37 @@
                 </div>
             </div>
         </div>
+
+        <!--FLIPCARDS-->
+
+        <div id="overlay"></div>
+
+        <section id="info_card">
+            <div class="card">
+                <div class="card__inner">
+                    <div class="card__face card__face--front">
+                        <span class="close_btn" id="close_from_front" aria-label="Close">&times;</span>
+                        <img  class="front_context" src="img/frontcard.png" alt="Front of Card">
+                    </div>
+
+                    <!-- Flip-->
+                    <div class="card__face card__face--back">
+                        <div class="card__content">
+                            <div id="popup_content_back">
+                                <span class="close_btn_back" id="close_from_back" aria-label="Close">&times;</span>
+                                <img class="back_context" src="img/backcard.png" alt="Back of Card">
+                            </div>
+                            <div class="quiz-box">
+                                <a href="quizpage.html" class="quiz-link">
+                                    <h2>Test Your Knowledge!</h2>
+                                </a>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <script src="script.js"></script>
     </body>
 </html>
