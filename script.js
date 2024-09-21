@@ -19,7 +19,6 @@ function openNav() {
   }
 
 // STAGE CHANGE
-
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
 
@@ -42,6 +41,7 @@ function handlePlantGrowth() {
     });
 }
 
+//FLIP CARD
 function handleCardFlip() {
     const card = document.querySelector(".card__inner");
 
@@ -70,7 +70,6 @@ function handleCardFlip() {
 
     hideInfoCard(); 
 
-    
     plantOne.addEventListener('dblclick', function () {
         if (infoCard.style.display === 'none') {
             showInfoCard();
@@ -79,13 +78,12 @@ function handleCardFlip() {
         }
     });
 
-    
     if (closeBtnFront) closeBtnFront.addEventListener('click', hideInfoCard);
     if (closeBtnBack) closeBtnBack.addEventListener('click', hideInfoCard);
 }
 
 
-
+//DRAG AND DROP
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
     const plantImage = document.getElementById('plant-image'); // Access the plant image
@@ -183,7 +181,7 @@ window.onload = function() {
     setupDragDrop();
 };
 
-
+//QUIZ
 function setupQuiz() {
     
     const feedback = document.getElementById('feedback');
