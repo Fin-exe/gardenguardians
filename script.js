@@ -41,47 +41,6 @@ function handlePlantGrowth() {
     });
 }
 
-//FLIP CARD
-// function handleCardFlip() {
-//     const card = document.querySelector(".card__inner");
-
-//     if (card) {
-//         card.addEventListener("click", function () {
-//             card.classList.toggle('is-flipped');
-//         });
-//     }
-
-//     const plantOne = document.getElementById('plantOne');
-//     const infoCard = document.getElementById('info_card');
-//     const closeBtnFront = document.querySelector('.close_btn');
-//     const closeBtnBack = document.querySelector('.close_btn_back');
-
-    
-//     if (!plantOne || !infoCard) return;
-
-    
-//     function hideInfoCard() {
-//         infoCard.style.display = 'none';
-//     }
-
-//     function showInfoCard() {
-//         infoCard.style.display = 'flex'; 
-//     }
-
-//     hideInfoCard(); 
-
-//     plantOne.addEventListener('dblclick', function () {
-//         if (infoCard.style.display === 'none') {
-//             showInfoCard();
-//         } else {
-//             hideInfoCard();
-//         }
-//     });
-
-//     if (closeBtnFront) closeBtnFront.addEventListener('click', hideInfoCard);
-//     if (closeBtnBack) closeBtnBack.addEventListener('click', hideInfoCard);
-// }
-
 // Card Flip Animation
 const card = document.querySelector(".card__inner");
 
@@ -125,6 +84,17 @@ card.addEventListener("click", function (e) {
 
 
 //DRAG AND DROP
+//PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
+function handleCardFlip() {
+
+    const plantOne = document.getElementById('plantOne');
+    const infoCard = document.getElementById('info_card');
+    const closeBtnFront = document.querySelector('.close_btn');
+    const closeBtnBack = document.querySelector('.close_btn_back');
+
+    if (!plantOne || !infoCard) return;
+}
+
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
     const plantImage = document.getElementById('plant-image'); // Access the plant image
