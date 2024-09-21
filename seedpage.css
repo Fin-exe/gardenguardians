@@ -31,7 +31,6 @@
 img{border-radius: 8px;
     }
 
-
 .flex-container1 {
     display: flex;
     flex-direction: row;
@@ -40,28 +39,25 @@ img{border-radius: 8px;
     padding: 0 5%;
 }
 
-
 .back-button {
     flex: 0 0 auto;
 }
 
-
 .back-icon {
     width: 100px;
     height: 100px;
-    margin-right: 20px; 
+    position: relative;
+    top: 8em;
 }
-
 
 #seed-title {
     flex: 1 1 auto;
     color: black;
     text-align: center;
     font-family: "Katibeh", serif;
-    font-size: 5vh;
-    margin: 0;
+    font-size: 8vh;
+    margin-right: 15vh;
 }
-
 
 .flex-container2{
     display: flex;
@@ -82,8 +78,16 @@ img{border-radius: 8px;
     align-content: normal;
     height: 10vh;
     }
-    
 
+.flex-container2 h3{
+    margin-top: 0.5em;
+    background-color: #F4F6C2;
+    width: 100%;
+    border-radius: 20px;
+    border: #000 solid 1px;
+    font-size: 1.2em;
+    text-align: center;
+}
 
 .parentbox {
     display: grid;
@@ -105,8 +109,6 @@ img{border-radius: 8px;
     }
 
 .namestyle{
-    font-family: "Katibeh", serif;
-    font-size: 2.5vh;
     padding: 0 0 2% 0;
     background-color: #A8D5A1; /* Light green background */
     padding: 20px;
@@ -142,7 +144,65 @@ color: white;
 }
 
 .back_button{
-    width: 5em;
-    height: 5em;
-    vertical-align: center
+    width: 3em;
+    height: 3em;
+    vertical-align: center;
+}
+
+
+/* NAV BAR */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #F4F6C2;
+    border-right: #000 solid 1px;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav .link_to_pages {
+    padding: 8px 8px 8px 32px;
+    font-family: "Katibeh", serif;
+    text-decoration: none;
+    text-align: justify;
+    font-size: 25px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+    margin: 2%;
+}
+
+.sidenav .link_to_pages:hover {
+    background-color: #C0E8AC;
+    border: solid 1px #000;
+    border-radius: 20px;
+    font-size: 28px;
+}
+  
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 25px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #000;
+}    
+  
+.navbtn {
+    position: relative;
+    font-size: 50px;
+    cursor: pointer;
+    top: 2.2em;
+    left: 2.5em; 
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }

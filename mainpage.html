@@ -16,13 +16,23 @@
         <title>Garden Guardians - Home</title>
     </head>
     <body class="mainpage">
-        
+
+        <!-- Nav Bar -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="tutorial.html" class="link_to_pages">Tutorial</a>
+            <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
+            <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
+            <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+        </div>
+        <span onclick="openNav()" class="navbtn_mainpage" >&#9776;</span>
+
         <div class="container">
             <img src='ig/rain.gif' id='selector'/>
             <div class="center_content">
                 <img src="img/hangingpot.png" class="hanging_pot" alt="Hanging Pot">
     
-                <!-- only one plant image that is change in js file -->
+                <!-- Only one plant image that is change in js file -->
                 <img src="img/stage1.png" id="plant-image" class="plant" alt="Plant">
             </div>
             

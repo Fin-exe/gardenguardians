@@ -1,11 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //please put all event listeners here
+    //Put all event listeners here
+    openNav();
+    closeNav();
     handlePlantGrowth();
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
     initializeDataFetch();
 });
+ 
+// NAV BAR
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
+// STAGE CHANGE
 
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
@@ -16,7 +29,6 @@ function handlePlantGrowth() {
         return;
     }
 
-    
     const stages = ['img/stage1.png', 'img/stage2.png', 'img/stage3.png'];
     let currentStage = 0;
 
