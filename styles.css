@@ -167,20 +167,47 @@ body.main{
     z-index: 1;
 }
 
+.navbtn_main {
+    position: relative;
+    bottom: 10.5em;
+    font-size: 40px;
+    cursor: pointer;
+    left: 1em; 
+}
+
 .navbtn_quiz {
     position: relative;
     bottom: 11.3em;
     font-size: 45px;
     cursor: pointer;
     bottom: 10em;
-    left: -9.4em; 
+    left: -9.3em;
+}
+.navbtn_tut {
+    position: relative;
+    bottom: 10.5em;
+    font-size: 40px;
+    cursor: pointer;
+    left: 1em; 
+}
+
+#nav_overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
 }
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
-
 
 /* Main Home Page  */
 body{

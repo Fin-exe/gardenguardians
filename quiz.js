@@ -1,11 +1,17 @@
 // NAV BAR
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("nav_overlay").style.display = "block";
+
   }
   
-  function closeNav() {
+function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("nav_overlay").style.display = "none";
+
   }
+
+document.getElementById("nav_overlay").addEventListener("click", closeNav);
 
 
 document.addEventListener('DOMContentLoaded', function () {

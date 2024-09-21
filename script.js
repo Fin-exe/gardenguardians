@@ -12,17 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
 // NAV BAR
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("nav_overlay").style.display = "block";
   }
   
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("nav_overlay").style.display = "none";
   }
+
+  document.getElementById("nav_overlay").addEventListener("click", closeNav);
 
 // STAGE CHANGE
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
 
-    
     if (!plantImage) {
         console.error("Plant image element not found.");
         return;
@@ -32,11 +35,8 @@ function handlePlantGrowth() {
     let currentStage = 0;
 
     
-    plantImage.addEventListener('click', function () {
-        
+    plantImage.addEventListener('click', function () { 
         currentStage = (currentStage + 1) % stages.length;
-        
-        
         plantImage.src = stages[currentStage];
     });
 }
@@ -67,7 +67,7 @@ card.addEventListener("click", function (e) {
      closeBtnBack.addEventListener('click', hideInfoCard);
 
      function showInfoCard() {
-         infoCard.style.display = 'flex';  // Maintain the centering
+         infoCard.style.display = 'flex'; 
      }
 
      hideInfoCard();
@@ -81,6 +81,7 @@ card.addEventListener("click", function (e) {
          }
     });
 });
+
 
 
 //DRAG AND DROP
@@ -223,25 +224,21 @@ function setupQuiz() {
             button.style.backgroundColor = '#f4a19e'; 
             feedback.style.display = 'flex'; // Show try again if the answer is wrong
         }
-        
-        
+            
         options.forEach(opt => {
             opt.disabled = true;
         });
     }
-
-    
+  
     function resetQuiz() {
         
         feedback.style.display = 'none'; 
-        
-        
+          
         options.forEach(button => {
             button.style.backgroundColor = '#f7d8a8'; 
             button.disabled = false; 
         });
     }
-
     
     if (tryAgainButton) {
         tryAgainButton.addEventListener('click', resetQuiz);
