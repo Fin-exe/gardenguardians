@@ -170,9 +170,10 @@ body.main{
 .navbtn_quiz {
     position: relative;
     bottom: 11.3em;
-    font-size: 40px;
+    font-size: 45px;
     cursor: pointer;
-    left: -10.5em; 
+    bottom: 10em;
+    left: -9.4em; 
 }
 
 @media screen and (max-height: 450px) {
