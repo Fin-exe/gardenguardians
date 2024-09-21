@@ -41,7 +41,7 @@ function handlePlantGrowth() {
     });
 }
 
-// Card Flip Animation
+// FLIP CARD 
 const card = document.querySelector(".card__inner");
 
 card.addEventListener("click", function (e) {
