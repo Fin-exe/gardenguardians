@@ -1,13 +1,28 @@
+// script.js
+
+// script.js (main page)
 document.addEventListener('DOMContentLoaded', function () {
-    //Put all event listeners here
+    // Initialize elements
+    const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
+
+    // Set the plant image based on the selected plant
+    if (selectedPlant) {
+        plantImage.src = `img/${selectedPlant}_s1.png`;
+    } else {
+        plantImage.src = 'img/placeholder.png';
+    }
+
+    // Initialize functionalities
+    handlePlantGrowth();
     openNav();
     closeNav();
-    handlePlantGrowth();
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
     initializeDataFetch();
 });
+
  
 // NAV BAR
 function openNav() {
@@ -39,11 +54,21 @@ function handlePlantGrowth() {
     ];
     let currentStage = 0;
 
+    // Optional: Set the current stage based on the current image
+    const currentSrc = plantImage.src;
+    if (currentSrc.includes('_s2.png')) {
+        currentStage = 1;
+    } else if (currentSrc.includes('_s3.png')) {
+        currentStage = 2;
+    }
+
     plantImage.addEventListener('click', function () { 
         currentStage = (currentStage + 1) % stages.length;
         plantImage.src = stages[currentStage];
     });
 }
+
+
 
 // FLIP CARD 
 const card = document.querySelector(".card__inner");
@@ -108,6 +133,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     handlePlantGrowth();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const plantElements = document.querySelectorAll('.namestyle');
+    let currentPlantId = null;
+
+    plantElements.forEach(function(plantElement) {
+        plantElement.addEventListener('click', function() {
+            currentPlantId = plantElement.getAttribute('data-plant-id');
+            showInfoCard();
+            // Update card content if necessary
+        });
+    });
+
+    const letsPlantButton = document.querySelector('.quiz-link');
+
+    letsPlantButton.addEventListener('click', function(event) {
+        if (currentPlantId) {
+            selectPlant(currentPlantId);
+        }
+    });
+
+    // Existing functions
+    function selectPlant(plantId) {
+        localStorage.setItem('selectedPlant', plantId);
+    }
+
+    function showInfoCard() {
+        const infoCard = document.getElementById('info_card');
+        infoCard.style.display = 'flex'; 
+    }
+
+    // Additional code for hiding the info card, etc.
+});
+
 
 //DRAG AND DROP
 //PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
