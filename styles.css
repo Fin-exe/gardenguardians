@@ -251,15 +251,18 @@ body.mainpage {
 }
 
 .hanging_pot {
-    width: 63%;
+    width: 52%;
     position: relative;
+    z-index: 2;
+    pointer-events: none;
+    
 }
 
 .plant {
-    width: 70%; 
+    width: 55%; 
     position: absolute; 
-    bottom: -2.5em; 
-    left: 13em;
+    bottom: -3em; 
+    left: 35em;
 ;
 }
 

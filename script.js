@@ -31,7 +31,7 @@ function handlePlantGrowth() {
         return;
     }
 
-    const stages = ['img/stage1.png', 'img/stage2.png', 'img/stage3.png'];
+    const stages = ['img/cutleafdaisy_s1.png', 'img/cutleafdaisy_s2.png', 'img/cutleafdaisy_s3.png'];
     let currentStage = 0;
 
     
