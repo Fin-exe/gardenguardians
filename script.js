@@ -25,16 +25,20 @@ function openNav() {
 // STAGE CHANGE
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
 
-    if (!plantImage) {
-        console.error("Plant image element not found.");
+    if (!plantImage || !selectedPlant) {
+        console.error("Plant image element or selected plant not found.");
         return;
     }
 
-    const stages = ['img/cutleafdaisy_s1.png', 'img/cutleafdaisy_s2.png', 'img/cutleafdaisy_s3.png'];
+    const stages = [
+        `img/${selectedPlant}_s1.png`,
+        `img/${selectedPlant}_s2.png`,
+        `img/${selectedPlant}_s3.png`
+    ];
     let currentStage = 0;
 
-    
     plantImage.addEventListener('click', function () { 
         currentStage = (currentStage + 1) % stages.length;
         plantImage.src = stages[currentStage];
@@ -82,7 +86,28 @@ card.addEventListener("click", function (e) {
     });
 });
 
+//PLANT SELECT 
 
+function selectPlant(plantId) {
+    localStorage.setItem('selectedPlant', plantId);
+}
+
+function clearSelectedPlant() {
+    localStorage.removeItem('selectedPlant');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
+
+    if (selectedPlant) {
+        plantImage.src = `img/${selectedPlant}_s1.png`;
+    } else {
+        plantImage.src = 'img/placeholder.png';
+    }
+
+    handlePlantGrowth();
+});
 
 //DRAG AND DROP
 //PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
