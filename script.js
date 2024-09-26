@@ -1,78 +1,184 @@
+// script.js
+
+// script.js (main page)
 document.addEventListener('DOMContentLoaded', function () {
-    //please put all event listeners here
+    // Initialize elements
+    const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
+
+    // Set the plant image based on the selected plant
+    if (selectedPlant) {
+        plantImage.src = `img/${selectedPlant}_s1.png`;
+    } else {
+        plantImage.src = 'img/placeholder.png';
+    }
+
+    // Initialize functionalities
     handlePlantGrowth();
+    openNav();
+    closeNav();
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
     initializeDataFetch();
 });
 
+ 
+// NAV BAR
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("nav_overlay").style.display = "block";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("nav_overlay").style.display = "none";
+  }
+
+  document.getElementById("nav_overlay").addEventListener("click", closeNav);
+
+// STAGE CHANGE
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
 
-    
-    if (!plantImage) {
-        console.error("Plant image element not found.");
+    if (!plantImage || !selectedPlant) {
+        console.error("Plant image element or selected plant not found.");
         return;
     }
 
-    
-    const stages = ['img/stage1.png', 'img/stage2.png', 'img/stage3.png'];
+    const stages = [
+        `img/${selectedPlant}_s1.png`,
+        `img/${selectedPlant}_s2.png`,
+        `img/${selectedPlant}_s3.png`
+    ];
     let currentStage = 0;
 
-    
-    plantImage.addEventListener('click', function () {
-        
+    // Optional: Set the current stage based on the current image
+    const currentSrc = plantImage.src;
+    if (currentSrc.includes('_s2.png')) {
+        currentStage = 1;
+    } else if (currentSrc.includes('_s3.png')) {
+        currentStage = 2;
+    }
+
+    plantImage.addEventListener('click', function () { 
         currentStage = (currentStage + 1) % stages.length;
-        
-        
         plantImage.src = stages[currentStage];
     });
 }
 
-function handleCardFlip() {
-    const card = document.querySelector(".card__inner");
 
-    if (card) {
-        card.addEventListener("click", function () {
-            card.classList.toggle('is-flipped');
-        });
+
+// FLIP CARD 
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});
+
+ document.addEventListener('DOMContentLoaded', function() {
+     const plantOne = document.getElementById('plant1');
+     const infoCard = document.getElementById('info_card');
+     const closeBtnFront = document.querySelector('.close_btn');
+     const closeBtnBack = document.querySelector('.close_btn_back');
+
+     // Function to hide the info card
+     function hideInfoCard() {
+         infoCard.style.display = 'none';
+     }
+
+     // Clicking on the plant image
+     plantOne.addEventListener('click', hideInfoCard);
+
+     // Clicking on the close buttons
+     closeBtnFront.addEventListener('click', hideInfoCard);
+     closeBtnBack.addEventListener('click', hideInfoCard);
+
+     function showInfoCard() {
+         infoCard.style.display = 'flex'; 
+     }
+
+     hideInfoCard();
+
+     // Toggle the card visibility on plant click
+     plantOne.addEventListener('click', function() {
+         if (infoCard.style.display === 'none') {
+             showInfoCard();
+         } else {
+             hideInfoCard();
+         }
+    });
+});
+
+//PLANT SELECT 
+
+function selectPlant(plantId) {
+    localStorage.setItem('selectedPlant', plantId);
+}
+
+function clearSelectedPlant() {
+    localStorage.removeItem('selectedPlant');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const plantImage = document.getElementById('plant-image');
+    const selectedPlant = localStorage.getItem('selectedPlant');
+
+    if (selectedPlant) {
+        plantImage.src = `img/${selectedPlant}_s1.png`;
+    } else {
+        plantImage.src = 'img/placeholder.png';
     }
+
+    handlePlantGrowth();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const plantElements = document.querySelectorAll('.namestyle');
+    let currentPlantId = null;
+
+    plantElements.forEach(function(plantElement) {
+        plantElement.addEventListener('click', function() {
+            currentPlantId = plantElement.getAttribute('data-plant-id');
+            showInfoCard();
+            // Update card content if necessary
+        });
+    });
+
+    const letsPlantButton = document.querySelector('.quiz-link');
+
+    letsPlantButton.addEventListener('click', function(event) {
+        if (currentPlantId) {
+            selectPlant(currentPlantId);
+        }
+    });
+
+    // Existing functions
+    function selectPlant(plantId) {
+        localStorage.setItem('selectedPlant', plantId);
+    }
+
+    function showInfoCard() {
+        const infoCard = document.getElementById('info_card');
+        infoCard.style.display = 'flex'; 
+    }
+
+    // Additional code for hiding the info card, etc.
+});
+
+
+//DRAG AND DROP
+//PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
+function handleCardFlip() {
 
     const plantOne = document.getElementById('plantOne');
     const infoCard = document.getElementById('info_card');
     const closeBtnFront = document.querySelector('.close_btn');
     const closeBtnBack = document.querySelector('.close_btn_back');
 
-    
     if (!plantOne || !infoCard) return;
-
-    
-    function hideInfoCard() {
-        infoCard.style.display = 'none';
-    }
-
-    function showInfoCard() {
-        infoCard.style.display = 'flex'; 
-    }
-
-    hideInfoCard(); 
-
-    
-    plantOne.addEventListener('dblclick', function () {
-        if (infoCard.style.display === 'none') {
-            showInfoCard();
-        } else {
-            hideInfoCard();
-        }
-    });
-
-    
-    if (closeBtnFront) closeBtnFront.addEventListener('click', hideInfoCard);
-    if (closeBtnBack) closeBtnBack.addEventListener('click', hideInfoCard);
 }
-
-
 
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
@@ -171,7 +277,7 @@ window.onload = function() {
     setupDragDrop();
 };
 
-
+//QUIZ
 function setupQuiz() {
     
     const feedback = document.getElementById('feedback');
@@ -202,25 +308,21 @@ function setupQuiz() {
             button.style.backgroundColor = '#f4a19e'; 
             feedback.style.display = 'flex'; // Show try again if the answer is wrong
         }
-        
-        
+            
         options.forEach(opt => {
             opt.disabled = true;
         });
     }
-
-    
+  
     function resetQuiz() {
         
         feedback.style.display = 'none'; 
-        
-        
+          
         options.forEach(button => {
             button.style.backgroundColor = '#f7d8a8'; 
             button.disabled = false; 
         });
     }
-
     
     if (tryAgainButton) {
         tryAgainButton.addEventListener('click', resetQuiz);

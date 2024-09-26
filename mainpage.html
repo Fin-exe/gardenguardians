@@ -16,14 +16,25 @@
         <title>Garden Guardians - Home</title>
     </head>
     <body class="mainpage">
-        
+
+        <!-- Nav Bar -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html" class="link_to_pages">Home Page</a>
+            <a href="tutorial.html" class="link_to_pages">Tutorial</a>
+            <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
+            <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+        </div>
+        <span onclick="openNav()" class="navbtn_mainpage" >&#9776;</span>
+        <div id="nav_overlay"></div>
+
         <div class="container">
             <img src='ig/rain.gif' id='selector'/>
             <div class="center_content">
-                <img src="img/hangingpot.png" class="hanging_pot" alt="Hanging Pot">
+                <img src="img/floorpot.png" class="hanging_pot" alt="Hanging Pot">
     
-                <!-- only one plant image that is change in js file -->
-                <img src="img/stage1.png" id="plant-image" class="plant" alt="Plant">
+                <!-- Only one plant image that is change in js file -->
+                <img src="img/placeholder.png" id="plant-image" class="plant" alt="Plant">
             </div>
             
             <!-- Icons -->
@@ -34,12 +45,12 @@
             </div>
             <div class="bottom_left_icons">
                 <a href="quizpage.html">
-                    <img src="img/book.png" class="icon book" alt="Book">
+                    <img src="img/book.png" class="book_icon" alt="Book">
                 </a>
             </div>
             <div class="bottom_right_icons">
                 <a href="seedpage.html">
-                    <img src="img/seedpacket.png" class="icon seedpacket" alt="Seed Packet">
+                    <img src="img/seedpacket.png" class="seed_icon" alt="Seed Packet">
                 </a>
             </div>
             <div class="middle_left_icons">

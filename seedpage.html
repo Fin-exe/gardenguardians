@@ -9,35 +9,133 @@
     </head>
     <body class="fullseedpage">
 
+        <!-- Nav Bar -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html" class="link_to_pages">Home Page</a>
+            <a href="tutorial.html" class="link_to_pages">Tutorial</a>
+            <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
+            <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+        </div>
+        <span onclick="openNav()" class="navbtn" >&#9776;</span>
+        <div id="nav_overlay"></div>
+
+
         <div class="flex-container1">
+            <div class="back-button">
+                <a href="mainpage.html">
+                    <img src="img/back_arrow.png" alt="Back To Home" class="back-icon">
+                </a>
+            </div>
             <h1 id="seed-title">Choose your plant!</h1>
         </div>
 
+        <div class="flex-container3">
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show All</button>
+                <button class="btn" onclick="filterSelection('flowers')"> Flowers/No Flower</button>
+                <button class="btn" onclick="filterSelection('hot/cold')"> Hot/Cold</button>
+                <button class="btn" onclick="filterSelection('vine,leafy')"> Vine/Leafy</button>
+                <button class="btn" onclick="filterSelection('colors')"> Colourful/Dark</button>
+          </div>
+        </div>
+            
+
         <div class="flex-container2">
             <div class="parentbox">
-                <div id="plant1" class="namestyle">
-                    <img src="img/Brachyscome-multifida.jpg" alt="Girl in a jacket" width="230" height="160">
-                    Cutleaf Daisy 
+                <div id="plant1" class="namestyle" data-plant-id="cutleafdaisy">
+                    <img src="img/cutleaf.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Cutleaf Daisy</h3>
                 </div>
-                <div id="plant2" class="namestyle">Creeping Boobialla </div>
-                <div id="plant3" class="namestyle">Native Violet </div>
-                <div id="plant4" class="namestyle">Knobby Club Rush </div>
-                <div id="plant5" class="namestyle">Guinea Vine </div>
-                <div id="plant6" class="namestyle">Tea Tree Small </div>
-                <div id="plant7" class="namestyle">Thyme Honey Myrtle </div>
-                <div id="plant8" class="namestyle">Banksia </div>
-                <div id="plant9" class="namestyle">Grevillea </div>
-                <div id="plant10" class="namestyle">Tea Tree Medium</div>
-                <div id="plant11" class="namestyle">Blush Satinash </div>
-                <div id="plant12" class="namestyle">Tulipwood </div>
-                <div id="plant13" class="namestyle">Fan Flower </div>
-                <div id="plant14" class="namestyle">Blue Flax </div>
-                <div id="plant15" class="namestyle">Mat Rush </div>
+                <div id="plant2" class="namestyle" data-plant-id="creepingboobialla">
+                    <img src="img/creeping.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Creeping Boobialla</h3>
+                </div>
+                <div id="plant3" class="namestyle">
+                    <img src="img/native violet.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Native Violet</h3>
+                </div>
+                <div id="plant4" class="namestyle">
+                    <img src="img/knobby.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Knobby Club Rush </h3>
+                </div>
+                <div id="plant5" class="namestyle">
+                    <img src="img/guinea plant.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Guinea Vine</h3>
+                </div>
+                <div id="plant6" class="namestyle">
+                    <img src="img/teatreesmall.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Tea Tree Small</h3>
+                </div>
+                <div id="plant7" class="namestyle">
+                    <img src="img/thyme.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Thyme Honey Myrtle</h3>
+                </div>
+                <div id="plant8" class="namestyle">
+                    <img src="img/banksia.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Banksia</h3>
+                </div>
+                <div id="plant9" class="namestyle">
+                    <img src="img/grevillea.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Grevillea</h3>
+                </div>
+                <div id="plant10" class="namestyle">
+                    <img src="img/teatreemedium.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Tea Tree Medium</h3>
+                </div>
+                <div id="plant11" class="namestyle">
+                    <img src="img/blue.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Blush Satinash</h3> 
+                </div>
+                <div id="plant12" class="namestyle">
+                    <img src="img/tulipwood.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Tulipwood</h3> 
+                </div>
+                <div id="plant13" class="namestyle">
+                    <img src="img/fan.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Fan Flower</h3> 
+                </div>
+                <div id="plant14" class="namestyle">
+                    <img src="img/blue.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Blue Flax</h3> 
+                </div>
+                <div id="plant15" class="namestyle">
+                    <img src="img/mat.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                    <h3>Mat Rush</h3> 
+                </div>
             </div>
         </div>
 
-        <div class="flex-container3">
-            <!--whyyyy-->
-        </div>
+        <!--FLIPCARDS-->
+
+        <div id="overlay"></div>
+
+        <section id="info_card">
+            <div class="card">
+                <div class="card__inner">
+                    <div class="card__face card__face--front">
+                        <span class="close_btn" id="close_from_front" aria-label="Close">&times;</span>
+                        <img  class="front_context" src="img/frontcard.png" alt="Front of Card">
+                    </div>
+
+                    <!-- Flip-->
+                    <div class="card__face card__face--back">
+                        <div class="card__content">
+                            <div id="popup_content_back">
+                                <span class="close_btn_back" id="close_from_back" aria-label="Close">&times;</span>
+                                <img class="back_context" src="img/backcard.png" alt="Back of Card">
+                            </div>
+                            <div class="quiz-box">
+                                <a href="mainpage.html" class="quiz-link">
+                                    <h2>Let's Plant This!</h2>
+                                </a>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="script.js"></script>
     </body>
 </html>
