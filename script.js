@@ -366,4 +366,6 @@ function initializeDataFetch() {
 
 }
 
-
+function flickrAPi(){
+    
+}
