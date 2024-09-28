@@ -77,7 +77,7 @@ card.addEventListener("click", function (e) {
   card.classList.toggle('is-flipped');
 });
 
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
      const plantOne = document.getElementById('plant1');
      const infoCard = document.getElementById('info_card');
      const closeBtnFront = document.querySelector('.close_btn');
@@ -331,8 +331,8 @@ function setupQuiz() {
 
 function initializeDataFetch() {
     const nativePlantsURL = 'https://data.brisbane.qqld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40';
-    const weatherURL = 'https://api.open-meteo.com/v1/forecast?latitude=-27.4679&longitude=153.0281&hourly=temperature_2m,apparent_temperature,rain,showers,cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high&daily=temperature_2m_max&timezone=auto&models=bom_access_global';
-
+    const weatherURL = 'https://api.open-meteo.com/v1/forecast?latitude=-27.4679&longitude=153.0281&current=temperature_2m,rain,cloud_cover,wind_speed_10m&timezone=Australia%2FSydney&forecast_days=1'
+    
     async function fetchData(URL) {
         try {
             const response = await fetch(URL);
@@ -343,7 +343,7 @@ function initializeDataFetch() {
         }
     }
 
-    async function cardProperties() {
+    /*async function cardProperties() {
         const data = await fetchData(nativePlantsURL);
         if (data) {
             const plantData = data.results;
@@ -353,16 +353,101 @@ function initializeDataFetch() {
                 descript: plant.description_and_growing_requirements,
                 attract: plant.attracts
             }));
-            console.log(indexAndSpecies);
+            return indexAndSpecies;
         }
-    }
+    }*/
 
     async function weatherProperties() {
         const data = await fetchData(weatherURL);
         if (data) {
-            console.log(data.hourly);
+            const currentWeather = data.current;
+            localStorage.setItem("weatherData", JSON.stringify(currentWeather));
+            return currentWeather;
         }
     }
+
+
+    async function evaluateWeather() {
+        const weatherData = JSON.parse(localStorage.getItem("weatherData"));
+    
+        if (!weatherData) {
+            // If no data in localStorage, fetch it
+            weatherData = await weatherProperties(); 
+        }
+
+        // Updates temperature on mainpage dynamically
+        const temperatureElement = document.getElementById("temperature");
+        const temperature = weatherData.temperature_2m; 
+        temperatureElement.textContent = `${temperature}°C`; 
+
+        const windSpeed = weatherData.wind_speed_10m;
+        const rain = weatherData.rain;
+        const cloudCover = weatherData.cloud_cover;
+      
+        // Determine wind level
+        let windLevel;
+        if (windSpeed >= 39) {
+          windLevel = 'High';
+        } else if (windSpeed >= 11) {
+          windLevel = 'Medium';
+        } else {
+          windLevel = 'Low';
+        }
+      
+        let rain_level = 0
+        // Determine rain level
+        let rainLevel;
+        if (rain > 7.6) {
+          rainLevel = 'High';
+          let rain_level = 75
+        } else if (rain > 2.5) {
+          rainLevel = 'Medium';
+          let rain_level = 50
+        } else if (rain > 0) {
+          rainLevel = 'Low';
+          let rain_level = 25
+        } else {
+          rainLevel = 'No Rain';
+          let rain_level = 0
+        }
+        
+        // Updates rain% dynamically on mainpage based on rain level
+        const rainElement = document.getElementById("rain_level");
+        rainElement.textContent = `${rain_level}%`
+        
+        // Updates sun% dynamically on mainpage based on cloudcover
+        let sun_level = 100 - cloudCover
+        const sunElement = document.getElementById("sun_level");
+        sunElement.textContent = `${sun_level}%`
+
+        // Determine cloud cover level
+        let cloudLevel;
+        if (cloudCover > 75) {
+          cloudLevel = 'High';
+        } else if (cloudCover > 25) {
+          cloudLevel = 'Medium';
+        } else {
+          cloudLevel = 'Low';
+        }
+      
+        // Return appropriate string based on the highest condition
+        if (windLevel === 'High' || rainLevel === 'High' || cloudLevel === 'High') {
+          if (windLevel === 'High') return 'Windy';
+          if (rainLevel === 'High') return 'Rainy';
+          return 'Cloudy';
+        }
+      
+        if (windLevel === 'Medium' || rainLevel === 'Medium' || cloudLevel === 'Medium') {
+          if (windLevel === 'Medium') return 'Windy';
+          if (rainLevel === 'Medium') return 'Rainy';
+          return 'Cloudy';
+        }
+      
+        return 'Sunny';
+      }
+
+    weatherProperties()
+    evaluateWeather()
 
 }
 
