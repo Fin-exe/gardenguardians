@@ -175,7 +175,10 @@ function showResult() {
     quizContainer.innerHTML = `
       <h1 class="result-title">Quiz Completed!</h1>
       <p class="result-score">Your score: ${score}/${quizData.length}</p>
+      <button id="try-again-btn" class="try-again">Try Again</button>
     `;
+
+    document.getElementById("try-again-btn").addEventListener("click", tryAgainQuiz);
 }
 
 const nativePlantsURL = 'https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40';
