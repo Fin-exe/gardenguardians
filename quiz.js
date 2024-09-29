@@ -178,6 +178,8 @@ function showResult() {
       <button id="try-again-btn" class="try-again">Try Again</button>
     `;
 
+    //Accessing the try-again-btn and adding eventlistener
+    //calling tryAgainQuiz() function
     document.getElementById("try-again-btn").addEventListener("click", tryAgainQuiz);
 }
 
@@ -257,4 +259,21 @@ async function cardProperties() {
         localStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
     }
 }
+
+function tryAgainQuiz() {
+    //Setting the variables to 0
+    currentQuestion = 0;
+    score = 0;
+
+    // Setting up the quiz layout
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = `
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+    `;
+
+    // Using setupQuiz to restart the quiz
+    setupQuiz();  
+}
+
 
