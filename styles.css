@@ -711,14 +711,22 @@ body {
     margin-top: 20px;
 }
 
+/* Try again button for Quiz */
 .try-again {
-    background-color: #f8e2a1;
-    padding: 5px 10px;
+    background-color: #f7d8a8; 
     border-radius: 10px;
     font-weight: bold;
     color: #333;
-    cursor: pointer;    
+    cursor: pointer;  
+    padding: 15px 25px;                    
+    font-size: 16px;                    
+    margin-top: 10px;
+    justify-content: center; 
+    text-align: center; 
+    border: 1px black solid; 
+    font-style: 'Arial';
 }
+
 
 .correct {
     background-color:#C4F5A0;
