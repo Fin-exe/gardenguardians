@@ -200,7 +200,7 @@ function setupDragDrop() {
             default: 'img/sun.png',
             overPlant: 'img/sun.png'
         }
-        // add whatever icons you wan6
+        // add whatever icons you want
     };
 
     icons.forEach((icon) => {
@@ -432,23 +432,25 @@ function initializeDataFetch() {
       
         // Return appropriate string based on the highest condition
         if (windLevel === 'High' || rainLevel === 'High' || cloudLevel === 'High') {
-          if (windLevel === 'High') return 'Windy';
-          if (rainLevel === 'High') return 'Rainy';
-          return 'Cloudy';
+          if (windLevel === 'High') return 'windy';
+          if (rainLevel === 'High') return 'rain';
+          return 'overcast';
         }
       
         if (windLevel === 'Medium' || rainLevel === 'Medium' || cloudLevel === 'Medium') {
-          if (windLevel === 'Medium') return 'Windy';
-          if (rainLevel === 'Medium') return 'Rainy';
-          return 'Cloudy';
+          if (windLevel === 'Medium') return 'windy';
+          if (rainLevel === 'Medium') return 'rain';
+          return 'overcast';
         }
       
-        return 'Sunny';
+        return 'sunny';
       }
 
     weatherProperties()
     evaluateWeather()
-
+    const weatherImg = await evaluateWeather()
+    const weatherElement = document.getElementById("selector");
+    weatherElement.src = `img/${weatherImg}.gif`
 }
 
 filterSelection("all")
