@@ -417,6 +417,7 @@ async function initializeDataFetch() {
         sunElement.textContent = `${sun_level}%`
 
         weatherMeter(rain_level, sun_level)
+        getStartingCond(rain_level, sun_level)
 
         // Determine cloud cover level
         let cloudLevel;
@@ -498,6 +499,34 @@ async function initializeDataFetch() {
             let waterElement = document.getElementById(`sunIcon${i}`);
             waterElement.src = 'img/sun.png'
         }
+    }
+
+    function getStartingCond(rain, sun){
+      let rainStart = 0
+      let sunStart = 0
+      if (rain > 80) {
+          rainStart = 80;
+        } else if (rain > 60) {
+          rainStart = 60;
+        } else if (rain > 40) {
+          rainStart = 40;
+        } else if (rain > 20) {
+          rainStart = 20
+        } else if (rain > 0) {
+          rainStart = 0
+        } else {
+          rainStart = 0
+        }
+
+      if (sun > 50) {
+          sunStart = 40;
+        } else if (sun > 0) {
+          sunStart = 20
+        } else {
+          sunStart = 0
+        }
+      
+      localStorage.setItem("startingCond", JSON.stringify([rainStart, sunStart]))
     }
 
     weatherProperties()
