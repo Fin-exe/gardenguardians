@@ -329,7 +329,7 @@ function setupQuiz() {
     }
 }
 
-function initializeDataFetch() {
+async function initializeDataFetch() {
     const nativePlantsURL = 'https://data.brisbane.qqld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40';
     const weatherURL = 'https://api.open-meteo.com/v1/forecast?latitude=-27.4679&longitude=153.0281&current=temperature_2m,rain,cloud_cover,wind_speed_10m&timezone=Australia%2FSydney&forecast_days=1'
     
@@ -394,21 +394,17 @@ function initializeDataFetch() {
           windLevel = 'Low';
         }
       
-        let rain_level = 0
+        const rain_level = rainPercent(rain)
         // Determine rain level
         let rainLevel;
-        if (rain > 7.6) {
+        if (rain > 10) {
           rainLevel = 'High';
-          let rain_level = 75
-        } else if (rain > 2.5) {
+        } else if (rain > 2.6) {
           rainLevel = 'Medium';
-          let rain_level = 50
         } else if (rain > 0) {
           rainLevel = 'Low';
-          let rain_level = 25
         } else {
           rainLevel = 'No Rain';
-          let rain_level = 0
         }
         
         // Updates rain% dynamically on mainpage based on rain level
@@ -416,9 +412,11 @@ function initializeDataFetch() {
         rainElement.textContent = `${rain_level}%`
         
         // Updates sun% dynamically on mainpage based on cloudcover
-        let sun_level = 100 - cloudCover
+        const sun_level = 100 - cloudCover
         const sunElement = document.getElementById("sun_level");
         sunElement.textContent = `${sun_level}%`
+
+        weatherMeter(rain_level, sun_level)
 
         // Determine cloud cover level
         let cloudLevel;
@@ -445,12 +443,70 @@ function initializeDataFetch() {
       
         return 'sunny';
       }
+    
+    function rainPercent (rain) {
+        let rainIntense = 0
+
+        if (rain > 20) {
+          rainIntense = 100;
+        } else if (rain > 10) {
+          rainIntense = 80;
+        } else if (rain > 5) {
+          rainIntense = 60;
+        } else if (rain > 2.5) {
+          rainIntense = 40
+        } else if (rain > 0) {
+          rainIntense = 20
+        } else {
+          rainIntense = 0
+        }
+        
+        return rainIntense
+    }
+
+    async function weatherMeter(rain, sun) {
+        let rainIcons = 0
+        let sunIcons = 0
+        if (rain > 80) {
+            rainIcons = 5;
+          } else if (rain > 60) {
+            rainIcons = 4;
+          } else if (rain > 40) {
+            rainIcons = 3;
+          } else if (rain > 20) {
+            rainIcons = 2
+          } else if (rain > 0) {
+            rainIcons = 1
+          } else {
+            rainIcons = 0
+          }
+        
+        for(let i=1; i <= rainIcons; i++) {
+            let waterElement = document.getElementById(`waterIcon${i}`);
+            waterElement.src = 'img/waterdrop.png'
+        }
+
+        if (sun > 50) {
+            sunIcons = 2;
+          } else if (sun > 0) {
+            sunIcons = 1
+          } else {
+            sunIcons = 0
+          }
+
+        for (let i=1; i <= sunIcons; i++) {
+            let waterElement = document.getElementById(`sunIcon${i}`);
+            waterElement.src = 'img/sun.png'
+        }
+    }
 
     weatherProperties()
     evaluateWeather()
     const weatherImg = await evaluateWeather()
-    const weatherElement = document.getElementById("selector");
-    weatherElement.src = `img/${weatherImg}.gif`
+    // Get the body element with the class 'mainpage'
+    const weatherElement = document.querySelector("body.mainpage");
+    // Change the background image dynamically based on the weatherImg variable
+    weatherElement.style.backgroundImage = `url("img/${weatherImg}.gif")`;
 }
 
 filterSelection("all")
