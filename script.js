@@ -406,15 +406,15 @@ async function initializeDataFetch() {
         } else {
           rainLevel = 'No Rain';
         }
-        
+        const sun_level = 100 - cloudCover
+        const rainSunCond = weatherCond(rain_level, sun_level)
         // Updates rain% dynamically on mainpage based on rain level
         const rainElement = document.getElementById("rain_level");
-        rainElement.textContent = `${rain_level}%`
+        rainElement.textContent = `${rainSunCond[0]}`
         
-        // Updates sun% dynamically on mainpage based on cloudcover
-        const sun_level = 100 - cloudCover
+        // Updates sun% dynamically on mainpage based on cloudcover 
         const sunElement = document.getElementById("sun_level");
-        sunElement.textContent = `${sun_level}%`
+        sunElement.textContent = `${rainSunCond[1]}`
 
         weatherMeter(rain_level, sun_level)
         getStartingCond(rain_level, sun_level)
@@ -423,7 +423,7 @@ async function initializeDataFetch() {
         let cloudLevel;
         if (cloudCover > 75) {
           cloudLevel = 'High';
-        } else if (cloudCover > 25) {
+        } else if (cloudCover > 50) {
           cloudLevel = 'Medium';
         } else {
           cloudLevel = 'Low';
@@ -464,6 +464,36 @@ async function initializeDataFetch() {
         
         return rainIntense
     }
+
+    function weatherCond (rain, sun) {
+      let rainCond = 0
+      let sunCond = 0
+
+      if (rain > 20) {
+        rainCond = 'High Rain'  ;
+      } else if (rain > 10) {
+        rainCond = 'Medium-High Rain';
+      } else if (rain > 5) {
+        rainCond = 'Medium Rain';
+      } else if (rain > 2.5) {
+        rainCond = 'Low-Medium Rain'
+      } else if (rain > 0) {
+        rainCond = 'Low-Rain'
+      } else {
+        rainCond = 'No Rain'
+      }
+      
+      if (sun > 50) {
+        sunCond = 'Very Sunny';
+      } else if (sun > 0) {
+        sunCond = 'Sunny'
+      } else {
+        sunCond = 'Overcast'
+      }
+
+      return([rainCond, sunCond])
+
+  }
 
     async function weatherMeter(rain, sun) {
         let rainIcons = 0
@@ -532,6 +562,7 @@ async function initializeDataFetch() {
     weatherProperties()
     evaluateWeather()
     const weatherImg = await evaluateWeather()
+    console.log(weatherImg)
     // Get the body element with the class 'mainpage'
     const weatherElement = document.querySelector("body.mainpage");
     // Change the background image dynamically based on the weatherImg variable
