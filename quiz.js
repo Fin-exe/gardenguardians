@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 async function getPlantData(options, key, id) {
-    let plantsData = JSON.parse(localStorage.getItem("plantData"));
+    let plantsData = JSON.parse(sessionStorage.getItem("plantData"));
     
     if (!plantsData) {
         // If no data in localStorage, fetch it
@@ -256,7 +256,7 @@ async function cardProperties() {
             height: extractDetails(descriptions, plant.index - 1).height
         }));
 
-        localStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
+        sessionStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
     }
 }
 
