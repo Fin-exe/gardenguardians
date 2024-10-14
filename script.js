@@ -167,6 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Additional code for hiding the info card, etc.
 });
 
+const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
+console.log(currentWeatherIcons)
 
 //DRAG AND DROP
 //PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
