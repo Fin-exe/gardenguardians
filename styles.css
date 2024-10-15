@@ -826,6 +826,17 @@ body {
     position: relative;
 }
 
+/* Hide all elements by default */
+.filterDiv {
+    display: none;
+  }
+  
+  /* Show elements that have the 'show' class */
+  .show {
+    display: block;
+  }
+  
+
 #weather-box-heading {
     font-family: 'Katibeh', cursive; /* Katibeh font */
     font-size: 48px;
