@@ -76,7 +76,6 @@ async function getPlantData(options, key, id) {
     return null; // If no match is found
 }
 
-
 let currentQuestion = 0;
 let score = 0;
 
@@ -122,7 +121,6 @@ function selectAnswer(e) {
         selectedButton.classList.add('incorrect');  
     }
 
- 
     const optionButtons = document.querySelectorAll('.option');
     optionButtons.forEach(button => button.disabled = true);
 
