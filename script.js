@@ -345,20 +345,6 @@ async function initializeDataFetch() {
         }
     }
 
-    /*async function cardProperties() {
-        const data = await fetchData(nativePlantsURL);
-        if (data) {
-            const plantData = data.results;
-            const descriptions = plantData.map(plant => plant.description_and_growing_requirements);
-            const indexAndSpecies = plantData.map(plant => ({
-                species: plant.species,
-                descript: plant.description_and_growing_requirements,
-                attract: plant.attracts
-            }));
-            return indexAndSpecies;
-        }
-    }*/
-
     async function weatherProperties() {
         const data = await fetchData(weatherURL);
         if (data) {
@@ -367,8 +353,7 @@ async function initializeDataFetch() {
             return currentWeather;
         }
     }
-
-
+    
     async function evaluateWeather() {
         const weatherData = JSON.parse(localStorage.getItem("weatherData"));
     
@@ -560,6 +545,8 @@ async function initializeDataFetch() {
       
       localStorage.setItem("startingCond", JSON.stringify([rainStart, sunStart]))
     }
+
+    
 
     weatherProperties()
     evaluateWeather()

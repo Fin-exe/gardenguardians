@@ -242,6 +242,19 @@ async function sortPlants() {
     }
 }
 
+async function loadCSV() {
+    try {
+      const response = await fetch('plant quiz data.csv');  // Path to your CSV file
+      const csvText = await response.text();       // Get the CSV text
+      const plantsData = parseCSV(csvText);        // Parse the CSV text
+      console.log(plantsData);                     // Log the parsed data
+
+    } catch (error) {
+      console.error('Error loading CSV:', error);
+    }
+  }
+
+
 async function cardProperties() {
     const data = await sortPlants();
     if (data) {
@@ -276,4 +289,29 @@ function tryAgainQuiz() {
     setupQuiz();  
 }
 
+/*async function loadCSV() {
+    try {
+      const response = await fetch('csv/growing plants data.csv');
+      if (!response.ok) {  // Check if the request was successful
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const csvText = await response.text();
+      const plantsData = parseCSV(csvText);
+      console.log(plantsData);
+    } catch (error) {
+      console.error('Error loading CSV:', error);
+    }
+  }*/
+
+/*async function loadCSV() {
+    try {
+      const response = await fetch('csv/growing plants data.');  // Path to your CSV file
+      const csvText = await response.text();       // Get the CSV text
+      const plantsData = parseCSV(csvText);        // Parse the CSV text
+      console.log(plantsData);                     // Log the parsed data
+
+    } catch (error) {
+      console.error('Error loading CSV:', error);
+    }
+  }*/
 
