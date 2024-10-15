@@ -117,9 +117,9 @@ cutleafdaisy: {
     front: "img/frontcard_cd.png",
     back: "img/backcard_cd.png"
 },
-  creepingboobialla: {
-      front: 'img/frontcard_cb.png',
-      back: 'img/backcard_cb.png'
+creepingboobialla: {
+    front: 'img/frontcard_cb.png',
+    back: 'img/backcard_cb.png'
 },
 nativeviolet: {
     front: 'img/frontcover_nv.png',
@@ -131,7 +131,7 @@ knobcr: {
 },
 guinea: {
     front: 'img/frontcover_gv.png',
-    back: 'img/frontcover_gv.png'
+    back: 'img/backcover_gv.png'
 },
 
 //Continue from here
