@@ -69,8 +69,7 @@ function handlePlantGrowth() {
 }
 
 
-
-// FLIP CARD 
+// FLIP CARD
 const card = document.querySelector(".card__inner");
 
 card.addEventListener("click", function (e) {
@@ -113,65 +112,317 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //PLANT SELECT 
 
+// const plantData = {
+//   cutleafdaisy: {
+//       front: "img/frontcard_cd.png",
+//       back: "img/backcard_cd.png"
+//   },
+//   creepingboobialla: {
+//       front: 'img/frontcard_cb.png',
+//       back: 'img/backcard_cd.png'
+//   },
+//   nativeviolet: {
+//       front: 'img/frontcard_nv.png',
+//       back: 'img/backcard_nv.png'
+//   },
+//   knobcr: {
+//       front: 'img/frontcard_kcr.png',
+//       back: 'img/backcard_kcr.png'
+//   },
+//   guinea: {
+//       front: 'img/guinea_front.png',
+//       back: 'img/guinea_back.png'
+//   },
+//   teatreesmall: {
+//       front: 'img/teatreesmall_front.png',
+//       back: 'img/teatreesmall_back.png'
+//   },
+//   thyme: {
+//       front: 'img/thyme_front.png',
+//       back: 'img/thyme_back.png'
+//   },
+//   banksia: {
+//       front: 'img/banksia_front.png',
+//       back: 'img/banksia_back.png'
+//   },
+//   grevillea: {
+//       front: 'img/grevillea_front.png',
+//       back: 'img/grevillea_back.png'
+//   },
+//   teatreemedium: {
+//       front: 'img/teatreemedium_front.png',
+//       back: 'img/teatreemedium_back.png'
+//   },
+//   blushsatinash: {
+//       front: 'img/blue_front.png', 
+//       back: 'img/blue_back.png'    
+//   },
+//   tulipwood: {
+//       front: 'img/tulipwood_front.png',
+//       back: 'img/tulipwood_back.png'
+//   },
+//   fanflower: {
+//       front: 'img/fan_front.png',
+//       back: 'img/fan_back.png'
+//   },
+//   blueflax: {
+//       front: 'img/blue_flax_front.png',
+//       back: 'img/blue_flax_back.png'
+//   },
+//   matrush: {
+//       front: 'img/mat_front.png',
+//       back: 'img/mat_back.png'
+//   }
+// };
+
+// function selectPlant(plantId) {
+//     localStorage.setItem('selectedPlant', plantId);
+// }
+
+// function clearSelectedPlant() {
+//     localStorage.removeItem('selectedPlant');
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const plantImage = document.getElementById('plant-image');
+//     const selectedPlant = localStorage.getItem('selectedPlant');
+
+//     if (selectedPlant) {
+//         plantImage.src = `img/${selectedPlant}_s1.png`;
+//     } else {
+//         plantImage.src = 'img/placeholder.png';
+//     }
+//     handlePlantGrowth();
+// });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const plantElements = document.querySelectorAll('.namestyle');
+//     let currentPlantId = null;
+
+//     plantElements.forEach(function(plantElement) {
+//         plantElement.addEventListener('click', function() {
+//             currentPlantId = plantElement.getAttribute('data-plant-id');
+//             updateCardContent(currentPlantId);
+//             showInfoCard();
+//         });
+//     });
+    
+//     document.querySelectorAll('.close_btn, .close_btn_back').forEach(function(btn) {
+//       btn.addEventListener('click', function() {
+//           document.getElementById('overlay').style.display = 'none';
+//           document.getElementById('info_card').style.display = 'none';
+//       });
+//   });
+
+//     const letsPlantButton = document.querySelector('.quiz-link');
+
+//     letsPlantButton.addEventListener('click', function(event) {
+//         if (currentPlantId) {
+//             selectPlant(currentPlantId);
+//         }
+//     });
+
+//     // Existing functions
+//     function selectPlant(plantId) {
+//         localStorage.setItem('selectedPlant', plantId);
+//     }
+
+//     function showInfoCard() {
+//         const infoCard = document.getElementById('info_card');
+//         infoCard.style.display = 'flex'; 
+//     }
+//   });
+
+//     function updateCardContent(plantId) {
+//       const frontImage = document.querySelector('.front_context');
+//       const backImage = document.querySelector('.back_context');
+      
+//       if (plantData[plantId]) {
+//           frontImage.src = plantData[plantId].front;
+//           backImage.src = plantData[plantId].back;
+//           frontImage.alt = `${capitalizeWords(plantId)} Front Image`;
+//           backImage.alt = `${capitalizeWords(plantId)} Back Image`;
+//       } else {
+//           // Default images or handling for undefined plant IDs
+//           frontImage.src = 'img/default_front.jpg';
+//           backImage.src = 'img/default_back.jpg';
+//           frontImage.alt = 'Default Front Image';
+//           backImage.alt = 'Default Back Image';
+//       }
+//     }
+
+
+
+const plantData = {
+cutleafdaisy: {
+    front: "img/frontcard_cd.png",
+    back: "img/backcard_cd.png"
+},
+  creepingboobialla: {
+      front: 'img/frontcard_cb.png',
+      back: 'img/backcard_cb.png'
+},
+nativeviolet: {
+    front: 'img/nativeviolet_front.jpg',
+    back: 'img/nativeviolet_back.jpg'
+},
+knobcr: {
+    front: 'img/knobby_front.jpg',
+    back: 'img/knobby_back.jpg'
+},
+guinea: {
+    front: 'img/guinea_front.jpg',
+    back: 'img/guinea_back.jpg'
+},
+teatreesmall: {
+    front: 'img/teatreesmall_front.jpg',
+    back: 'img/teatreesmall_back.jpg'
+},
+thyme: {
+    front: 'img/thyme_front.jpg',
+    back: 'img/thyme_back.jpg'
+},
+banksia: {
+    front: 'img/banksia_front.jpg',
+    back: 'img/banksia_back.jpg'
+},
+grevillea: {
+    front: 'img/grevillea_front.jpg',
+    back: 'img/grevillea_back.jpg'
+},
+teatreemedium: {
+    front: 'img/teatreemedium_front.jpg',
+    back: 'img/teatreemedium_back.jpg'
+},
+blushsatinash: {
+    front: 'img/blue_front.jpg',
+    back: 'img/blue_back.jpg'   
+},
+tulipwood: {
+    front: 'img/tulipwood_front.jpg',
+    back: 'img/tulipwood_back.jpg'
+},
+fanflower: {
+    front: 'img/fan_front.jpg',
+    back: 'img/fan_back.jpg'
+},
+blueflax: {
+    front: 'img/blue_flax_front.jpg',
+    back: 'img/blue_flax_back.jpg'
+},
+matrush: {
+    front: 'img/mat_front.jpg',
+    back: 'img/mat_back.jpg'
+}
+};
+
 function selectPlant(plantId) {
     localStorage.setItem('selectedPlant', plantId);
 }
 
 function clearSelectedPlant() {
-    localStorage.removeItem('selectedPlant');
+     localStorage.removeItem('selectedPlant');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const plantImage = document.getElementById('plant-image');
-    const selectedPlant = localStorage.getItem('selectedPlant');
+  const plantImage = document.getElementById('plant-image');
+  const selectedPlant = localStorage.getItem('selectedPlant');
 
-    if (selectedPlant) {
-        plantImage.src = `img/${selectedPlant}_s1.png`;
-    } else {
-        plantImage.src = 'img/placeholder.png';
-    }
-
-    handlePlantGrowth();
+  if (selectedPlant) {
+      plantImage.src = `img/${selectedPlant}_s1.png`;
+  } else {
+      plantImage.src = 'img/placeholder.png';
+  }
+  handlePlantGrowth();
 });
+
+const letsPlantButton = document.querySelector('.quiz-link');
+
+letsPlantButton.addEventListener('click', function(event) {
+    if (currentPlantId) {
+        selectPlant(currentPlantId);
+    }
+});
+
+// Existing functions
+function selectPlant(plantId) {
+    localStorage.setItem('selectedPlant', plantId);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    const plantElements = document.querySelectorAll('.namestyle');
-    let currentPlantId = null;
+  // Select all plant elements
+  const plantElements = document.querySelectorAll('.namestyle');
+  let currentPlantId = null;
 
-    plantElements.forEach(function(plantElement) {
-        plantElement.addEventListener('click', function() {
-            currentPlantId = plantElement.getAttribute('data-plant-id');
-            showInfoCard();
-            // Update card content if necessary
-        });
-    });
+  // Attach click event listeners to each plant
+  plantElements.forEach(function(plantElement) {
+      plantElement.addEventListener('click', function() {
+          currentPlantId = plantElement.getAttribute('data-plant-id');
+          showInfoCard();
+          updateCardContent(currentPlantId);
+      });
+  });
 
-    const letsPlantButton = document.querySelector('.quiz-link');
+  // Close buttons functionality
+  document.querySelectorAll('.close_btn, .close_btn_back').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+          document.getElementById('overlay').style.display = 'none';
+          document.getElementById('info_card').style.display = 'none';
+      });
+  });
 
-    letsPlantButton.addEventListener('click', function(event) {
-        if (currentPlantId) {
-            selectPlant(currentPlantId);
-        }
-    });
+  // Function to show the info card
+  function showInfoCard() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('info_card').style.display = 'block';
+  }
 
-    // Existing functions
-    function selectPlant(plantId) {
-        localStorage.setItem('selectedPlant', plantId);
-    }
+  // Function to update the card content based on the selected plant
+  function updateCardContent(plantId) {
+      const frontImage = document.querySelector('.front_context');
+      const backImage = document.querySelector('.back_context');
+      
+      if (plantData[plantId]) {
+          frontImage.src = plantData[plantId].front;
+          backImage.src = plantData[plantId].back;
+          frontImage.alt = `${capitalizeWords(plantId)} Front Image`;
+          backImage.alt = `${capitalizeWords(plantId)} Back Image`;
+      } else {
+          // Default images or handling for undefined plant IDs
+          frontImage.src = 'img/default_front.jpg';
+          backImage.src = 'img/default_back.jpg';
+          frontImage.alt = 'Default Front Image';
+          backImage.alt = 'Default Back Image';
+      }
+  }
 
-    function showInfoCard() {
-        const infoCard = document.getElementById('info_card');
-        infoCard.style.display = 'flex'; 
-    }
-
-    // Additional code for hiding the info card, etc.
+  // Utility function to capitalize words for alt text
+  function capitalizeWords(str) {
+      return str.replace(/([A-Z])/g, ' $1') // Add space before capital letters
+                .replace(/^./, function(str){ return str.toUpperCase(); }) // Capitalize first letter
+                .trim();
+  }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
 console.log(currentWeatherIcons)
 
 //DRAG AND DROP
-//PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
 function handleCardFlip() {
 
     const plantOne = document.getElementById('plantOne');
@@ -184,7 +435,7 @@ function handleCardFlip() {
 
 function setupDragDrop() {
     const icons = document.querySelectorAll('.top_right_icons img'); 
-    const plantImage = document.getElementById('plant-image'); // Access the plant image
+    const plantImage = document.getElementById('plant-image'); 
 
     if (!icons || !plantImage) return;
 
