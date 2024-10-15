@@ -41,7 +41,7 @@ async function getPlantData(options, key, id) {
 
     // Special handling for height (convert number to string with 'cm')
     if (key === 'height') {
-        plantProperty = `${plant.height}cm`;
+        plantProperty = `${plant.height} cm`;
     }
 
     // Handle description with partial matching
@@ -76,41 +76,14 @@ async function getPlantData(options, key, id) {
     return null; // If no match is found
 }
 
-const quizData = [
-    {
-        type: 'color',
-        question: "What color are the flowers of the Cut Leaf Daisy?",
-        options: ["Yellow", "Purple", "Red"],
-        answer: 1
-    },
-    {
-        type: 'species',
-        question: "What is the scientific name for the Cut Leaf Daisy?",
-        options: ["Brachyscome multifida", "Daisyus cutleafus", "Purpleus daisyus"],
-        answer: 2
-    }, 
-    {
-        type: 'height',
-        question: "How tall does the Cut leaf Daisy Grow?",
-        options: ["15cm", "60cm", "1m"],
-        answer: 3
-    }, 
-    {
-        type: 'descript',
-        question: "Where is the best place to grow a Cut Leaf Daisy?",
-        options: ["Shady Spots", "Well-drained soil in full sun", "Wet areas"],
-        answer: "Well-drained soil in full sun"
-    }, 
-    {
-        type: 'attract',
-        question: "Which animals are attracted to the Cut Leaf Daisy?",
-        options: ["Birds and frogs", "Bees and Lizards", "Butterflies and insects"],
-        answer: 5
-    },
-];
 
 let currentQuestion = 0;
 let score = 0;
+
+const selectedPlantId = "3"
+const selectPlantIdNum = parseInt(selectedPlantId)
+loadCSV()
+const quizData = createQuiz(selectedPlantId)
 
 async function setupQuiz() {
     const questionElement = document.getElementById("question");
@@ -118,10 +91,7 @@ async function setupQuiz() {
 
     // Make sure all answers are set properly
     for (const question of quizData) {
-        if (typeof question.answer !== 'string') {
-            // Only call getPlantData if answer is not a string
-            question.answer = await getPlantData(question.options, question.type, 1);
-        }
+            question.answer = await getPlantData(question.options, question.type, selectPlantIdNum);
     }
 
     showQuestion(questionElement, optionsElement);
@@ -242,18 +212,6 @@ async function sortPlants() {
     }
 }
 
-async function loadCSV() {
-    try {
-      const response = await fetch('plant quiz data.csv');  // Path to your CSV file
-      const csvText = await response.text();       // Get the CSV text
-      const plantsData = parseCSV(csvText);        // Parse the CSV text
-      console.log(plantsData);                     // Log the parsed data
-
-    } catch (error) {
-      console.error('Error loading CSV:', error);
-    }
-  }
-
 
 async function cardProperties() {
     const data = await sortPlants();
@@ -268,7 +226,6 @@ async function cardProperties() {
             color: extractDetails(descriptions, plant.index - 1).colors,
             height: extractDetails(descriptions, plant.index - 1).height
         }));
-
         sessionStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
     }
 }
@@ -289,29 +246,68 @@ function tryAgainQuiz() {
     setupQuiz();  
 }
 
-/*async function loadCSV() {
-    try {
-      const response = await fetch('csv/growing plants data.csv');
-      if (!response.ok) {  // Check if the request was successful
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const csvText = await response.text();
-      const plantsData = parseCSV(csvText);
-      console.log(plantsData);
-    } catch (error) {
-      console.error('Error loading CSV:', error);
-    }
-  }*/
 
-/*async function loadCSV() {
-    try {
-      const response = await fetch('csv/growing plants data.');  // Path to your CSV file
-      const csvText = await response.text();       // Get the CSV text
-      const plantsData = parseCSV(csvText);        // Parse the CSV text
-      console.log(plantsData);                     // Log the parsed data
+async function loadCSV() {
+  await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/main/csv/plant_quiz_data.csv')
+    .then(response => response.text())
+    .then(csvText => {
+        // Parse CSV with PapaParse
+        let parsedData = Papa.parse(csvText, {
+            header: true,    // Use the first row as headers
+            skipEmptyLines: true  // Skip empty lines in the CSV
+        }); 
 
-    } catch (error) {
-      console.error('Error loading CSV:', error);
-    }
-  }*/
+    // The data is now correctly parsed into rows with quoted fields handled
+        const quizData = parsedData.data  // Parsed quiz data in array format
+        sessionStorage.setItem("quizData", JSON.stringify(quizData));
+  })
+  .catch(error => console.error('Error fetching CSV:', error));
+}
+
+function createQuiz(selectedPlant) {
+    const plantsData = JSON.parse(sessionStorage.getItem("quizData"));
+    
+    //function to find a specific plant by index of plant being grown
+    const findObjectByIndex = (arr, index) => {
+            return arr.find(item => item.index === index);
+        };
+    // Retrieving quiz data of a single plant using the function
+    const quizDataRaw = findObjectByIndex(plantsData, selectedPlant);
+    const quizData = [
+        {
+            type: 'color',
+            question: quizDataRaw.q_1,
+            options: quizDataRaw.o_1.split(","),
+            answer: 1
+        },
+        {
+            type: 'species',
+            question: quizDataRaw.q_2,
+            options: quizDataRaw.o_2.split(","),
+            answer: 2
+        }, 
+        {
+            type: 'height',
+            question: quizDataRaw.q_3,
+            options: quizDataRaw.o_3.split(","),
+            answer: 3
+        }, 
+        {
+            type: 'descript',
+            question: quizDataRaw.q_4,
+            options: quizDataRaw.o_4.split(","),
+            answer: 4
+        }, 
+        {
+            type: 'attract',
+            question: quizDataRaw.q_5,
+            options: quizDataRaw.o_5.split(","),
+            answer: 5
+        },
+    ];
+    console.log(quizData)
+    return quizData
+       
+}
+
 
