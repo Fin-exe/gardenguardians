@@ -264,17 +264,19 @@ cutleafdaisy: {
       back: 'img/backcard_cb.png'
 },
 nativeviolet: {
-    front: 'img/nativeviolet_front.jpg',
-    back: 'img/nativeviolet_back.jpg'
+    front: 'img/frontcover_nv.png',
+    back: 'img/backccover_nv.png'
 },
 knobcr: {
-    front: 'img/knobby_front.jpg',
-    back: 'img/knobby_back.jpg'
+    front: 'img/frontcover_kcr.png',
+    back: 'img/backcover_kcr.png'
 },
 guinea: {
-    front: 'img/guinea_front.jpg',
-    back: 'img/guinea_back.jpg'
+    front: 'img/frontcover_gv.png',
+    back: 'img/frontcover_gv.png'
 },
+
+//Continue from here
 teatreesmall: {
     front: 'img/teatreesmall_front.jpg',
     back: 'img/teatreesmall_back.jpg'

@@ -269,7 +269,6 @@ body.mainpage {
 .top_right_icons,
 .bottom_right_icons,
 .bottom_left_icons,
-.middle_left_icons,
 .top_left_healthbar {
     display: flex;
     flex-direction: column; 
@@ -317,15 +316,6 @@ body.mainpage {
     align-items: flex-start; 
     bottom: 10px;
     left: 0px; 
-}
-
-/*left arrow*/
-.middle_left_icons {
-    align-items: flex-start;
-    top: 50%; 
-    left: 0.1em; 
-    transform: translateY(-50%); 
-    z-index: 1;
 }
 
 .top_left_healthbar {
