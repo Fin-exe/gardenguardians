@@ -260,7 +260,7 @@ cutleafdaisy: {
 },
   creepingboobialla: {
       front: 'img/frontcard_cb.png',
-      back: 'img/backcard_cd.png'
+      back: 'img/backcard_cb.png'
 },
 nativeviolet: {
     front: 'img/nativeviolet_front.jpg',
