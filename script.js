@@ -612,5 +612,25 @@ for (var i = 0; i < btns.length; i++) {
 function flickrAPI(){
     const baseFlickr = ""
     const keyFlickr= "eecd5014501ebeeec6d473f4c8311e32"
-
+    fetch(`${baseFlickr}?api_key=${keyFlickr}&format=json&nojsoncallback=1`)
+    .then(response => response.json())
+    .then(data => {
+        const photos = data.photos.photo;
+        localStorage.setItem('flickrPhotos', JSON.stringify(photos));
+    })
+    .catch(error => console.log(error));
 }
+
+function pereAPI(){
+  const basePere = ""
+  const keyPere= "sk-1vCJ670d9d7dc26cd7238"
+  fetch(`${baseFlickr}?api_key=${keyPere}&format=json&nojsoncallback=1`)
+  .then(response => response.json())
+  .then(data => {
+      const photos = data.photos.photo;
+      localStorage.setItem('flickrPhotos', JSON.stringify(photos));
+  })
+  .catch(error => console.log(error));
+}
+
+
