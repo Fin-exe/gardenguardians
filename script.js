@@ -183,97 +183,158 @@ function handleCardFlip() {
 }
 
 function setupDragDrop() {
-    const icons = document.querySelectorAll('.top_right_icons img'); 
-    const plantImage = document.getElementById('plant-image'); // Access the plant image
+  const icons = document.querySelectorAll('.top_right_icons img'); 
+  const plantImage = document.getElementById('plant-image'); // Access the plant image
 
-    if (!icons || !plantImage) return;
+  if (!icons || !plantImage) return;
 
-    
-    const iconOverPlantImages = {
-        'watercan': {
-            default: 'img/watercan1.png',
-            overPlant: 'img/watercan2.png'
-        },
-        'umbrella': {
-            default: 'img/umbrella.png',
-            overPlant: 'img/umbrella1.png'
-        },
-        'sun': {
-            default: 'img/sun.png',
-            overPlant: 'img/sun.png'
-        }
-        // add whatever icons you want
-    };
+  
+  const iconOverPlantImages = {
+      'watercan': {
+          default: 'img/watercan1.png',
+          overPlant: 'img/watercan2.png'
+      },
+      'umbrella': {
+          default: 'img/umbrella.png',
+          overPlant: 'img/umbrella1.png'
+      },
+      'sun': {
+          default: 'img/greysun.png',
+          overPlant: 'img/sun.png'
+      }
+      
+  };
 
-    icons.forEach((icon) => {
-        const iconType = icon.getAttribute('data-icon-type');
-        if (!iconType || !iconOverPlantImages[iconType]) {
-            return; 
-        }
+  //Returns plantCare [int, int] currently at [0,0]
+  let plantCare = JSON.parse(localStorage.getItem('startingCond'))
 
-        let startX, startY; 
-        let currentX = 0, currentY = 0; 
-        let isOverPlant = false; 
+  icons.forEach((icon) => {
+      const iconType = icon.getAttribute('data-icon-type');
+      if (!iconType || !iconOverPlantImages[iconType]) {
+          return; 
+      }
 
-        icon.addEventListener('mousedown', (e) => {
-            e.preventDefault();
+      let startX, startY; 
+      let currentX = 0, currentY = 0; 
+      let isOverPlant = false;
 
-            startX = e.clientX;
-            startY = e.clientY;
+      icon.addEventListener('mousedown', (e) => {
+          e.preventDefault();
 
-            icon.style.transition = 'none';
-            icon.style.zIndex = 1000; 
+          startX = e.clientX;
+          startY = e.clientY;
 
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
-        });
+          icon.style.transition = 'none';
+          icon.style.zIndex = 1000; 
 
-        function onMouseMove(e) {
-            const deltaX = e.clientX - startX;
-            const deltaY = e.clientY - startY;
+          document.addEventListener('mousemove', onMouseMove);
+          document.addEventListener('mouseup', onMouseUp);
+      });
 
-            currentX = deltaX;
-            currentY = deltaY;
+      function onMouseMove(e) {
+          const deltaX = e.clientX - startX;
+          const deltaY = e.clientY - startY;
 
-            icon.style.transform = `translate(${currentX}px, ${currentY}px)`;
+          currentX = deltaX;
+          currentY = deltaY;
 
-            
-            const iconRect = icon.getBoundingClientRect();
-            const plantRect = plantImage.getBoundingClientRect();
+          icon.style.transform = `translate(${currentX}px, ${currentY}px)`;
 
-            // Check for overlap
-            const isOverlapping = !(
-                iconRect.right < plantRect.left ||
-                iconRect.left > plantRect.right ||
-                iconRect.bottom < plantRect.top ||
-                iconRect.top > plantRect.bottom
-            );
+          
+          const iconRect = icon.getBoundingClientRect();
+          const plantRect = plantImage.getBoundingClientRect();
 
-            if (isOverlapping && !isOverPlant) {
-                
-                icon.src = iconOverPlantImages[iconType].overPlant;
-                isOverPlant = true;
-            } else if (!isOverlapping && isOverPlant) {
-                
-                icon.src = iconOverPlantImages[iconType].default;
-                isOverPlant = false;
+          // Check for overlap
+          const isOverlapping = !(
+              iconRect.right < plantRect.left ||
+              iconRect.left > plantRect.right ||
+              iconRect.bottom < plantRect.top ||
+              iconRect.top > plantRect.bottom
+          );
+
+
+
+          if (isOverlapping && !isOverPlant) {
+            // Change icon when over plant
+            icon.src = iconOverPlantImages[iconType].overPlant;
+            isOverPlant = true;
+
+
+            // Update plantCareActions array based on the icon type
+            if (iconType === 'watercan') {
+                if (plantCare[0] < 100) {
+                  plantCare[0] += 20; // Increase water level 
+                }
+            } else if (iconType === 'umbrella') {
+                // Decrease water level & sun level
+                if (plantCare[0] > 0 && plantCare[1] > 0) {
+                  plantCare[0] -= 20; 
+                  plantCare[1] -= 20;
+                } else if (plantCare[0] === 0 && plantCare[1] > 0) {
+                  plantCare[1] -= 20;
+                } else if (plantCare[0] > 0 && plantCare[1] === 0) {
+                  plantCare[0] -= 20;
+                }
+            } else if (iconType === 'sun') {
+                if (plantCare[1] < 100) {
+                  plantCare[1] += 20; // Increase sun state
+                }
             }
-        }
 
-        function onMouseUp(e) {
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
+            // Mark as updated to prevent reversion on same drag
 
-            icon.style.transition = ''; 
-            icon.style.zIndex = ''; 
-            icon.style.transform = '';
+            // Save the updated array to localStorage
+            localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
+            console.log('Updated plantCareActions:', plantCare);
 
-            
+        } else if (!isOverlapping && isOverPlant) {
+            // Revert only if the icon has not been updated during this drag
             icon.src = iconOverPlantImages[iconType].default;
-        }
-    });
-}
+            isOverPlant = false;
+            
+            // Optionally, revert the array state if the icon is dragged away
+            if (iconType === 'watercan') {
+              // Revert water level  
+                plantCare[0] -= 20; 
+                          
+            } else if (iconType === 'umbrella') {
+              // Revert water and sun leve
+              if (plantCare[0] > 0 && plantCare[1] > 0) {
+                plantCare[0] += 20; 
+                plantCare[1] += 20;
+              } else if (plantCare[0] === 0 && plantCare[1] > 0) {
+                plantCare[1] += 20;
+              } else if (plantCare[0] > 0 && plantCare[1] === 0) {
+                plantCare[0] += 20;
+              }            
+            } else if (iconType === 'sun') {
+              // Revert sun state
+              plantCare[1] -= 20; 
+              
+            }
 
+            // Save the updated array to localStorage
+            localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
+            console.log('Reverted plantCareActions:', plantCare);
+        }
+    }
+
+      function onMouseUp(e) {
+          document.removeEventListener('mousemove', onMouseMove);
+          document.removeEventListener('mouseup', onMouseUp);
+
+          icon.style.transition = ''; 
+          icon.style.zIndex = ''; 
+          icon.style.transform = '';
+
+          
+          icon.src = iconOverPlantImages[iconType].default;
+          isOverPlant = false;
+          weatherBar(plantCare)
+          
+      }
+  });
+}
 
 window.onload = function() {
     setupDragDrop();
@@ -329,6 +390,64 @@ function setupQuiz() {
     if (tryAgainButton) {
         tryAgainButton.addEventListener('click', resetQuiz);
     }
+}
+
+function weatherBar(weatherCond) {
+  const rain = weatherCond[0];
+  const sun = weatherCond[1];
+
+  let rainIcons = 0;
+  let sunIcons = 0;
+
+  // Determine the number of rain icons to color
+  if (rain > 80) {
+    rainIcons = 5;
+  } else if (rain > 60) {
+    rainIcons = 4;
+  } else if (rain > 40) {
+    rainIcons = 3;
+  } else if (rain > 20) {
+    rainIcons = 2;
+  } else if (rain > 0) {
+    rainIcons = 1;
+  } else {
+    rainIcons = 0;
+  }
+
+  // Update rain icons (colored and grey)
+  for (let i = 1; i <= 5; i++) {
+    let waterElement = document.getElementById(`waterIcon${i}`);
+    if (i <= rainIcons) {
+      waterElement.src = 'img/waterdrop.png';  // Fill with colored water icon
+    } else {
+      waterElement.src = 'img/greywaterdrop.png';  // Fill the rest with grey water icons
+    }
+  }
+
+  // Determine the number of sun icons to color
+  if (sun > 80) {
+    sunIcons = 5;
+  } else if (sun > 60) {
+    sunIcons = 4;
+  } else if (sun > 40) {
+    sunIcons = 3;
+  } else if (sun > 20) {
+    sunIcons = 2;
+  } else if (sun > 0) {
+    sunIcons = 1;
+  } else {
+    sunIcons = 0;
+  }
+
+  // Update sun icons (colored and grey)
+  for (let i = 1; i <= 5; i++) {
+    let sunElement = document.getElementById(`sunIcon${i}`);
+    if (i <= sunIcons) {
+      sunElement.src = 'img/sun.png';  // Fill with colored sun icon
+    } else {
+      sunElement.src = 'img/greysun.png';  // Fill the rest with grey sun icons
+    }
+  }
 }
 
 async function initializeDataFetch() {

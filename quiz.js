@@ -23,7 +23,7 @@ async function getPlantData(options, key, id) {
     let plantsData = JSON.parse(sessionStorage.getItem("plantData"));
     
     if (!plantsData) {
-        // If no data in localStorage, fetch it
+        // If no data in session Storage, fetch it
         plantsData = await cardProperties(); 
     }
 
@@ -50,7 +50,7 @@ async function getPlantData(options, key, id) {
         const correctOption = options.find(option => {
             return lowerDescript.includes(option.toLowerCase());
         });
-        return correctOption || null;
+        return correctOption || options[2];
     }
 
     // If the plant has the property, compare the options array
@@ -70,7 +70,7 @@ async function getPlantData(options, key, id) {
             return optionValues.every(val => plantValues.includes(val.trim()));
         });
 
-        return correctOption || null;  // Return the correct option if found
+        return correctOption || 'Red';  // Return the correct option if found
     }
     
     return null; // If no match is found
@@ -80,7 +80,7 @@ async function getPlantData(options, key, id) {
 let currentQuestion = 0;
 let score = 0;
 
-const selectedPlantId = "3"
+const selectedPlantId = "20"
 const selectPlantIdNum = parseInt(selectedPlantId)
 loadCSV()
 const quizData = createQuiz(selectedPlantId)
@@ -165,8 +165,8 @@ async function fetchData(URL) {
     }
 }
 
-function extractDetails(descriptions, i) {
-    const description = descriptions[i] 
+function extractDetails(descriptions) {
+    const description = descriptions 
 
     // Regular expressions to find colors and heights
     const colorRegex = /\b(?:red|blue|green|yellow|purple|white|pink|mauve|golden|cream|orange|violet)\b/gi;
@@ -205,9 +205,11 @@ function extractDetails(descriptions, i) {
 
 async function sortPlants() {
     const data = await fetchData(nativePlantsURL);
+    const usedPlants = [1,2,3,5,6,10,17,18,19,20,21,22,27,28]
     if (data) {
         const plants = data.results
-        const sortedData = plants.sort((a, b) => a.index - b.index)
+        const filteredPlants = plants.filter(plant => usedPlants.includes(plant.index));
+        const sortedData = filteredPlants.sort((a, b) => a.index - b.index)
         return sortedData
     }
 }
@@ -223,8 +225,8 @@ async function cardProperties() {
             type: plant.type,
             descript: plant.description_and_growing_requirements,
             attract: plant.attracts,
-            color: extractDetails(descriptions, plant.index - 1).colors,
-            height: extractDetails(descriptions, plant.index - 1).height
+            color: extractDetails(plant.description_and_growing_requirements).colors,
+            height: extractDetails(plant.description_and_growing_requirements).height
         }));
         sessionStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
     }
@@ -266,7 +268,7 @@ async function loadCSV() {
 
 function createQuiz(selectedPlant) {
     const plantsData = JSON.parse(sessionStorage.getItem("quizData"));
-    
+    console.log(plantsData) 
     //function to find a specific plant by index of plant being grown
     const findObjectByIndex = (arr, index) => {
             return arr.find(item => item.index === index);
