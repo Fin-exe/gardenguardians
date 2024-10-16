@@ -250,7 +250,7 @@ body.mainpage {
     position: relative;
 }
 
-.hanging_pot {
+.floor_pot {
     width: 52%;
     position: relative;
     z-index: 2;
@@ -269,7 +269,6 @@ body.mainpage {
 .top_right_icons,
 .bottom_right_icons,
 .bottom_left_icons,
-.middle_left_icons,
 .top_left_healthbar {
     display: flex;
     flex-direction: column; 
@@ -319,15 +318,6 @@ body.mainpage {
     left: 0px; 
 }
 
-/*left arrow*/
-.middle_left_icons {
-    align-items: flex-start;
-    top: 50%; 
-    left: 0.1em; 
-    transform: translateY(-50%); 
-    z-index: 1;
-}
-
 .top_left_healthbar {
     align-items: flex-start; 
     top: 2em; 
@@ -352,7 +342,6 @@ body.mainpage {
 }
 
 /*VIRTUAL GARDEN*/
-
 .info_card {
     width: 100%;
     min-height: 100vh;
@@ -825,6 +814,17 @@ body {
 #weather-box-container {
     position: relative;
 }
+
+/* Hide all elements by default */
+.filterDiv {
+    display: none;
+  }
+  
+  /* Show elements that have the 'show' class */
+  .show {
+    display: block;
+  }
+  
 
 #weather-box-heading {
     font-family: 'Katibeh', cursive; /* Katibeh font */

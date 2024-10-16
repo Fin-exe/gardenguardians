@@ -32,75 +32,76 @@
 
         <div class="flex-container3">
             <div id="myBtnContainer">
-                <button class="btn active" onclick="filterSelection('all')"> Show All</button>
-                <button class="btn" onclick="filterSelection('flowers')"> Flowers/No Flower</button>
-                <button class="btn" onclick="filterSelection('hot/cold')"> Hot/Cold</button>
-                <button class="btn" onclick="filterSelection('vine,leafy')"> Vine/Leafy</button>
-                <button class="btn" onclick="filterSelection('colors')"> Colourful/Dark</button>
+                <button class="btn active" onclick="filterSelection('all')">Show All</button>
+                <button class="btn" onclick="filterSelection('flowers')">Flowers</button>
+                <button class="btn" onclick="filterSelection('bushes/shrubs')">Bushes/Shrubs</button>
+                <button class="btn" onclick="filterSelection('trees')">Trees</button>
+                <button class="btn" onclick="filterSelection('vine')">Hanging Vine</button>
+                <button class="btn" onclick="filterSelection('summer/spring')">Summer/Spring</button>
+                <button class="btn" onclick="filterSelection('autumn/winter')">Autumn/Winter</button>
           </div>
         </div>
             
-
         <div class="flex-container2">
             <div class="parentbox">
-                <div id="plant1" class="namestyle" data-plant-id="cutleafdaisy">
-                    <img src="img/cutleaf.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant1" class="namestyle filterDiv flowers summer/spring" data-plant-id="cutleafdaisy">
+                    <img class="plant_image_sizing" src="img/cutleaf.jpg" alt="Cut Leaf Daisy Flower">
                     <h3>Cutleaf Daisy</h3>
                 </div>
-                <div id="plant2" class="namestyle" data-plant-id="creepingboobialla">
-                    <img src="img/creeping.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant2" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="creepingboobialla">
+                    <img class="plant_image_sizing" src="img/creeping.jpg" alt="Creeping Boobialla">
                     <h3>Creeping Boobialla</h3>
                 </div>
-                <div id="plant3" class="namestyle" data-plant-id="nativeviolet">
-                    <img src="img/native violet.jpg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant3" class="namestyle filterDiv flowers summer/spring" data-plant-id="nativeviolet">
+                    <img class="plant_image_sizing"src="img/native violet.jpg" alt="cut leaf daisy flower">
                     <h3>Native Violet</h3>
                 </div>
-                <div id="plant4" class="namestyle" data-plant-id="knobcr">
-                    <img src="img/knobby.jpg" alt="cut leaf daisy flower" width="230" height="160">
-                    <h3>Knobby Club Rush </h3>
+                <div id="plant4" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="knobcr">
+                    <img class="plant_image_sizing" src="img/knobby.jpg" alt="Knobby Club Rush">
+                    <h3>Knobby Club Rush</h3>
                 </div>
-                <div id="plant5" class="namestyle" data-plant-id="guinea">
-                    <img src="img/guinea plant.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant5" class="namestyle filterDiv vine summer/spring" data-plant-id="guinea">
+                    <img class="plant_image_sizing" src="img/guinea plant.jpeg" alt="Guinea Vine">
                     <h3>Guinea Vine</h3>
                 </div>
-                <div id="plant6" class="namestyle">
-                    <img src="img/teatreesmall.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant6" class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter" data-plant-id="teatreesmall">
+                    <img class="plant_image_sizing" src="img/teatreesmall.jpeg" alt="Tea Tree Small">
                     <h3>Tea Tree Small</h3>
                 </div>
-                <div id="plant7" class="namestyle">
-                    <img src="img/thyme.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant7" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="thyme">
+                    <img class="plant_image_sizing" src="img/thyme.jpeg" alt="Thyme Honey Myrtle">
                     <h3>Thyme Honey Myrtle</h3>
                 </div>
-                <div id="plant8" class="namestyle">
-                    <img src="img/banksia.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant8" class="namestyle filterDiv trees summer/spring autumn/winter" data-plant-id="banksia">
+                    <img class="plant_image_sizing" src="img/banksia.jpeg" alt="Banksia">
                     <h3>Banksia</h3>
                 </div>
-                <div id="plant9" class="namestyle">
-                    <img src="img/grevillea.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant9" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="grevillea">
+                    <img class="plant_image_sizing" src="img/grevillea.jpeg" alt="Grevillea">
                     <h3>Grevillea</h3>
                 </div>
-                <div id="plant10" class="namestyle">
-                    <img src="img/teatreemedium.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant10" class="namestyle filterDiv trees summer/spring" data-plant-id="teatreemedium">
+                    <img class="plant_image_sizing" src="img/teatreemedium.jpeg" alt="Tea Tree Medium">
                     <h3>Tea Tree Medium</h3>
                 </div>
-                <div id="plant11" class="namestyle">
-                    <img src="img/blue.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant11" class="namestyle filterDiv trees summer/spring" data-plant-id="blushsatinash">
+                    <img class="plant_image_sizing" src="img/blue.jpeg" alt="Blush Satinash">
                     <h3>Blush Satinash</h3> 
                 </div>
-                <div id="plant12" class="namestyle">
-                    <img src="img/tulipwood.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant12" class="namestyle filterDiv trees summer/spring" data-plant-id="tulipwood">
+                    <img class="plant_image_sizing" src="img/tulipwood.jpeg" alt="Tulipwood">
                     <h3>Tulipwood</h3> 
                 </div>
-                <div id="plant13" class="namestyle">
-                    <img src="img/fan.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant13" class="namestyle filterDiv flowers summer/spring" data-plant-id="fanflower">
+                    <img class="plant_image_sizing" src="img/fan.jpeg" alt="Fan Flower">
                     <h3>Fan Flower</h3> 
                 </div>
-                <div id="plant14" class="namestyle">
-                    <img src="img/blue.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant14" class="namestyle filterDiv flowers summer/spring" data-plant-id="blueflax">
+                    <img class="plant_image_sizing" src="img/blue.jpeg" alt="Blue Flax">
                     <h3>Blue Flax</h3> 
                 </div>
-                <div id="plant15" class="namestyle">
-                    <img src="img/mat.jpeg" alt="cut leaf daisy flower" width="230" height="160">
+                <div id="plant15" class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter" data-plant-id="matrush">
+                    <img class="plant_image_sizing" src="img/mat.jpeg" alt="Mat Rush">
                     <h3>Mat Rush</h3> 
                 </div>
             </div>
@@ -112,29 +113,27 @@
 
         <section id="info_card">
             <div class="card">
-                <div class="card__inner">
-                    <div class="card__face card__face--front">
-                        <span class="close_btn" id="close_from_front" aria-label="Close">&times;</span>
-                        <img  class="front_context" src="img/frontcard_cd.png" alt="Front of Card">
-                    </div>
-
-                    <!-- Flip-->
-                    <div class="card__face card__face--back">
-                        <div class="card__content">
-                            <div id="popup_content_back">
-                                <span class="close_btn_back" id="close_from_back" aria-label="Close">&times;</span>
-                                <img class="back_context" src="img/backcard_cd.png" alt="Back of Card">
-                            </div>
-                            <div class="quiz-box">
-                                <a href="mainpage.html" class="quiz-link">
-                                    <h2>Let's Plant This!</h2>
-                                </a>      
-                            </div>
-                        </div>
-                    </div>
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <span class="close_btn" aria-label="Close">&times;</span>
+                  <img class="front_context" src="" alt="Front of Card">
                 </div>
+                <div class="card__face card__face--back">
+                  <div class="card__content">
+                    <div id="popup_content_back">
+                      <span class="close_btn_back" aria-label="Close">&times;</span>
+                      <img class="back_context" src="" alt="Back of Card">
+                    </div>
+                    <div class="quiz-box">
+                      <a href="mainpage.html" class="quiz-link">
+                        <h2>Let's Plant This!</h2>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
+          </section>
 
         <script src="script.js"></script>
     </body>

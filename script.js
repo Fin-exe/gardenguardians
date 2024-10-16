@@ -69,8 +69,7 @@ function handlePlantGrowth() {
 }
 
 
-
-// FLIP CARD 
+// FLIP CARD
 const card = document.querySelector(".card__inner");
 
 card.addEventListener("click", function (e) {
@@ -111,67 +110,180 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 //PLANT SELECT 
+const plantData = {
+cutleafdaisy: {
+    front: "img/frontcard_cd.png",
+    back: "img/backcard_cd.png"
+},
+creepingboobialla: {
+    front: 'img/frontcard_cb.png',
+    back: 'img/backcard_cb.png'
+},
+nativeviolet: {
+    front: 'img/frontcover_nv.png',
+    back: 'img/backcover_nv.png'
+},
+knobcr: {
+    front: 'img/frontcover_kcr.png',
+    back: 'img/backcover_kcr.png'
+},
+guinea: {
+    front: 'img/frontcover_gv.png',
+    back: 'img/backcover_gv.png'
+},
+
+//Continue from here
+teatreesmall: {
+    front: 'img/teatreesmall_front.jpg',
+    back: 'img/teatreesmall_back.jpg'
+},
+thyme: {
+    front: 'img/thyme_front.jpg',
+    back: 'img/thyme_back.jpg'
+},
+banksia: {
+    front: 'img/banksia_front.jpg',
+    back: 'img/banksia_back.jpg'
+},
+grevillea: {
+    front: 'img/grevillea_front.jpg',
+    back: 'img/grevillea_back.jpg'
+},
+teatreemedium: {
+    front: 'img/teatreemedium_front.jpg',
+    back: 'img/teatreemedium_back.jpg'
+},
+blushsatinash: {
+    front: 'img/blue_front.jpg',
+    back: 'img/blue_back.jpg'   
+},
+tulipwood: {
+    front: 'img/tulipwood_front.jpg',
+    back: 'img/tulipwood_back.jpg'
+},
+fanflower: {
+    front: 'img/fan_front.jpg',
+    back: 'img/fan_back.jpg'
+},
+blueflax: {
+    front: 'img/blue_flax_front.jpg',
+    back: 'img/blue_flax_back.jpg'
+},
+matrush: {
+    front: 'img/mat_front.jpg',
+    back: 'img/mat_back.jpg'
+}
+};
 
 function selectPlant(plantId) {
     localStorage.setItem('selectedPlant', plantId);
 }
 
 function clearSelectedPlant() {
-    localStorage.removeItem('selectedPlant');
+     localStorage.removeItem('selectedPlant');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const plantImage = document.getElementById('plant-image');
-    const selectedPlant = localStorage.getItem('selectedPlant');
+  const plantImage = document.getElementById('plant-image');
+  const selectedPlant = localStorage.getItem('selectedPlant');
 
-    if (selectedPlant) {
-        plantImage.src = `img/${selectedPlant}_s1.png`;
-    } else {
-        plantImage.src = 'img/placeholder.png';
-    }
-
-    handlePlantGrowth();
+  if (selectedPlant) {
+      plantImage.src = `img/${selectedPlant}_s1.png`;
+  } else {
+      plantImage.src = 'img/placeholder.png';
+  }
+  handlePlantGrowth();
 });
+
+const letsPlantButton = document.querySelector('.quiz-link');
+
+letsPlantButton.addEventListener('click', function(event) {
+    if (currentPlantId) {
+        selectPlant(currentPlantId);
+    }
+});
+
+// Existing functions
+function selectPlant(plantId) {
+    localStorage.setItem('selectedPlant', plantId);
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    const plantElements = document.querySelectorAll('.namestyle');
-    let currentPlantId = null;
+  // Select all plant elements
+  const plantElements = document.querySelectorAll('.namestyle');
+  
 
-    plantElements.forEach(function(plantElement) {
-        plantElement.addEventListener('click', function() {
-            currentPlantId = plantElement.getAttribute('data-plant-id');
-            showInfoCard();
-            // Update card content if necessary
-        });
-    });
+  // Attach click event listeners to each plant
+  plantElements.forEach(function(plantElement) {
+      plantElement.addEventListener('click', function() {
+          currentPlantId = plantElement.getAttribute('data-plant-id');
+          showInfoCard();
+          updateCardContent(currentPlantId);
+      });
+  });
 
-    const letsPlantButton = document.querySelector('.quiz-link');
+  // Close buttons functionality
+  document.querySelectorAll('.close_btn, .close_btn_back').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+          document.getElementById('overlay').style.display = 'none';
+          document.getElementById('info_card').style.display = 'none';
+      });
+  });
 
-    letsPlantButton.addEventListener('click', function(event) {
-        if (currentPlantId) {
-            selectPlant(currentPlantId);
-        }
-    });
+  // Function to show the info card
+  function showInfoCard() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('info_card').style.display = 'block';
+  }
 
-    // Existing functions
-    function selectPlant(plantId) {
-        localStorage.setItem('selectedPlant', plantId);
-    }
+  // Function to update the card content based on the selected plant
+  function updateCardContent(plantId) {
+      const frontImage = document.querySelector('.front_context');
+      const backImage = document.querySelector('.back_context');
+      
+      if (plantData[plantId]) {
+          frontImage.src = plantData[plantId].front;
+          backImage.src = plantData[plantId].back;
+          frontImage.alt = `${capitalizeWords(plantId)} Front Image`;
+          backImage.alt = `${capitalizeWords(plantId)} Back Image`;
+      } else {
+          // Default images or handling for undefined plant IDs
+          frontImage.src = 'img/default_front.jpg';
+          backImage.src = 'img/default_back.jpg';
+          frontImage.alt = 'Default Front Image';
+          backImage.alt = 'Default Back Image';
+      }
+  }
 
-    function showInfoCard() {
-        const infoCard = document.getElementById('info_card');
-        infoCard.style.display = 'flex'; 
-    }
-
-    // Additional code for hiding the info card, etc.
+  // Utility function to capitalize words for alt text
+  function capitalizeWords(str) {
+      return str.replace(/([A-Z])/g, ' $1') // Add space before capital letters
+                .replace(/^./, function(str){ return str.toUpperCase(); }) // Capitalize first letter
+                .trim();
+  }
 });
+
+
+let currentPlantId = null;
+
+
+
+
+
+
+
+
+
+
+
+
 
 const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
 console.log(currentWeatherIcons)
 
 //DRAG AND DROP
-//PLEASE INVESTIGATE WHY CODE IS SO DEPENDENT ON THIS WHEN IT IS FOR FLIP CARD
 function handleCardFlip() {
 
     const plantOne = document.getElementById('plantOne');
@@ -464,6 +576,20 @@ async function initializeDataFetch() {
         }
     }
 
+    /*async function cardProperties() {
+        const data = await fetchData(nativePlantsURL);
+        if (data) {
+            const plantData = data.results;
+            const descriptions = plantData.map(plant => plant.description_and_growing_requirements);
+            const indexAndSpecies = plantData.map(plant => ({
+                species: plant.species,
+                descript: plant.description_and_growing_requirements,
+                attract: plant.attracts
+            }));
+            return indexAndSpecies;
+        }
+    }*/
+
     async function weatherProperties() {
         const data = await fetchData(weatherURL);
         if (data) {
@@ -472,7 +598,8 @@ async function initializeDataFetch() {
             return currentWeather;
         }
     }
-    
+
+
     async function evaluateWeather() {
         const weatherData = JSON.parse(localStorage.getItem("weatherData"));
     
@@ -665,8 +792,6 @@ async function initializeDataFetch() {
       localStorage.setItem("startingCond", JSON.stringify([rainStart, sunStart]))
     }
 
-    
-
     weatherProperties()
     evaluateWeather()
     const weatherImg = await evaluateWeather()
@@ -677,15 +802,16 @@ async function initializeDataFetch() {
     weatherElement.style.backgroundImage = `url("img/${weatherImg}.gif")`;
 }
 
-filterSelection("all")
+// SEED PAGE FILTERING
 
-//SEED PAGE FILTERING
+// Initial call to display all items
+filterSelection("all");
 
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
   if (c == "all") c = "";
-  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  // Loop through all elements and hide those that don't match the filter
   for (i = 0; i < x.length; i++) {
     w3RemoveClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
@@ -694,39 +820,39 @@ function filterSelection(c) {
 
 // Show filtered elements
 function w3AddClass(element, name) {
-  var i, arr1, arr2;
+  var arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
+  arr2.forEach(function(n) {
+    if (arr1.indexOf(n) == -1) {
+      arr1.push(n);
     }
-  }
+  });
+  element.className = arr1.join(" ");
 }
 
 // Hide elements that are not selected
 function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
+  var arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
+  arr1 = arr1.filter(function(n) {
+    return arr2.indexOf(n) === -1;
+  });
   element.className = arr1.join(" ");
 }
 
 // Add active class to the current control button (highlight it)
 var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
+Array.from(btns).forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    var current = btnContainer.getElementsByClassName("active");
+    if (current.length > 0) current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
-}
+});
+
 
 function flickrAPI(){
     const baseFlickr = ""

@@ -123,7 +123,7 @@ img{border-radius: 8px;
 
 #plant1, #plant2, #plant3, #plant4, #plant5, #plant6, #plant7, #plant8, 
 #plant9, #plant10, #plant11, #plant12, #plant13, #plant14, #plant15{
-    display: flex;
+    
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
@@ -171,6 +171,10 @@ color: white;
     vertical-align: center;
 }
 
+.plant_image_sizing {
+  width: 230px;
+  height: 160px;
+}
 
 /* NAV BAR */
 .sidenav {
@@ -274,6 +278,21 @@ section {
     justify-content: center;
   }
   
+
+
+/* Hide all elements by default */
+.filterDiv {
+  display: none;
+}
+
+/* Show elements that have the 'show' class */
+.filterDiv.show {
+  display: flex; /* Or 'block', depending on your layout */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
   .card__face--front h2 {
     color: black;
     font-size: 32px;
