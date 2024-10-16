@@ -268,18 +268,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let currentPlantId = null;
 
-
-
-
-
-
-
-
-
-
-
-
-
 const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
 console.log(currentWeatherIcons)
 
@@ -313,8 +301,7 @@ function setupDragDrop() {
       'sun': {
           default: 'img/greysunoutline.png',
           overPlant: 'img/sun.png'
-      }
-      
+      } 
   };
 
   //Returns plantCare [int, int] currently at [0,0]
