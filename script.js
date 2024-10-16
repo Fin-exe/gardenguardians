@@ -578,20 +578,6 @@ async function initializeDataFetch() {
         }
     }
 
-    /*async function cardProperties() {
-        const data = await fetchData(nativePlantsURL);
-        if (data) {
-            const plantData = data.results;
-            const descriptions = plantData.map(plant => plant.description_and_growing_requirements);
-            const indexAndSpecies = plantData.map(plant => ({
-                species: plant.species,
-                descript: plant.description_and_growing_requirements,
-                attract: plant.attracts
-            }));
-            return indexAndSpecies;
-        }
-    }*/
-
     async function weatherProperties() {
         const data = await fetchData(weatherURL);
         if (data) {
@@ -793,6 +779,24 @@ async function initializeDataFetch() {
       
       localStorage.setItem("startingCond", JSON.stringify([rainStart, sunStart]))
     }
+
+    async function loadCSV() {
+      await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/main/csv/plant_quiz_data.csv')
+        .then(response => response.text())
+        .then(csvText => {
+            // Parse CSV with PapaParse
+            let parsedData = Papa.parse(csvText, {
+                header: true,    // Use the first row as headers
+                skipEmptyLines: true  // Skip empty lines in the CSV
+            }); 
+    
+        // The data is now correctly parsed into rows with quoted fields handled
+            const plantGrowth = parsedData.data  // Parsed quiz data in array format
+            sessionStorage.setItem("plantGrow", JSON.stringify(quizData));
+      })
+      .catch(error => console.error('Error fetching CSV:', error));
+    }
+    
 
     weatherProperties()
     evaluateWeather()

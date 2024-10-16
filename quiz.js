@@ -203,7 +203,7 @@ function extractDetails(descriptions) {
 
 async function sortPlants() {
     const data = await fetchData(nativePlantsURL);
-    const usedPlants = [1,2,3,5,6,10,17,18,19,20,21,22,27,28]
+    const usedPlants = [1,2,3,5,6,10,17,18,19,20,21,22,24,27,28]
     if (data) {
         const plants = data.results
         const filteredPlants = plants.filter(plant => usedPlants.includes(plant.index));
