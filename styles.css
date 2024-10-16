@@ -248,11 +248,11 @@ body.mainpage {
 }
 
 .floor_pot {
-    z-index: 1;
+    z-index: 2;
 }
   
 .plant {
-    z-index: 2;
+    z-index: 1;
 }
   
 .floor_pot img, .plant img {
@@ -314,10 +314,15 @@ body.mainpage {
 }
 
 .top_left_healthbar {
-    align-items: flex-start; 
-    top: 2em; 
-    left: 8em; 
-    position: absolute; 
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    width: 25vw;
+    max-width: 400px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .icon {
@@ -617,7 +622,6 @@ body {
 
 
 /*QUIZ*/
-
 #quiz_body {
     background-color: #F7F8DD;
 }
@@ -711,7 +715,6 @@ body {
     font-style: 'Arial';
 }
 
-
 .correct {
     background-color:#C4F5A0;
     ;
@@ -759,135 +762,166 @@ body {
 }
 
 /*plant conditions box*/
-#plant-condition-heading {
-    font-family: 'Katibeh';
-    font-size: 48px;
-    margin-left: 35px;
-    margin-top: 0.5em;
-    text-align: center;
-}
-
-#plant-condition {
-    width: 319px;
-    height: 138px; /* Adjusted height to fit both rows */
-    border-radius: 20px;
-    background-color: #fff; /* White background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.top_left_healthbar {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    width: 25vw;
+    max-width: 400px;
+    min-width: 280px;
     display: flex;
-    flex-direction: column; /* Column direction for rows */
-    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #plant-condition-heading, #weather-box-heading {
+    font-family: 'Katibeh', cursive;
+    font-size: 3vw;
+    margin: 0.5em 0 0 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  #plant-condition, #weather-box {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2%;
     box-sizing: border-box;
-    margin-left: 10px;
-}
-
-.row {
+    margin-bottom: 1vh;
+  }
+  
+  #plant-condition {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.sunlight {
-    height: 50%; /* Half of the widget height */
-}
-
-.water {
-    height: 50%; /* Half of the widget height */
-}
-
-.sunlight img {
-    width: 61.01px;
-    height: 61.01px;
-}
-
-.water img {
-    width: 49px;
-    height: 49px;
-}
-
-/*weather box*/
-/* Weather widget styling */
-#weather-box-container {
-    position: relative;
-}
-
-/* Hide all elements by default */
-.filterDiv {
-    display: none;
+    height: 50%;
   }
   
-  /* Show elements that have the 'show' class */
-  .show {
-    display: block;
+  .sunlight img, .water img {
+    width: auto;
+    height: 80%;
+    max-height: 61px;
   }
   
-
-#weather-box-heading {
-    font-family: 'Katibeh', cursive; /* Katibeh font */
-    font-size: 48px;
-    margin: 0;
-    text-align: center;
-    margin-top: 0.2em;
-}
-
-#weather-box {
-    width: 319px;
-    height: 138px;
-    border-radius: 20px;
-    background-color: #fff; /* White background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  #weather-box {
     display: flex;
-    padding: 10px;
-    box-sizing: border-box;
-    overflow: hidden; /* Ensure content does not overflow */
-    margin-left: 10px;
-}
-
-#temperature-weather-box {
-    flex: 1;
-    font-family: 'Katibeh', cursive; /* Katibeh font */
-    font-size: 40px; /* Adjusted font size to fit well */
-    text-align: center;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-}
+  }
 
-#weather-info {
+  .widget-container {
+    min-width: 23vw;
+  }
+  
+  #temperature-weather-box {
+    font-family: 'Katibeh';
+    font-size: 3vw;
+    flex: 1;
+    text-align: center;
+  }
+  
+  #weather-info {
     flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end; /* Align items to the right */
-    overflow: hidden; /* Ensure content does not overflow */
-}
-
-.info-row-weather {
+    justify-content: space-around;
+    height: 100%;
+  }
+  
+  .info-row-weather {
     display: flex;
     align-items: center;
-    margin-bottom: 8px; /* Space between rows */
-   
-}
+    justify-content: flex-end;
+  }
+  
+  .info-row-weather img {
+    width: auto;
+    height: 35%;
+    max-height: 49px;
+    margin-left: 5%;
+  }
+  
+  .info-row-weather span {
+    font-size: 2vw;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 1200px) {
+    .top_left_healthbar {
+      width: 30vw;
+    }
+    
+    #plant-condition-heading, #weather-box-heading {
+      font-size: 4vw;
+    }
+    
+    #temperature-weather-box {
+      font-size: 4vw;
+    }
+    
+    .info-row-weather span {
+      font-size: 2.5vw;
+    }
 
-.icon {
-    margin-left: 10px; /* Space between icon and text */
-}
+    .widget-container {
+        min-width: 30vw;
+      }
+  }
 
-.sunlight-icon {
-    width: 61.01px;
-    height: 61.01px;
-}
+  @media (max-width: 800px) {
+    .book_icon {
+        width: 30vw;
+    }
 
-.water-icon {
-    width: 49px;
-    height: 49px;
-}
+    .bottom_right_icons a{
+        width: 32vw;
+    }
+  }
 
-.cloud-icon {
-    width: 49px;
-    height: 49px;
-}
+  @media (max-width: 1000px) {
+    .sunlight img, .water img {
+        width: auto;
+        height: 80%;
+        max-height: 45px;
+      }
+  }
+  
+  @media (max-width: 768px) {
+    .top_left_healthbar {
+      width: 40vw;
+    }
+    
+    #plant-condition-heading, #weather-box-heading {
+      font-size: 5vw;
+    }
+    
+    #temperature-weather-box {
+      font-size: 5vw;
+    }
+    
+    .info-row-weather span {
+      font-size: 3vw;
+    }
 
-.info-row-weather span {
-    font-size: 30px;
-    font-weight: 100;
-}
+    .widget-container {
+        min-width: 39vw;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .widget-container {
+        min-width: 58vw;
+      }
+
+    .icon {
+        width: 30vw;
+    }
+  }
+
