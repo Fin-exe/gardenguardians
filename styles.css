@@ -252,7 +252,7 @@ body.mainpage {
 
 .floor_pot {
     width: 52%;
-    position: relative;
+    position: absolute;
     z-index: 2;
     pointer-events: none;
     
@@ -260,10 +260,6 @@ body.mainpage {
 
 .plant {
     width: 55%; 
-    position: absolute; 
-    bottom: -3em; 
-    left: 35em;
-;
 }
 
 .top_right_icons,
