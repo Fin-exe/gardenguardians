@@ -46,11 +46,7 @@ async function getPlantData(options, key, id) {
 
     // Handle description with partial matching
     if (key === 'descript') {
-        const lowerDescript = plantProperty.toLowerCase(); // Convert plant description to lowercase
-        const correctOption = options.find(option => {
-            return lowerDescript.includes(option.toLowerCase());
-        });
-        return correctOption || options[2];
+        return options[2];
     }
 
     // If the plant has the property, compare the options array
