@@ -1,16 +1,16 @@
 index,plant_name,science_name,water_level,sun_level
-1,cut leaf daisy,Brachyscome multifida,60,80
-2,creeping boobialla,Myoporum sp.,60,60
-3,fan flower,Scaevola aemula,40,100
-5,blue flax,Dianella caerulea,60,60
-6,knobby club rush,Ficinia nodosa,80,80
-10,sarsaparilla vine,Hardenbergia sp,100,80
-17,thyme honey myrtle,Melaleuca thymifolia,60,100
+1,cutleafdaisy,Brachyscome multifida,60,80
+2,creepingboobialla,Myoporum sp.,60,60
+3,fanflower,Scaevola aemula,40,100
+5,blueflax,Dianella caerulea,60,60
+6,knobcr,Ficinia nodosa,80,80
+10,guinea,Hardenbergia sp.,100,80
+17,thyme,Melaleuca thymifolia,60,100
 18,banksia,Banksia sp.,80,80
 19,bottlebrush,Callistemon sp.,60,40
-20,greviella,Grevillea sp,40,100
+20,grevillea,Grevillea sp.,40,100
 21,lilly pilly,Syzygium sp.,80,80
-22,tea tree,Leptospermum sp.,100,60
+22,teatree,Leptospermum sp.,100,60
 24,golden penda,Xanthostemon chrysanthus,100,80
 27,tulipwood,Harpulia pendula,80,60
-28,wattle,Acacia sp,100,100
+28,wattle,Acacia sp.,100,100
