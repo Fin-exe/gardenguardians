@@ -311,7 +311,7 @@ function setupDragDrop() {
           overPlant: 'img/umbrella1.png'
       },
       'sun': {
-          default: 'img/greysun.png',
+          default: 'img/greysunoutline.png',
           overPlant: 'img/sun.png'
       }
       
