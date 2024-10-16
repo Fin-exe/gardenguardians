@@ -253,6 +253,7 @@ body.mainpage {
 .floor_pot {
     width: 52%;
     position: absolute;
+    bottom: 8em;
     z-index: 2;
     pointer-events: none;
     

@@ -113,65 +113,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //PLANT SELECT 
 const plantData = {
-cutleafdaisy: {
+cutleafdaisy: { //Cut Leaf Daisy Flower
     front: "img/frontcard_cd.png",
     back: "img/backcard_cd.png"
 },
-creepingboobialla: {
+creepingboobialla: { //Creeping Boobialla
     front: 'img/frontcard_cb.png',
     back: 'img/backcard_cb.png'
 },
-nativeviolet: {
+nativeviolet: { //Native Violet
     front: 'img/frontcover_nv.png',
     back: 'img/backcover_nv.png'
 },
-knobcr: {
+knobcr: { // Knobby Club Rush
     front: 'img/frontcover_kcr.png',
     back: 'img/backcover_kcr.png'
 },
-guinea: {
+guinea: { //Guinea Vine
     front: 'img/frontcover_gv.png',
     back: 'img/backcover_gv.png'
 },
 
 //Continue from here
-teatreesmall: {
+teatreesmall: { //Tea Tree Small
     front: 'img/teatreesmall_front.jpg',
     back: 'img/teatreesmall_back.jpg'
 },
-thyme: {
+thyme: { //Thyme Honey Myrtle
     front: 'img/thyme_front.jpg',
     back: 'img/thyme_back.jpg'
 },
-banksia: {
+banksia: { //Banksia
     front: 'img/banksia_front.jpg',
     back: 'img/banksia_back.jpg'
 },
-grevillea: {
+grevillea: { //Grevillea
     front: 'img/grevillea_front.jpg',
     back: 'img/grevillea_back.jpg'
 },
-teatreemedium: {
+teatreemedium: { //Tea Tree Medium
     front: 'img/teatreemedium_front.jpg',
     back: 'img/teatreemedium_back.jpg'
 },
-blushsatinash: {
+blushsatinash: { //Blush Satinash
     front: 'img/blue_front.jpg',
     back: 'img/blue_back.jpg'   
 },
-tulipwood: {
+tulipwood: { //Tulipwood
     front: 'img/tulipwood_front.jpg',
     back: 'img/tulipwood_back.jpg'
 },
-fanflower: {
+fanflower: { //Fan Flower
     front: 'img/fan_front.jpg',
     back: 'img/fan_back.jpg'
 },
-blueflax: {
+blueflax: { //Blue Flax
     front: 'img/blue_flax_front.jpg',
     back: 'img/blue_flax_back.jpg'
 },
-matrush: {
+matrush: { // Mat Rush
     front: 'img/mat_front.jpg',
     back: 'img/mat_back.jpg'
 }
