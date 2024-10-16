@@ -79,7 +79,7 @@ async function getPlantData(options, key, id) {
 let currentQuestion = 0;
 let score = 0;
 
-const selectedPlantId = "20"
+const selectedPlantId = "24"
 const selectPlantIdNum = parseInt(selectedPlantId)
 loadCSV()
 const quizData = createQuiz(selectedPlantId)
