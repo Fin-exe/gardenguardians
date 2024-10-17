@@ -208,6 +208,13 @@ letsPlantButton.addEventListener('click', function(event) {
 // Existing functions
 function selectPlant(plantId) {
     localStorage.setItem('selectedPlant', plantId);
+    const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));      
+    const plantType = plantsGrowCond.find(plant => {
+      if (plant.plant_name === plantId){
+        return  plant
+      }
+    })
+    sessionStorage.setItem('selectedPlantIndex', plantType.index);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -304,8 +311,12 @@ function setupDragDrop() {
       } 
   };
 
-  //Returns plantCare [int, int] currently at [0,0]
-  let plantCare = JSON.parse(localStorage.getItem('startingCond'))
+  // Retrieve starting conditions to change via icons
+  let plantCare = JSON.parse(localStorage.getItem('startingCond'))  
+  // Growing conditions for the plant on the mainpage
+  const growingCond = getPlantCond()
+  // Startes at stage 1
+  let stage = 1
 
   icons.forEach((icon) => {
       const iconType = icon.getAttribute('data-icon-type');
@@ -380,8 +391,6 @@ function setupDragDrop() {
                 }
             }
 
-            // Mark as updated to prevent reversion on same drag
-
             // Save the updated array to localStorage
             localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
             console.log('Updated plantCareActions:', plantCare);
@@ -411,7 +420,6 @@ function setupDragDrop() {
               plantCare[1] -= 20; 
               
             }
-
             // Save the updated array to localStorage
             localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
             console.log('Reverted plantCareActions:', plantCare);
@@ -430,6 +438,14 @@ function setupDragDrop() {
           icon.src = iconOverPlantImages[iconType].default;
           isOverPlant = false;
           weatherBar(plantCare)
+          
+          if (arraysEqual(plantCare, growingCond) && stage < 3) {
+            stage += 1
+            growPlant(stage)
+            plantCare = JSON.parse(localStorage.getItem('startingCond'))
+            weatherBar(plantCare)
+          }
+
           
       }
   });
@@ -547,6 +563,39 @@ function weatherBar(weatherCond) {
       sunElement.src = 'img/greysun.png';  // Fill the rest with grey sun icons
     }
   }
+}
+
+function getPlantCond() {
+  const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));
+  const plantName = (localStorage.getItem("selectedPlant"))
+  
+  const plantType = plantsGrowCond.find(plant => {
+    if (plant.plant_name === plantName){
+      return  plant
+    }
+  })
+  
+  let sun = parseInt(plantType.sun_level)
+  let water = parseInt(plantType.water_level)
+  sessionStorage.setItem('plantGrowCond', JSON.stringify([water,sun]));
+  return [water,sun]
+}
+
+function growPlant(stage) {
+  const growingCond = getPlantCond()
+  const currentPlant = (localStorage.getItem("selectedPlant"))
+  const startingCond = (sessionStorage.getItem("startingCond"))
+
+  const plantPot = document.getElementById('pla nt-image');
+  plantPot.src = `img/${currentPlant}_s${stage}.png`
+  localStorage.setItem('plantCareActions', (startingCond));
+    
+}
+
+function arraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+
+  return arr1.every((value, index) => value === arr2[index]);
 }
 
 
@@ -693,7 +742,7 @@ async function initializeDataFetch() {
       
       if (sun > 50) {
         sunCond = 'Very Sunny';
-      } else if (sun > 0) {
+      } else if (sun > 10) {
         sunCond = 'Sunny'
       } else {
         sunCond = 'Overcast'
@@ -768,7 +817,7 @@ async function initializeDataFetch() {
     }
 
     async function loadCSV() {
-      await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/main/csv/plant_quiz_data.csv')
+      await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/refs/heads/main/csv/growing%20plants%20data.csv')
         .then(response => response.text())
         .then(csvText => {
             // Parse CSV with PapaParse
@@ -779,12 +828,12 @@ async function initializeDataFetch() {
     
         // The data is now correctly parsed into rows with quoted fields handled
             const plantGrowth = parsedData.data  // Parsed quiz data in array format
-            sessionStorage.setItem("plantGrow", JSON.stringify(quizData));
+            sessionStorage.setItem("plantGrow", JSON.stringify(plantGrowth));
       })
       .catch(error => console.error('Error fetching CSV:', error));
     }
     
-
+    loadCSV()
     weatherProperties()
     evaluateWeather()
     const weatherImg = await evaluateWeather()

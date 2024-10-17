@@ -39,9 +39,25 @@ async function getPlantData(options, key, id) {
         plantProperty = match ? match[1] : plant.species;  // If match, use scientific name, else full species name
     }
 
-    // Special handling for height (convert number to string with 'cm')
+    // Special handling for height (convert number to string with 'cm' or 'm')
     if (key === 'height') {
-        plantProperty = `${plant.height} cm`;
+        // Convert the plant's height to centimeters
+        const plantHeightCm = plant.height;
+        const plantHeightM = plant.height; 
+
+        const correctHeightCm = `${plantHeightCm} cm`;
+        const correctHeightM = `${plantHeightM} m`;
+
+        // Normalize the height options to handle both units
+        const correctOption = options.find(option => {
+            const normalizedOption = option.toLowerCase().trim();
+            return (
+                normalizedOption === correctHeightCm.toLowerCase() || 
+                normalizedOption === correctHeightM.toLowerCase()
+            );
+        });
+
+        return correctOption || 'none';  // Return the correct option if found
     }
 
     // Handle description with partial matching
@@ -75,10 +91,9 @@ async function getPlantData(options, key, id) {
 let currentQuestion = 0;
 let score = 0;
 
-const selectedPlantId = "24"
-const selectPlantIdNum = parseInt(selectedPlantId)
+const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
 loadCSV()
-const quizData = createQuiz(selectedPlantId)
+const quizData = createQuiz(`${plantIndex}`)
 
 async function setupQuiz() {
     const questionElement = document.getElementById("question");
@@ -86,7 +101,7 @@ async function setupQuiz() {
 
     // Make sure all answers are set properly
     for (const question of quizData) {
-            question.answer = await getPlantData(question.options, question.type, selectPlantIdNum);
+            question.answer = await getPlantData(question.options, question.type, plantIndex);
     }
 
     showQuestion(questionElement, optionsElement);
@@ -262,7 +277,6 @@ async function loadCSV() {
 
 function createQuiz(selectedPlant) {
     const plantsData = JSON.parse(sessionStorage.getItem("quizData"));
-    console.log(plantsData) 
     //function to find a specific plant by index of plant being grown
     const findObjectByIndex = (arr, index) => {
             return arr.find(item => item.index === index);
