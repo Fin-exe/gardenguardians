@@ -17,6 +17,7 @@ document.getElementById("nav_overlay").addEventListener("click", closeNav);
 document.addEventListener('DOMContentLoaded', function () {
     setupQuiz();
     cardProperties();
+    loadCSV();
 });
 
 async function getPlantData(options, key, id) {
@@ -315,7 +316,6 @@ function createQuiz(selectedPlant) {
             answer: 5
         },
     ];
-    console.log(quizData)
     return quizData
        
 }

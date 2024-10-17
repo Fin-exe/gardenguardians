@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize elements
     const plantImage = document.getElementById('plant-image');
-    const selectedPlant = localStorage.getItem('selectedPlant');
+    const selectedPlant = sessionStorage.getItem('selectedPlant');
 
     // Set the plant image based on the selected plant
     if (selectedPlant) {
@@ -14,13 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize functionalities
+    initializeDataFetch();
+    getPlantCond();
     handlePlantGrowth();
     openNav();
     closeNav();
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
-    initializeDataFetch();
+    
 });
 
  
@@ -40,7 +42,7 @@ function openNav() {
 // STAGE CHANGE
 function handlePlantGrowth() {
     const plantImage = document.getElementById('plant-image');
-    const selectedPlant = localStorage.getItem('selectedPlant');
+    const selectedPlant = sessionStorage.getItem('selectedPlant');
 
     if (!plantImage || !selectedPlant) {
         console.error("Plant image element or selected plant not found.");
@@ -178,7 +180,7 @@ matrush: { // Mat Rush
 };
 
 function selectPlant(plantId) {
-    localStorage.setItem('selectedPlant', plantId);
+    sessionStorage.setItem('selectedPlant', plantId);
 }
 
 function clearSelectedPlant() {
@@ -187,7 +189,7 @@ function clearSelectedPlant() {
 
 document.addEventListener('DOMContentLoaded', function() {
   const plantImage = document.getElementById('plant-image');
-  const selectedPlant = localStorage.getItem('selectedPlant');
+  const selectedPlant = sessionStorage.getItem('selectedPlant');
 
   if (selectedPlant) {
       plantImage.src = `img/${selectedPlant}_s1.png`;
@@ -207,7 +209,7 @@ letsPlantButton.addEventListener('click', function(event) {
 
 // Existing functions
 function selectPlant(plantId) {
-    localStorage.setItem('selectedPlant', plantId);
+    sessionStorage.setItem('selectedPlant', plantId);
     const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));      
     const plantType = plantsGrowCond.find(plant => {
       if (plant.plant_name === plantId){
@@ -276,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
 let currentPlantId = null;
 
 const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
-console.log(currentWeatherIcons)
 
 //DRAG AND DROP
 function handleCardFlip() {
@@ -312,7 +313,7 @@ function setupDragDrop() {
   };
 
   // Retrieve starting conditions to change via icons
-  let plantCare = JSON.parse(localStorage.getItem('startingCond'))  
+  let plantCare = JSON.parse(localStorage.getItem('startingCond'))
   // Growing conditions for the plant on the mainpage
   const growingCond = getPlantCond()
   // Startes at stage 1
@@ -392,7 +393,7 @@ function setupDragDrop() {
             }
 
             // Save the updated array to localStorage
-            localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
+            sessionStorage.setItem('plantCareActions', JSON.stringify(plantCare));
             console.log('Updated plantCareActions:', plantCare);
 
         } else if (!isOverlapping && isOverPlant) {
@@ -421,7 +422,7 @@ function setupDragDrop() {
               
             }
             // Save the updated array to localStorage
-            localStorage.setItem('plantCareActions', JSON.stringify(plantCare));
+            sessionStorage.setItem('plantCareActions', JSON.stringify(plantCare));
             console.log('Reverted plantCareActions:', plantCare);
         }
     }
@@ -567,7 +568,7 @@ function weatherBar(weatherCond) {
 
 function getPlantCond() {
   const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));
-  const plantName = (localStorage.getItem("selectedPlant"))
+  const plantName = (sessionStorage.getItem("selectedPlant"))
   
   const plantType = plantsGrowCond.find(plant => {
     if (plant.plant_name === plantName){
@@ -583,12 +584,12 @@ function getPlantCond() {
 
 function growPlant(stage) {
   const growingCond = getPlantCond()
-  const currentPlant = (localStorage.getItem("selectedPlant"))
-  const startingCond = (sessionStorage.getItem("startingCond"))
+  const currentPlant = (sessionStorage.getItem("selectedPlant"))
+  const startingCond = (localStorage.getItem("startingCond"))
 
-  const plantPot = document.getElementById('pla nt-image');
+  const plantPot = document.getElementById('plant-image');
   plantPot.src = `img/${currentPlant}_s${stage}.png`
-  localStorage.setItem('plantCareActions', (startingCond));
+  sessionStorage.setItem('plantCareActions', (startingCond));
     
 }
 
@@ -597,7 +598,6 @@ function arraysEqual(arr1, arr2) {
 
   return arr1.every((value, index) => value === arr2[index]);
 }
-
 
 
 async function initializeDataFetch() {
@@ -817,27 +817,26 @@ async function initializeDataFetch() {
     }
 
     async function loadCSV() {
-      await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/refs/heads/main/csv/growing%20plants%20data.csv')
-        .then(response => response.text())
-        .then(csvText => {
-            // Parse CSV with PapaParse
-            let parsedData = Papa.parse(csvText, {
-                header: true,    // Use the first row as headers
-                skipEmptyLines: true  // Skip empty lines in the CSV
-            }); 
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/refs/heads/main/csv/growing%20plants%20data.csv');
+        const csvText = await response.text();
+        let parsedData = Papa.parse(csvText, {
+          header: true,    // Use the first row as headers
+          skipEmptyLines: true  // Skip empty lines in the CSV
+        });
     
-        // The data is now correctly parsed into rows with quoted fields handled
-            const plantGrowth = parsedData.data  // Parsed quiz data in array format
-            sessionStorage.setItem("plantGrow", JSON.stringify(plantGrowth));
-      })
-      .catch(error => console.error('Error fetching CSV:', error));
+        const plantGrowth = parsedData.data;  // Parsed quiz data in array format
+        sessionStorage.setItem("plantGrow", JSON.stringify(plantGrowth));
+        console.log('CSV data stored in localStorage:', plantGrowth);
+      } catch (error) {
+        console.error('Error fetching CSV:', error);
+      }
     }
-    
+
     loadCSV()
     weatherProperties()
     evaluateWeather()
     const weatherImg = await evaluateWeather()
-    console.log(weatherImg)
     // Get the body element with the class 'mainpage'
     const weatherElement = document.querySelector("body.mainpage");
     // Change the background image dynamically based on the weatherImg variable
