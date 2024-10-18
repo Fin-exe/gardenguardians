@@ -728,18 +728,18 @@ body {
 }
 
 .result-title {
-    font-size: 2em; /* Large font size for the title */
-    color: #2c3e50; /* Darker color for the title */
-    text-align: center; /* Center the title */
-    margin-bottom: 20px; /* Add space below the title */
+    font-size: 2em; 
+    color: #2c3e50; 
+    text-align: center; 
+    margin-bottom: 20px;
 }
 
 .result-score {
-    font-size: 1.5em; /* Slightly smaller font size for the score */
-    color: #16a085; /* Different color for the score */
-    text-align: center; /* Center the score text */
-    margin-top: 10px; /* Add space above the score */
-    font-weight: bold; /* Make the score bold */
+    font-size: 1.5em;
+    color: #16a085;
+    text-align: center;
+    margin-top: 10px; 
+    font-weight: bold; 
 }
 
 .mascot_quiz {
@@ -760,7 +760,6 @@ body {
 .back-icon {
     width: 85px;
 }
-
 
 /*plant conditions box*/
 .top_left_healthbar {
