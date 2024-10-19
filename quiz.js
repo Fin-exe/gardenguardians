@@ -99,11 +99,16 @@ const quizData = createQuiz(`${plantIndex}`)
 async function setupQuiz() {
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
-
-    // Make sure all answers are set properly
-    for (const question of quizData) {
+    // Vhoose plant first message
+    const choosePlant = document.getElementById('quiz-choose');
+    if (plantIndex) {// Make sure all answers are set properly
+        for (const question of quizData) {
             question.answer = await getPlantData(question.options, question.type, plantIndex);
+        }
+    } else {
+        choosePlant.style.display = 'block'
     }
+    
 
     showQuestion(questionElement, optionsElement);
 }

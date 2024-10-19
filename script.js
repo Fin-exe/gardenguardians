@@ -25,6 +25,26 @@ document.addEventListener('DOMContentLoaded', function () {
     
 });
 
+// Main page modal (congratulation message)
+const modal = document.getElementById('congratsModal');
+const closeBtn = document.querySelector('.close-btn-modal');
+
+// Open the modal
+function showCongratsModal() {
+  modal.style.display = 'block';
+}
+
+// Close the modal via button
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+// Closes modal messsage if clicked outide of modal
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
  
 // NAV BAR
 function openNav() {
@@ -435,7 +455,6 @@ function setupDragDrop() {
           icon.style.zIndex = ''; 
           icon.style.transform = '';
 
-          
           icon.src = iconOverPlantImages[iconType].default;
           isOverPlant = false;
           weatherBar(plantCare)
@@ -445,9 +464,11 @@ function setupDragDrop() {
             growPlant(stage)
             plantCare = JSON.parse(localStorage.getItem('startingCond'))
             weatherBar(plantCare)
+            if (stage === 3) {
+              showCongratsModal()
+            }
+            
           }
-
-          
       }
   });
 }
