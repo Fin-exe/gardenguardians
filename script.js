@@ -25,26 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
 });
 
-// Main page modal (congratulation message)
-const modal = document.getElementById('congratsModal');
-const closeBtn = document.querySelector('.close-btn-modal');
-
-// Open the modal
-function showCongratsModal() {
-  modal.style.display = 'block';
-}
-
-// Close the modal via button
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-// Closes modal messsage if clicked outide of modal
-window.addEventListener('click', (event) => {
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
-});
-
  
 // NAV BAR
 function openNav() {
@@ -338,6 +318,19 @@ function setupDragDrop() {
   const growingCond = getPlantCond()
   // Startes at stage 1
   let stage = 1
+  // Main page modal (congratulation message)
+  const modal = document.getElementById('congratsModal');
+  const closeBtn = document.querySelector('.close-btn-modal');
+
+  // Open the modal
+  function showCongratsModal() {
+    modal.style.display = 'block';
+  }
+
+  // Close the modal via button
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 
   icons.forEach((icon) => {
       const iconType = icon.getAttribute('data-icon-type');
@@ -465,6 +458,7 @@ function setupDragDrop() {
             plantCare = JSON.parse(localStorage.getItem('startingCond'))
             weatherBar(plantCare)
             if (stage === 3) {
+              console.log('heyo')
               showCongratsModal()
             }
             
