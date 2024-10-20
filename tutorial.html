@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="'en">
-    <head>
-        <meta charset="UTF-8">
-        <!-- Ensuring the page renders properly in the internet explorer through the latest engine available  -->
-        <meta http-equiv="X-UA-Compatible" content=""IE=edge>
-        <!-- Ensuring the width matches the device screen to fit the content well (responsiveness) -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
-        <title>Garden Guardians - Walkthrough</title>
-    </head>
-    <body class="main">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Ensuring the page renders properly in the internet explorer through the latest engine available  -->
+    <meta http-equiv="X-UA-Compatible" content="" IE="edge" />
+    <!-- Ensuring the width matches the device screen to fit the content well (responsiveness) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Garden Guardians - Walkthrough</title>
+  </head>
+  <body class="main">
+    <!-- Nav Bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="index.html" class="link_to_pages">Home Page</a>
+      <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
+      <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
+      <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+    </div>
+    <span onclick="openNav()" class="navbtn_tut">&#9776;</span>
 
-        <!-- Nav Bar -->
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="index.html" class="link_to_pages">Home Page</a>
-            <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
-            <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
-            <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
-        </div>
-        <span onclick="openNav()" class="navbtn_tut" >&#9776;</span>
-
-        <div class="back_to_mainpage">
-            <button class="back_to_home_button" onclick="window.location.href='index.html';">Let's do this!</button>
-        </div>
-        <script src="script.js"></script>
-    </body>
+    <div class="back_to_mainpage">
+      <button
+        class="back_to_home_button"
+        onclick="window.location.href='index.html';"
+      >
+        Let's do this!
+      </button>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

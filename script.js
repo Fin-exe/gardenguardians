@@ -320,11 +320,12 @@ function setupDragDrop() {
   // Growing conditions for the plant on the mainpage
   const growingCond = getPlantCond()
   // Startes at stage 1
-  let stage = sessionStorage.getItem('state')
+  let stage = 1
   console.log()
   // Main page modal (congratulation message)
   const modal = document.getElementById('congratsModal');
   const closeBtn = document.querySelector('.close-btn-modal');
+
 
   // Open the modal
   function showCongratsModal() {
@@ -458,12 +459,10 @@ function setupDragDrop() {
           
           if (arraysEqual(plantCare, growingCond) && stage < 3) {
             stage += 1
-            sessionStorage.setItem('stage', stage)  
             growPlant(stage)
             plantCare = JSON.parse(localStorage.getItem('startingCond'))
             weatherBar(plantCare)
             if (stage === 3) {
-              console.log('heyo')
               showCongratsModal()
             }
             
@@ -760,7 +759,7 @@ async function initializeDataFetch() {
         rainCond = 'No Rain'
       }
       
-      if (sun > 50) {
+      if (sun > 70) {
         sunCond = 'Very Sunny';
       } else if (sun > 10) {
         sunCond = 'Sunny'

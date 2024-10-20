@@ -14,10 +14,20 @@ function closeNav() {
 document.getElementById("nav_overlay").addEventListener("click", closeNav);
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    setupQuiz();
+document.addEventListener('DOMContentLoaded', function () { 
+    const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
+    const choosePlant = document.getElementById('quiz-choose');
+
+
     cardProperties();
     loadCSV();
+    if (plantIndex) {
+      startScreen()  
+    } else {
+        choosePlant.style.display = 'block'
+    }
+    
+    
 });
 
 async function getPlantData(options, key, id) {
@@ -96,12 +106,39 @@ const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
 loadCSV()
 const quizData = createQuiz(`${plantIndex}`)
 
+function startScreen() {
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = `
+      <h1 class="start-title">Press the button to start the Quiz!</h1>
+      <button id="start-btn" class="start-quiz">Start!</button>
+    `;
+
+    //Accessing the start-btn and adding eventlistener
+    //calling startQuiz() function
+    document.getElementById("start-btn").addEventListener("click", startQuiz);
+}
+
+function startQuiz() {
+    // Setting up the quiz layout
+    const quizContainer = document.getElementById("quiz");
+    quizContainer.innerHTML = `
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+    `;
+
+    // Using setupQuiz to Start the quiz
+    setupQuiz();  
+}
+
 async function setupQuiz() {
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
     // Vhoose plant first message
     const choosePlant = document.getElementById('quiz-choose');
+    
     if (plantIndex) {// Make sure all answers are set properly
+        questionElement.style.display = 'block'
+        optionsElement.style.display = 'flex'
         for (const question of quizData) {
             question.answer = await getPlantData(question.options, question.type, plantIndex);
         }
@@ -152,7 +189,7 @@ function selectAnswer(e) {
         } else {
             showResult();
         }
-    }, 2000); 
+    }, 1000); 
 }
 
 function showResult() {

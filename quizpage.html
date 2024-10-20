@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Garden Guardians - Quick Quiz</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body id="quiz_body">
-
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="quiz_body">
     <!-- Nav Bar -->
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html" class="link_to_pages">Home Page</a>
-        <a href="tutorial.html" class="link_to_pages">Tutorial</a>
-        <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
-        <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="index.html" class="link_to_pages">Home Page</a>
+      <a href="tutorial.html" class="link_to_pages">Tutorial</a>
+      <a href="seedpage.html" class="link_to_pages">Choose Your Plant</a>
+      <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
     </div>
-    <span onclick="openNav()" class="navbtn_quiz" >&#9776;</span>
+    <span onclick="openNav()" class="navbtn_quiz">&#9776;</span>
     <div id="nav_overlay"></div>
 
     <div class="quiz-container">
-        <a href="mainpage.html" class="back-button">
-            <img src="img/back_arrow.png" alt="Back" class="back-icon">
-        </a>
+      <a href="mainpage.html" class="back-button">
+        <img src="img/back_arrow.png" alt="Back" class="back-icon" />
+      </a>
 
-        <h1 class="quiz-title">Quick Quiz</h1>
-        <div class="quiz" id="quiz"> 
-            <div class="question" id="question"></div>
-            <p id="quiz-choose">Please select a plant first!</p> 
-            <div class="options" id="options"></div>
-           
-        </div>
+      <h1 class="quiz-title">Quick Quiz</h1>
+      <div class="quiz" id="quiz">
+        <div class="question" id="question"></div>
+        <p id="quiz-choose">Please select a plant first!</p>
+        <div class="options" id="options"></div>
+      </div>
 
-        <div>
-            <img class="mascot_quiz" src="img/mascot.svg" alt="mascot">
-        </div>
-
+      <div>
+        <img class="mascot_quiz" src="img/mascot.svg" alt="mascot" />
+      </div>
     </div>
-    
+
     <script src="quiz.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-</body>
+  </body>
 </html>

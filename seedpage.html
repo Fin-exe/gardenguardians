@@ -1,139 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Seed Page</title>
-        <link href="seedpage.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap" rel="stylesheet">
-    </head>
-    <body class="fullseedpage">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seed Page</title>
+    <link href="seedpage.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="fullseedpage">
+    <!-- Nav Bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="index.html" class="link_to_pages">Home Page</a>
+      <a href="tutorial.html" class="link_to_pages">Tutorial</a>
+      <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
+      <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+    </div>
+    <span onclick="openNav()" class="navbtn">&#9776;</span>
+    <div id="nav_overlay"></div>
 
-        <!-- Nav Bar -->
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="index.html" class="link_to_pages">Home Page</a>
-            <a href="tutorial.html" class="link_to_pages">Tutorial</a>
-            <a href="mainpage.html" class="link_to_pages">Grow Your Plant</a>
-            <a href="quizpage.html" class="link_to_pages">Take a Quiz!</a>
+    <div class="flex-container1">
+      <div class="back-button">
+        <a href="mainpage.html">
+          <img src="img/back_arrow.png" alt="Back To Home" class="back-icon" />
+        </a>
+      </div>
+      <h1 id="seed-title">Choose your plant!</h1>
+    </div>
+
+    <div class="flex-container3">
+      <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')">
+          Show All
+        </button>
+        <button class="btn" onclick="filterSelection('flowers')">
+          Flowers
+        </button>
+        <button class="btn" onclick="filterSelection('bushes/shrubs')">
+          Bushes/Shrubs
+        </button>
+        <button class="btn" onclick="filterSelection('trees')">Trees</button>
+        <button class="btn" onclick="filterSelection('vine')">
+          Hanging Vine
+        </button>
+        <button class="btn" onclick="filterSelection('summer/spring')">
+          Summer/Spring
+        </button>
+        <button class="btn" onclick="filterSelection('autumn/winter')">
+          Autumn/Winter
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-container2">
+      <div class="parentbox">
+        <div
+          id="plant1"
+          class="namestyle filterDiv flowers summer/spring"
+          data-plant-id="cutleafdaisy"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/cutleaf.jpg"
+            alt="Cut Leaf Daisy"
+          />
+          <h3>Cutleaf Daisy</h3>
         </div>
-        <span onclick="openNav()" class="navbtn" >&#9776;</span>
-        <div id="nav_overlay"></div>
-
-
-        <div class="flex-container1">
-            <div class="back-button">
-                <a href="mainpage.html">
-                    <img src="img/back_arrow.png" alt="Back To Home" class="back-icon">
-                </a>
-            </div>
-            <h1 id="seed-title">Choose your plant!</h1>
+        <div
+          id="plant2"
+          class="namestyle filterDiv bushes/shrubs summer/spring"
+          data-plant-id="creepingboobialla"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/creeping.jpg"
+            alt="Creeping Boobialla"
+          />
+          <h3>Creeping Boobialla</h3>
         </div>
+        <div
+          id="plant3"
+          class="namestyle filterDiv flowers summer/spring"
+          data-plant-id="nativeviolet"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/native violet.jpg"
+            alt="Fan Flower"
+          />
+          <h3>Fan Flower</h3>
+        </div>
+        <div
+          id="plant4"
+          class="namestyle filterDiv bushes/shrubs summer/spring"
+          data-plant-id="knobcr"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/knobby.jpg"
+            alt="Native Violet"
+          />
+          <h3>Native Violet</h3>
+        </div>
+        <div
+          id="plant5"
+          class="namestyle filterDiv vine summer/spring"
+          data-plant-id="guinea"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/guinea plant.jpeg"
+            alt="Blue Flax"
+          />
+          <h3>Blue Flax</h3>
+        </div>
+        <div
+          id="plant6"
+          class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter"
+          data-plant-id="teatreesmall"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/teatreesmall.jpeg"
+            alt="Knobby Club Rush"
+          />
+          <h3>Knobby Club Rush</h3>
+        </div>
+        <div
+          id="plant7"
+          class="namestyle filterDiv bushes/shrubs summer/spring"
+          data-plant-id="thyme"
+        >
+          <img class="plant_image_sizing" src="img/thyme.jpeg" alt="Mat Rush" />
+          <h3>Mat Rush</h3>
+        </div>
+        <div
+          id="plant8"
+          class="namestyle filterDiv trees summer/spring autumn/winter"
+          data-plant-id="banksia"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/banksia.jpeg"
+            alt="Guinea Vine"
+          />
+          <h3>Guinea Vine</h3>
+        </div>
+        <div
+          id="plant9"
+          class="namestyle filterDiv bushes/shrubs summer/spring"
+          data-plant-id="grevillea"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/grevillea.jpeg"
+            alt="Tea Tree Small"
+          />
+          <h3>Tea Tree Small</h3>
+        </div>
+        <div
+          id="plant10"
+          class="namestyle filterDiv trees summer/spring"
+          data-plant-id="teatreemedium"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/teatreemedium.jpeg"
+            alt="Thyme Myrtle"
+          />
+          <h3>Thyme Myrtle</h3>
+        </div>
+        <div
+          id="plant11"
+          class="namestyle filterDiv trees summer/spring"
+          data-plant-id="blushsatinash"
+        >
+          <img class="plant_image_sizing" src="img/blue.jpeg" alt="Banksia" />
+          <h3>Banksia</h3>
+        </div>
+        <div
+          id="plant12"
+          class="namestyle filterDiv trees summer/spring"
+          data-plant-id="tulipwood"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/tulipwood.jpeg"
+            alt="Grevillea"
+          />
+          <h3>Grevillea</h3>
+        </div>
+        <div
+          id="plant13"
+          class="namestyle filterDiv flowers summer/spring"
+          data-plant-id="fanflower"
+        >
+          <img class="plant_image_sizing" src="img/fan.jpeg" alt="Tea Tree" />
+          <h3>Tea Tree</h3>
+        </div>
+        <div
+          id="plant14"
+          class="namestyle filterDiv flowers summer/spring"
+          data-plant-id="blueflax"
+        >
+          <img
+            class="plant_image_sizing"
+            src="img/blue.jpeg"
+            alt="Blush Satinash"
+          />
+          <h3>Blush Satinash</h3>
+        </div>
+        <div
+          id="plant15"
+          class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter"
+          data-plant-id="matrush"
+        >
+          <img class="plant_image_sizing" src="img/mat.jpeg" alt="Tulipwood" />
+          <h3>Tulipwood</h3>
+        </div>
+      </div>
+    </div>
 
-        <div class="flex-container3">
-            <div id="myBtnContainer">
-                <button class="btn active" onclick="filterSelection('all')">Show All</button>
-                <button class="btn" onclick="filterSelection('flowers')">Flowers</button>
-                <button class="btn" onclick="filterSelection('bushes/shrubs')">Bushes/Shrubs</button>
-                <button class="btn" onclick="filterSelection('trees')">Trees</button>
-                <button class="btn" onclick="filterSelection('vine')">Hanging Vine</button>
-                <button class="btn" onclick="filterSelection('summer/spring')">Summer/Spring</button>
-                <button class="btn" onclick="filterSelection('autumn/winter')">Autumn/Winter</button>
+    <!--FLIPCARDS-->
+
+    <div id="overlay"></div>
+
+    <section id="info_card">
+      <div class="card">
+        <div class="card__inner">
+          <div class="card__face card__face--front">
+            <span class="close_btn" aria-label="Close">&times;</span>
+            <img class="front_context" src="" alt="Front of Card" />
           </div>
-        </div>
-            
-        <div class="flex-container2">
-            <div class="parentbox">
-                <div id="plant1" class="namestyle filterDiv flowers summer/spring" data-plant-id="cutleafdaisy">
-                    <img class="plant_image_sizing" src="img/cutleaf.jpg" alt="Cut Leaf Daisy">
-                    <h3>Cutleaf Daisy</h3>
-                </div>
-                <div id="plant2" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="creepingboobialla">
-                    <img class="plant_image_sizing" src="img/creeping.jpg" alt="Creeping Boobialla">
-                    <h3>Creeping Boobialla</h3>
-                </div>
-                <div id="plant3" class="namestyle filterDiv flowers summer/spring" data-plant-id="nativeviolet">
-                    <img class="plant_image_sizing"src="img/native violet.jpg" alt="Fan Flower">
-                    <h3>Fan Flower</h3>
-                </div>
-                <div id="plant4" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="knobcr">
-                    <img class="plant_image_sizing" src="img/knobby.jpg" alt="Native Violet">
-                    <h3>Native Violet</h3>
-                </div>
-                <div id="plant5" class="namestyle filterDiv vine summer/spring" data-plant-id="guinea">
-                    <img class="plant_image_sizing" src="img/guinea plant.jpeg" alt="Blue Flax">
-                    <h3>Blue Flax</h3>
-                </div>
-                <div id="plant6" class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter" data-plant-id="teatreesmall">
-                    <img class="plant_image_sizing" src="img/teatreesmall.jpeg" alt="Knobby Club Rush">
-                    <h3>Knobby Club Rush</h3>
-                </div>
-                <div id="plant7" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="thyme">
-                    <img class="plant_image_sizing" src="img/thyme.jpeg" alt="Mat Rush">
-                    <h3>Mat Rush</h3>
-                </div>
-                <div id="plant8" class="namestyle filterDiv trees summer/spring autumn/winter" data-plant-id="banksia">
-                    <img class="plant_image_sizing" src="img/banksia.jpeg" alt="Guinea Vine">
-                    <h3>Guinea Vine</h3>
-                </div>
-                <div id="plant9" class="namestyle filterDiv bushes/shrubs summer/spring" data-plant-id="grevillea">
-                    <img class="plant_image_sizing" src="img/grevillea.jpeg" alt="Tea Tree Small">
-                    <h3>Tea Tree Small</h3>
-                </div>
-                <div id="plant10" class="namestyle filterDiv trees summer/spring" data-plant-id="teatreemedium">
-                    <img class="plant_image_sizing" src="img/teatreemedium.jpeg" alt="Thyme Myrtle">
-                    <h3>Thyme Myrtle</h3>
-                </div>
-                <div id="plant11" class="namestyle filterDiv trees summer/spring" data-plant-id="blushsatinash">
-                    <img class="plant_image_sizing" src="img/blue.jpeg" alt="Banksia">
-                    <h3>Banksia</h3> 
-                </div>
-                <div id="plant12" class="namestyle filterDiv trees summer/spring" data-plant-id="tulipwood">
-                    <img class="plant_image_sizing" src="img/tulipwood.jpeg" alt="Grevillea">
-                    <h3>Grevillea</h3> 
-                </div>
-                <div id="plant13" class="namestyle filterDiv flowers summer/spring" data-plant-id="fanflower">
-                    <img class="plant_image_sizing" src="img/fan.jpeg" alt="Tea Tree">
-                    <h3>Tea Tree</h3> 
-                </div>
-                <div id="plant14" class="namestyle filterDiv flowers summer/spring" data-plant-id="blueflax">
-                    <img class="plant_image_sizing" src="img/blue.jpeg" alt="Blush Satinash">
-                    <h3>Blush Satinash</h3> 
-                </div>
-                <div id="plant15" class="namestyle filterDiv bushes/shrubs summer/spring autumn/winter" data-plant-id="matrush">
-                    <img class="plant_image_sizing" src="img/mat.jpeg" alt="Tulipwood">
-                    <h3>Tulipwood</h3> 
-                </div>
-            </div>
-        </div>
-
-        <!--FLIPCARDS-->
-
-        <div id="overlay"></div>
-
-        <section id="info_card">
-            <div class="card">
-              <div class="card__inner">
-                <div class="card__face card__face--front">
-                  <span class="close_btn" aria-label="Close">&times;</span>
-                  <img class="front_context" src="" alt="Front of Card">
-                </div>
-                <div class="card__face card__face--back">
-                  <div class="card__content">
-                    <div id="popup_content_back">
-                      <span class="close_btn_back" aria-label="Close">&times;</span>
-                      <img class="back_context" src="" alt="Back of Card">
-                    </div>
-                    <div class="quiz-box">
-                      <a href="mainpage.html" class="quiz-link">
-                        <h2>Let's Plant This!</h2>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+          <div class="card__face card__face--back">
+            <div class="card__content">
+              <div id="popup_content_back">
+                <span class="close_btn_back" aria-label="Close">&times;</span>
+                <img class="back_context" src="" alt="Back of Card" />
+              </div>
+              <div class="quiz-box">
+                <a href="mainpage.html" class="quiz-link">
+                  <h2>Let's Plant This!</h2>
+                </a>
               </div>
             </div>
-          </section>
-          <script src="script.js"></script>
-    </body>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>
