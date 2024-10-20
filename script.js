@@ -914,29 +914,26 @@ Array.from(btns).forEach(function(btn) {
   });
 });
 
-
-function flickrAPI(){
-    const baseFlickr = ""
-    const keyFlickr= "eecd5014501ebeeec6d473f4c8311e32"
-    fetch(`${baseFlickr}?api_key=${keyFlickr}&format=json&nojsoncallback=1`)
-    .then(response => response.json())
-    .then(data => {
-        const photos = data.photos.photo;
-        localStorage.setItem('flickrPhotos', JSON.stringify(photos));
-    })
-    .catch(error => console.log(error));
+// SEEDPAGE PHOTO LOADING
+document.addEventListener('DOMContentLoaded', function() {
+function updatePlantImages() {
+    fetch('test.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.url) {
+                // Update all plant images with the Flickr image
+                document.querySelectorAll('.plant_image_sizing').forEach(img => {
+                    img.src = data.url;
+                    img.alt = 'Flickr plant image';
+                });
+            } else {
+                console.error('Error fetching Flickr image:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
-function pereAPI(){
-  const basePere = ""
-  const keyPere= "sk-1vCJ670d9d7dc26cd7238"
-  fetch(`${baseFlickr}?api_key=${keyPere}&format=json&nojsoncallback=1`)
-  .then(response => response.json())
-  .then(data => {
-      const photos = data.photos.photo;
-      localStorage.setItem('flickrPhotos', JSON.stringify(photos));
-  })
-  .catch(error => console.log(error));
-}
+updatePlantImages();
 
+});
 
