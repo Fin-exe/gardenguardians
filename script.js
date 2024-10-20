@@ -318,6 +318,19 @@ function setupDragDrop() {
   const growingCond = getPlantCond()
   // Startes at stage 1
   let stage = 1
+  // Main page modal (congratulation message)
+  const modal = document.getElementById('congratsModal');
+  const closeBtn = document.querySelector('.close-btn-modal');
+
+  // Open the modal
+  function showCongratsModal() {
+    modal.style.display = 'block';
+  }
+
+  // Close the modal via button
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 
   icons.forEach((icon) => {
       const iconType = icon.getAttribute('data-icon-type');
@@ -435,7 +448,6 @@ function setupDragDrop() {
           icon.style.zIndex = ''; 
           icon.style.transform = '';
 
-          
           icon.src = iconOverPlantImages[iconType].default;
           isOverPlant = false;
           weatherBar(plantCare)
@@ -445,9 +457,12 @@ function setupDragDrop() {
             growPlant(stage)
             plantCare = JSON.parse(localStorage.getItem('startingCond'))
             weatherBar(plantCare)
+            if (stage === 3) {
+              console.log('heyo')
+              showCongratsModal()
+            }
+            
           }
-
-          
       }
   });
 }
