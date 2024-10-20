@@ -147,6 +147,29 @@ img{border-radius: 8px;
   cursor: pointer;
 }
 
+.icon-container {
+  position: relative;
+}
+
+.icon-message-top {
+  position: absolute;
+  background-color: #FEFFE5;
+  border: #000 0.5px solid;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+  left: 50%;
+  bottom: 93%;
+  transform: translateX(-50%);
+  font-size: 1em;
+}
+
+.icon-container:hover .icon-message-top {
+    opacity: 1;
+}
+
 .left_button{
   width: 5em;
   height: 5em;
