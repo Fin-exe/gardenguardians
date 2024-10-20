@@ -847,7 +847,6 @@ async function initializeDataFetch() {
     
         const plantGrowth = parsedData.data;  // Parsed quiz data in array format
         sessionStorage.setItem("plantGrow", JSON.stringify(plantGrowth));
-        console.log('CSV data stored in localStorage:', plantGrowth);
       } catch (error) {
         console.error('Error fetching CSV:', error);
       }
