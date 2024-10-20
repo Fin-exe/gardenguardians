@@ -140,6 +140,7 @@ img{border-radius: 8px;
   background-color: #C0E8AC; 
   padding: 20px;
   border-radius: 15px; 
+  border: #000 1px solid;
   text-align: center;
   width: fit-content;
   margin: 20px auto;
