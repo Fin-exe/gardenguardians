@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     closeNav();
     handleCardFlip();
     setupDragDrop();
-    setupQuiz();
-
 });
 
  
@@ -135,8 +133,6 @@ guinea: { //Guinea Vine
     front: 'img/frontcover_gv.png',
     back: 'img/backcover_gv.png'
 },
-
-//Continue from here
 teatreesmall: { //Tea Tree Small
     front: 'img/teatreesmall_front.jpg',
     back: 'img/teatreesmall_back.jpg'
@@ -446,28 +442,34 @@ function setupDragDrop() {
     }
 
       function onMouseUp(e) {
-          document.removeEventListener('mousemove', onMouseMove);
-          document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
 
-          icon.style.transition = ''; 
+        setTimeout(() => {
+          // Set the transition time for the icon to return smoothly
+          icon.style.transition = 'transform 0.5s ease'; 
           icon.style.zIndex = ''; 
-          icon.style.transform = '';
-
+          icon.style.transform = ''; 
+          
           icon.src = iconOverPlantImages[iconType].default;
           isOverPlant = false;
-          weatherBar(plantCare)
-          
+          weatherBar(plantCare);
+  
+          // Check if plant care array matches growing conditions and grow plant if necessary
           if (arraysEqual(plantCare, growingCond) && stage < 3) {
-            stage += 1
-            growPlant(stage)
-            plantCare = JSON.parse(localStorage.getItem('startingCond'))
-            weatherBar(plantCare)
-            if (stage === 3) {
-              showCongratsModal()
-            }
-            
+              // Increases the stage of the plant to grow
+              stage += 1;
+              // Growing the plant based on its new stage
+              growPlant(stage);
+              // Resets to the starting plant condition to grow the plant in the new stage
+              plantCare = JSON.parse(localStorage.getItem('startingCond'));
+              weatherBar(plantCare);
+              if (stage === 3) {
+                  showCongratsModal();
+              }
           }
-      }
+        }, 200); // Delay of 0.2 seconds before moving the icon back
+     }
   });
 }
 
@@ -475,57 +477,6 @@ window.onload = function() {
     setupDragDrop();
 };
 
-//QUIZ
-function setupQuiz() {
-    
-    const feedback = document.getElementById('feedback');
-    const options = document.querySelectorAll('.option'); 
-    const tryAgainButton = document.getElementById('try-again'); 
-
-    
-    if (!feedback) {
-        console.error("Feedback element not found.");
-        return;
-    }
-
-   
-    options.forEach(button => {
-        button.addEventListener('click', function () {
-            
-            const isCorrect = button.getAttribute('data-correct') === 'true';  
-            checkAnswer(button, isCorrect);
-        });
-    });
-
-   
-    function checkAnswer(button, isCorrect) {
-        if (isCorrect) {
-            button.style.backgroundColor = '#a3e3a1'; //green
-            feedback.style.display = 'none'; 
-        } else {
-            button.style.backgroundColor = '#f4a19e'; 
-            feedback.style.display = 'flex'; // Show try again if the answer is wrong
-        }
-            
-        options.forEach(opt => {
-            opt.disabled = true;
-        });
-    }
-  
-    function resetQuiz() {
-        
-        feedback.style.display = 'none'; 
-          
-        options.forEach(button => {
-            button.style.backgroundColor = '#f7d8a8'; 
-            button.disabled = false; 
-        });
-    }
-    
-    if (tryAgainButton) {
-        tryAgainButton.addEventListener('click', resetQuiz);
-    }
-}
 
 function weatherBar(weatherCond) {
   const rain = weatherCond[0];
