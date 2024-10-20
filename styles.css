@@ -348,7 +348,6 @@ body.mainpage {
 .icon-message {
     position: absolute;
     background-color: #C0E8AC;
-    color: black;
     border: #000 0.5px solid;
     padding: 0.5em 1em;
     border-radius: 15px;
@@ -365,7 +364,6 @@ body.mainpage {
 .icon-message-top {
     position: absolute;
     background-color: #C0E8AC;
-    color: black;
     border: #000 0.5px solid;
     padding: 0.5em 1em;
     border-radius: 15px;
@@ -375,11 +373,29 @@ body.mainpage {
     left: 50%;
     bottom: 100%;
     transform: translateX(-50%);
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-size: 1.2em;
 }
 
-.icon-container:hover .icon-message, .icon-container:hover .icon-message-top  {
+.icon-message-right {
+    position: absolute;
+    background-color: #C0E8AC;
+    border: #000 1px solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    left: 90%;
+    transform: translateY(-350%);
+    margin-left: 10px;
+    white-space: normal;
+    min-width: 15em;
+    word-wrap: break-word;
+}
+
+.icon-container:hover .icon-message, .icon-container:hover .icon-message-top,  
+.icon-container:hover .icon-message-right {
     opacity: 1;
 }
 
