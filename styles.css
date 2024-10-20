@@ -337,7 +337,7 @@ body.mainpage {
 }
 
 .arrowleft {
-    width: 80px; /*needed for arrow, smaller than others*/
+    width: 80px; 
     height: auto;
 }
 
@@ -350,9 +350,8 @@ body.mainpage {
     background-color: #C0E8AC;
     color: black;
     border: #000 0.5px solid;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 0.5em 1em;
+    border-radius: 15px;
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     white-space: nowrap;
@@ -360,6 +359,7 @@ body.mainpage {
     top: 50%;
     transform: translateY(-50%);
     margin-right: 10px;
+    font-size: 1.5em;
 }
 
 .icon-message-top {
@@ -367,9 +367,8 @@ body.mainpage {
     background-color: #C0E8AC;
     color: black;
     border: #000 0.5px solid;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 0.5em 1em;
+    border-radius: 15px;
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     white-space: nowrap;
@@ -377,6 +376,7 @@ body.mainpage {
     bottom: 100%;
     transform: translateX(-50%);
     margin-bottom: 15px;
+    font-size: 1.2em;
 }
 
 .icon-container:hover .icon-message, .icon-container:hover .icon-message-top  {
