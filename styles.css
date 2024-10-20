@@ -344,8 +344,66 @@ body.mainpage {
 }
 
 .arrowleft {
-  width: 80px; /*needed for arrow, smaller than others*/
-  height: auto;
+    width: 80px; 
+    height: auto;
+}
+
+.icon-container {
+    position: relative;
+}
+
+.icon-message {
+    position: absolute;
+    background-color: #C0E8AC;
+    border: #000 0.5px solid;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.icon-message-top {
+    position: absolute;
+    background-color: #C0E8AC;
+    border: #000 0.5px solid;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    font-size: 1.2em;
+}
+
+.icon-message-right {
+    position: absolute;
+    background-color: #C0E8AC;
+    border: #000 1px solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    left: 90%;
+    transform: translateY(-350%);
+    margin-left: 10px;
+    white-space: normal;
+    min-width: 15em;
+    word-wrap: break-word;
+}
+
+.icon-container:hover .icon-message, .icon-container:hover .icon-message-top,  
+.icon-container:hover .icon-message-right {
+    opacity: 1;
 }
 
 /*VIRTUAL GARDEN*/

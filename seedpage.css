@@ -43,6 +43,10 @@
 .card::-webkit-scrollbar {
   display: none; /* WebKit browsers (Safari, Chrome) */
 }
+  
+.card::-webkit-scrollbar { 
+  display: none;  /* WebKit browsers (Safari, Chrome) */
+}
 
 .fullseedpage {
   background-color: #f4f6c2;
@@ -121,27 +125,14 @@ img {
   padding: 2% 2%;
 }
 
-#plant1,
-#plant2,
-#plant3,
-#plant4,
-#plant5,
-#plant6,
-#plant7,
-#plant8,
-#plant9,
-#plant10,
-#plant11,
-#plant12,
-#plant13,
-#plant14,
-#plant15 {
+#plant1, #plant2, #plant3, #plant4, #plant5, #plant6, #plant7, #plant8, 
+#plant9, #plant10, #plant11, #plant12, #plant13, #plant14, #plant15{
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
 }
 
-#myBtnContainer button {
+#myBtnContainer button{
   border: black 0.5px solid;
   padding: 0.5em 2em;
 }
@@ -150,14 +141,38 @@ img {
   padding: 0 0 2% 0;
   background-color: #c0e8ac;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 15px; 
+  border: #000 1px solid;
   text-align: center;
   width: fit-content;
   margin: 20px auto;
   cursor: pointer;
 }
 
-.left_button {
+.icon-container {
+  position: relative;
+}
+
+.icon-message-top {
+  position: absolute;
+  background-color: #FEFFE5;
+  border: #000 0.5px solid;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+  left: 50%;
+  bottom: 93%;
+  transform: translateX(-50%);
+  font-size: 1em;
+}
+
+.icon-container:hover .icon-message-top {
+    opacity: 1;
+}
+
+.left_button{
   width: 5em;
   height: 5em;
   vertical-align: center;
