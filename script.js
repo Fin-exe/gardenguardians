@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
+    updatePlantImages();
     
 });
 
@@ -910,25 +911,23 @@ Array.from(btns).forEach(function(btn) {
 });
 
 // SEEDPAGE PHOTO LOADING
-document.addEventListener('DOMContentLoaded', function() {
-function updatePlantImages() {
-    fetch('test.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.url) {
-                // Update all plant images with the Flickr image
-                document.querySelectorAll('.plant_image_sizing').forEach(img => {
-                    img.src = data.url;
-                    img.alt = 'Flickr plant image';
-                });
-            } else {
-                console.error('Error fetching Flickr image:', data.error);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-}
+// document.addEventListener('DOMContentLoaded', function() {
+// function updatePlantImages() {
+//     fetch('test.php')
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.url) {
+//                 // Update all plant images with the Flickr image
+//                 document.querySelectorAll('.plant_image_sizing').forEach(img => {
+//                     img.src = data.url;
+//                     img.alt = 'Flickr plant image';
+//                 });
+//             } else {
+//                 console.error('Error fetching Flickr image:', data.error);
+//             }
+//         })
+//         .catch(error => console.error('Error:', error));
+// }
 
-updatePlantImages();
-
-});
+// });
 
