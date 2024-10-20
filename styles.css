@@ -341,6 +341,48 @@ body.mainpage {
     height: auto;
 }
 
+.icon-container {
+    position: relative;
+}
+
+.icon-message {
+    position: absolute;
+    background-color: #C0E8AC;
+    color: black;
+    border: #000 0.5px solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+}
+
+.icon-message-top {
+    position: absolute;
+    background-color: #C0E8AC;
+    color: black;
+    border: #000 0.5px solid;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    margin-bottom: 15px;
+}
+
+.icon-container:hover .icon-message, .icon-container:hover .icon-message-top  {
+    opacity: 1;
+}
+
 /*VIRTUAL GARDEN*/
 .info_card {
     width: 100%;
