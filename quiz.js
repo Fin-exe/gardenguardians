@@ -14,12 +14,14 @@ function closeNav() {
 document.getElementById("nav_overlay").addEventListener("click", closeNav);
 
 
-document.addEventListener('DOMContentLoaded', function () { 
+document.addEventListener('DOMContentLoaded', async function () { 
     const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
     const choosePlant = document.getElementById('quiz-choose');
+    const quizData = createQuiz(`${plantIndex}`)
 
 
-    cardProperties();
+
+    await cardProperties();
     loadCSV();
     if (plantIndex) {
       startScreen()  
@@ -135,12 +137,15 @@ async function setupQuiz() {
     const optionsElement = document.getElementById("options");
     // Vhoose plant first message
     const choosePlant = document.getElementById('quiz-choose');
+    const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
+
     
     if (plantIndex) {// Make sure all answers are set properly
         questionElement.style.display = 'block'
         optionsElement.style.display = 'flex'
         for (const question of quizData) {
             question.answer = await getPlantData(question.options, question.type, plantIndex);
+            console.log(question.answer)
         }
     } else {
         choosePlant.style.display = 'block'
@@ -151,6 +156,8 @@ async function setupQuiz() {
 }
 
 function showQuestion(questionElement, optionsElement) {
+    const quizData = createQuiz(`${plantIndex}`)
+
     const question = quizData[currentQuestion];
     questionElement.innerText = question.question;
 
@@ -256,7 +263,7 @@ function extractDetails(descriptions) {
     }
 
 async function sortPlants() {
-    const data = await fetchData(nativePlantsURL);
+    const data = await fetchData('https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40');
     const usedPlants = [1,2,3,4,5,6,7,8,16,17,18,20,22,23,27]
     if (data) {
         const plants = data.results
@@ -270,7 +277,6 @@ async function sortPlants() {
 async function cardProperties() {
     const data = await sortPlants();
     if (data) {
-        const descriptions = data.map(plant => plant.description_and_growing_requirements);
         const indexAndSpecies = data.map(plant=> ({
             id: plant.index,
             species: plant.species,
@@ -358,6 +364,7 @@ function createQuiz(selectedPlant) {
             answer: 5
         },
     ];
+    console.log(quizData)
     return quizData
        
 }

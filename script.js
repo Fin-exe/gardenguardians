@@ -720,7 +720,7 @@ async function initializeDataFetch() {
 
       return([rainCond, sunCond])
 
-  }
+    }
 
     async function weatherMeter(rain, sun) {
         let rainIcons = 0
@@ -744,9 +744,9 @@ async function initializeDataFetch() {
             waterElement.src = 'img/waterdrop.png'
         }
 
-        if (sun > 50) {
+        if (sun > 70) {
             sunIcons = 2;
-          } else if (sun > 0) {
+          } else if (sun > 10) {
             sunIcons = 1
           } else {
             sunIcons = 0
