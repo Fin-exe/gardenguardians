@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleCardFlip();
     setupDragDrop();
     setupQuiz();
-    
+   
 });
 
  
@@ -190,9 +190,10 @@ function clearSelectedPlant() {
 document.addEventListener('DOMContentLoaded', function() {
   const plantImage = document.getElementById('plant-image');
   const selectedPlant = sessionStorage.getItem('selectedPlant');
+  const startStage = sessionStorage.getItem('stage')
 
   if (selectedPlant) {
-      plantImage.src = `img/${selectedPlant}_s1.png`;
+      plantImage.src = `img/${selectedPlant}_s${startStage}.png`;
   } else {
       plantImage.src = 'img/placeholder.png';
   }
@@ -216,6 +217,7 @@ function selectPlant(plantId) {
         return  plant
       }
     })
+    sessionStorage.setItem('stage', 1)
     sessionStorage.setItem('selectedPlantIndex', plantType.index);
 }
 
@@ -276,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 let currentPlantId = null;
+sessionStorage.setItem('stage', 1)
 
 const currentWeatherIcons = JSON.parse(localStorage.getItem("startingCond"))
 
@@ -317,7 +320,8 @@ function setupDragDrop() {
   // Growing conditions for the plant on the mainpage
   const growingCond = getPlantCond()
   // Startes at stage 1
-  let stage = 1
+  let stage = sessionStorage.getItem('state')
+  console.log()
   // Main page modal (congratulation message)
   const modal = document.getElementById('congratsModal');
   const closeBtn = document.querySelector('.close-btn-modal');
@@ -454,6 +458,7 @@ function setupDragDrop() {
           
           if (arraysEqual(plantCare, growingCond) && stage < 3) {
             stage += 1
+            sessionStorage.setItem('stage', stage)  
             growPlant(stage)
             plantCare = JSON.parse(localStorage.getItem('startingCond'))
             weatherBar(plantCare)
