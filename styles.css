@@ -106,11 +106,12 @@ body.main {
 .back_to_home_button {
   font-family: "Katibeh", serif;
   font-size: 4.5vh;
-  padding: 2% 2% 1% 2%;
+  padding: 0.5% 2% 0.5% 2%;
   width: 20%;
   border-radius: 30px;
   background-color: var(--light_yellow);
   border: 1px solid black;
+  width: 75vw;
 }
 
 .back_to_home_button:hover {
@@ -235,8 +236,10 @@ body.main {
 }
 
 .walkthrough-video {
-  border-radius: 50px;
-  width: 90vh;
+  margin-top: 6%;
+  max-width: 75vw;
+  width: 75vw;
+  height: 75vh;
 }
 
 /* MAINPAGE */
