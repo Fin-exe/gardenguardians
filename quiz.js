@@ -14,17 +14,11 @@ function closeNav() {
 document.getElementById("nav_overlay").addEventListener("click", closeNav);
 
 
-document.addEventListener('DOMContentLoaded', async function () { 
+document.addEventListener('DOMContentLoaded', function () { 
     const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
     const choosePlant = document.getElementById('quiz-choose');
-    const quizData = createQuiz(`${plantIndex}`)
-
-
-
-    await cardProperties();
-    loadCSV();
     if (plantIndex) {
-      startScreen()  
+      startScreen()
     } else {
         choosePlant.style.display = 'block'
     }
@@ -105,7 +99,6 @@ let currentQuestion = 0;
 let score = 0;
 
 const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
-loadCSV()
 const quizData = createQuiz(`${plantIndex}`)
 
 function startScreen() {
@@ -114,7 +107,6 @@ function startScreen() {
       <h1 class="start-title">Press the button to start the Quiz!</h1>
       <button id="start-btn" class="start-quiz">Start!</button>
     `;
-
     //Accessing the start-btn and adding eventlistener
     //calling startQuiz() function
     document.getElementById("start-btn").addEventListener("click", startQuiz);
@@ -129,10 +121,13 @@ function startQuiz() {
     `;
 
     // Using setupQuiz to Start the quiz
+      
+
     setupQuiz();  
 }
 
 async function setupQuiz() {
+    console.log('hello')
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
     // Vhoose plant first message
@@ -212,84 +207,6 @@ function showResult() {
     document.getElementById("try-again-btn").addEventListener("click", tryAgainQuiz);
 }
 
-const nativePlantsURL = 'https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40';
-
-async function fetchData(URL) {
-    try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Couldn\'t fetch the data :(', error);
-    }
-}
-
-function extractDetails(descriptions) {
-    const description = descriptions 
-
-    // Regular expressions to find colors and heights
-    const colorRegex = /\b(?:red|blue|green|yellow|purple|white|pink|mauve|golden|cream|orange|violet)\b/gi;
-    const heightRegex = /(\d+\.?\d*)\s*(m²|metre|metres|centimetre|centimetres)|\b(one|two|three|four|five|six|seven|eight|nine|ten)\s*(m²|metre|metres|centimetre|centimetres)\b/gi;
-    // Create a dictionary to convert word numbers to digits
-    const wordToNumber = {
-        one: 1, two: 2, three: 3, four: 4, five: 5,
-        six: 6, seven: 7, eight: 8, nine: 9, ten: 10
-    };
-    
-    // Extract colors
-    const colors = description.match(colorRegex) || [];
-    
-    // Extract heights
-    let heightMatch = description.match(heightRegex);
-    let height = null;
-    
-    if (heightMatch) {
-        heightMatch = heightMatch[0]; // Get the first match
-        const wordHeightMatch = heightMatch.match(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/i);
-    
-        if (wordHeightMatch) {
-        height = wordToNumber[wordHeightMatch[0].toLowerCase()];
-        } else {
-        const numHeightMatch = heightMatch.match(/(\d+\.?\d*)/);
-        height = numHeightMatch ? parseFloat(numHeightMatch[0]) : null;
-        }
-    }
-    
-    const heightColor = {
-        colors: colors.map(color => color.toLowerCase()), // Return array of colors in lowercase
-        height: height // Return height as a number
-    };
-    return heightColor
-    }
-
-async function sortPlants() {
-    const data = await fetchData('https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40');
-    const usedPlants = [1,2,3,4,5,6,7,8,16,17,18,20,22,23,27]
-    if (data) {
-        const plants = data.results
-        const filteredPlants = plants.filter(plant => usedPlants.includes(plant.index));
-        const sortedData = filteredPlants.sort((a, b) => a.index - b.index)
-        return sortedData
-    }
-}
-
-
-async function cardProperties() {
-    const data = await sortPlants();
-    if (data) {
-        const indexAndSpecies = data.map(plant=> ({
-            id: plant.index,
-            species: plant.species,
-            type: plant.type,
-            descript: plant.description_and_growing_requirements,
-            attract: plant.attracts,
-            color: extractDetails(plant.description_and_growing_requirements).colors,
-            height: extractDetails(plant.description_and_growing_requirements).height
-        }));
-        sessionStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
-    }
-}
-
 function tryAgainQuiz() {
     //Setting the variables to 0
     currentQuestion = 0;
@@ -313,12 +230,10 @@ async function loadCSV() {
     .then(csvText => {
         // Parse CSV with PapaParse
         let parsedData = Papa.parse(csvText, {
-            header: true,    // Use the first row as headers
-            skipEmptyLines: true  // Skip empty lines in the CSV
+            header: true,    
+            skipEmptyLines: true  
         }); 
-
-    // The data is now correctly parsed into rows with quoted fields handled
-        const quizData = parsedData.data  // Parsed quiz data in array format
+        const quizData = parsedData.data 
         sessionStorage.setItem("quizData", JSON.stringify(quizData));
   })
   .catch(error => console.error('Error fetching CSV:', error));
@@ -328,8 +243,8 @@ function createQuiz(selectedPlant) {
     const plantsData = JSON.parse(sessionStorage.getItem("quizData"));
     //function to find a specific plant by index of plant being grown
     const findObjectByIndex = (arr, index) => {
-            return arr.find(item => item.index === index);
-        };
+          return arr.find(item => item.index === index);
+    }
     // Retrieving quiz data of a single plant using the function
     const quizDataRaw = findObjectByIndex(plantsData, selectedPlant);
     const quizData = [
@@ -364,9 +279,7 @@ function createQuiz(selectedPlant) {
             answer: 5
         },
     ];
-    console.log(quizData)
     return quizData
-       
 }
 
 

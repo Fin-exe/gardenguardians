@@ -1,4 +1,5 @@
 <?php
+
 // // Flickr API configuration
 // $api_key = 'eecd5014501ebeeec6d473f4c8311e32';
 
