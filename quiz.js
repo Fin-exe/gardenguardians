@@ -42,8 +42,8 @@ async function getPlantData(options, key, id) {
 
     // Special handling for species (extracting the scientific name)
     if (key === 'species') {
-        const match = plant.species.match(/\(([^)]+)\)/);  // Extract text inside parentheses
-        plantProperty = match ? match[1] : plant.species;  // If match, use scientific name, else full species name
+        const match = plant.species.match(/\(([^)]+)\)/);  
+        plantProperty = match ? match[1] : plant.species;  
     }
 
     // Special handling for height (convert number to string with 'cm' or 'm')
@@ -63,8 +63,8 @@ async function getPlantData(options, key, id) {
                 normalizedOption === correctHeightM.toLowerCase()
             );
         });
-
-        return correctOption || 'none';  // Return the correct option if found
+        // Return the correct option if found
+        return correctOption || 'none';  
     }
 
     // Handle description with partial matching
@@ -85,14 +85,14 @@ async function getPlantData(options, key, id) {
 
         // Check if any of the options match the plant values
         const correctOption = options.find(option => {
-            const optionValues = option.toLowerCase().split(' and '); // Handling 'and' in options
+            const optionValues = option.toLowerCase().split(' and '); 
             return optionValues.every(val => plantValues.includes(val.trim()));
         });
-
-        return correctOption || 'Red';  // Return the correct option if found
+        // Return the correct option if found or red (for one plant)
+        return correctOption || 'Red';  
     }
     
-    return null; // If no match is found
+    return null;
 }
 
 let currentQuestion = 0;
@@ -135,7 +135,7 @@ async function setupQuiz() {
     const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
 
     
-    if (plantIndex) {// Make sure all answers are set properly
+    if (plantIndex) {
         questionElement.style.display = 'block'
         optionsElement.style.display = 'flex'
         for (const question of quizData) {

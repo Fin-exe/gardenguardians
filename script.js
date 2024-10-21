@@ -161,8 +161,8 @@ teatreemedium: { //Tea Tree Medium
     back: 'img/backcard_ttm.png'
 },
 blushsatinash: { //Blush Satinash
-    front: 'img/blue_front.jpg',
-    back: 'img/blue_back.jpg'   
+    front: 'img/frontcard_bb.png',
+    back: 'img/backcard_bb.png'   
 },
 tulipwood: { //Tulipwood
     front: 'img/tulipwood_front.jpg',
@@ -498,9 +498,9 @@ function weatherBar(weatherCond) {
   for (let i = 1; i <= 5; i++) {
     let waterElement = document.getElementById(`waterIcon${i}`);
     if (i <= rainIcons) {
-      waterElement.src = 'img/waterdrop.png';  // Fill with colored water icon
+      waterElement.src = 'img/waterdrop.png';  
     } else {
-      waterElement.src = 'img/greywaterdrop.png';  // Fill the rest with grey water icons
+      waterElement.src = 'img/greywaterdrop.png'; 
     }
   }
 
@@ -522,10 +522,12 @@ function weatherBar(weatherCond) {
   // Update sun icons (colored and grey)
   for (let i = 1; i <= 5; i++) {
     let sunElement = document.getElementById(`sunIcon${i}`);
-    if (i <= sunIcons) {
-      sunElement.src = 'img/sun.png';  // Fill with colored sun icon
+    if (i <= sunIcons) { 
+      // Fill with colored sun icon
+      sunElement.src = 'img/sun.png'; 
     } else {
-      sunElement.src = 'img/greysun.png';  // Fill the rest with grey sun icons
+      // Fill the rest with grey sun icons
+      sunElement.src = 'img/greysun.png';  
     }
   }
 }
@@ -611,6 +613,7 @@ async function initializeDataFetch() {
     const nativePlantsURL = 'https://data.brisbane.qqld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40';
     const weatherURL = 'https://api.open-meteo.com/v1/forecast?latitude=-27.4679&longitude=153.0281&current=temperature_2m,rain,cloud_cover,wind_speed_10m&timezone=Australia%2FSydney&forecast_days=1'
     
+    // fetch function for both API
     async function fetchData(URL) {
         try {
             const response = await fetch(URL);
@@ -824,14 +827,14 @@ async function initializeDataFetch() {
 
     async function loadCSV() {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/refs/heads/main/csv/growing%20plants%20data.csv');
+        const response = await fetch(nativePlantsURL);
         const csvText = await response.text();
         let parsedData = Papa.parse(csvText, {
-          header: true,    // Use the first row as headers
-          skipEmptyLines: true  // Skip empty lines in the CSV
+          header: true,    
+          skipEmptyLines: true  
         });
     
-        const plantGrowth = parsedData.data;  // Parsed quiz data in array format
+        const plantGrowth = parsedData.data; 
         sessionStorage.setItem("plantGrow", JSON.stringify(plantGrowth));
       } catch (error) {
         console.error('Error fetching CSV:', error);
@@ -881,8 +884,10 @@ async function initializeDataFetch() {
       }
       
       const heightColor = {
-          colors: colors.map(color => color.toLowerCase()), // Return array of colors in lowercase
-          height: height // Return height as a number
+        // Return array of colors in lowercase
+        colors: colors.map(color => color.toLowerCase()), 
+        // Return height as a number
+        height: height 
       };
       return heightColor
       }
