@@ -204,7 +204,6 @@ letsPlantButton.addEventListener('click', function(event) {
     }
 });
 
-// Existing functions
 function selectPlant(plantId) {
     sessionStorage.setItem('selectedPlant', plantId);
     const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));      
@@ -263,15 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
           backImage.alt = 'Default Back Image';
       }
   }
-
-  // Utility function to capitalize words for alt text
-  function capitalizeWords(str) {
-      return str.replace(/([A-Z])/g, ' $1') // Add space before capital letters
-                .replace(/^./, function(str){ return str.toUpperCase(); }) // Capitalize first letter
-                .trim();
-  }
 });
-
 
 let currentPlantId = null;
 sessionStorage.setItem('stage', 1)
