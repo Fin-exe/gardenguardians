@@ -165,8 +165,8 @@ blushsatinash: { //Blush Satinash
     back: 'img/backcard_bb.png'   
 },
 tulipwood: { //Tulipwood
-    front: 'img/tulipwood_front.jpg',
-    back: 'img/tulipwood_back.jpg'
+    front: 'img/frontcard_tt.png',
+    back: 'img/backcard_tt.png'
 },
 fanflower: { //Fan Flower
     front: 'img/frontcard_ff.png',
