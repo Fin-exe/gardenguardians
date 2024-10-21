@@ -126,15 +126,14 @@ function startQuiz() {
     setupQuiz();  
 }
 
+
 async function setupQuiz() {
-    console.log('hello')
     const questionElement = document.getElementById("question");
     const optionsElement = document.getElementById("options");
-    // Vhoose plant first message
+    // Choose plant first message
     const choosePlant = document.getElementById('quiz-choose');
     const plantIndex = parseInt(sessionStorage.getItem("selectedPlantIndex"))
 
-    
     if (plantIndex) {
         questionElement.style.display = 'block'
         optionsElement.style.display = 'flex'
@@ -145,11 +144,11 @@ async function setupQuiz() {
     } else {
         choosePlant.style.display = 'block'
     }
-    
 
     showQuestion(questionElement, optionsElement);
 }
 
+// Handles displaying both the question and option depending on quizData
 function showQuestion(questionElement, optionsElement) {
     const quizData = createQuiz(`${plantIndex}`)
 
@@ -166,6 +165,7 @@ function showQuestion(questionElement, optionsElement) {
     });
 }
 
+// Handles selecting an answer in the quiz
 function selectAnswer(e) {
     const selectedButton = e.target;
     const answer = quizData[currentQuestion].answer;
