@@ -832,7 +832,7 @@ async function initializeDataFetch() {
     // Loads the plants growth data
     async function loadCSV() {
       try {
-        const response = await fetch(nativePlantsURL);
+        const response = await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/refs/heads/main/csv/growing%20plants%20data.csv');
         const csvText = await response.text();
         let parsedData = Papa.parse(csvText, {
           header: true,    
