@@ -5,7 +5,7 @@ Garden Guardians is an interactive and engaging educational website that educate
 
 
 INSTALLATION INSTRUCTIONS: 
-All files are in Filezilla and all connections are done in the files themselves. Simply click to open the index.html file to peruse the website!
+All files are in Filezilla and all connections are done in the files themselves. Simply click to open the index.html file to peruse the website! If your screen is smaller or narrower and renders more compact, it is recommnded to zoom out for the best experience!
 
 
 TECHNOLOGY USED:
@@ -42,4 +42,4 @@ script.js - This file hosts the javascript interactions of the whole website, th
 DECLARATION OF GENERATIVE AI USE: 
 Chatgpt.com. (2024). ChatGPT. [online] Available at: https://chatgpt.com/# [Accessed 21 Oct. 2024].
 
-Generative AI was mainly used for code debugging, syntax errors, code commenting, consulted a way to connect plant growing function to be relevant for all plants - identified a strategy to implement a variable to put in local storage through whole site (dataplant ID). Help create filter functions and assist with API intergration. 
+Generative AI was mainly used for code debugging, syntax errors, code commenting, consulted a way to connect plant growing function to be relevant for all plants - identified a strategy to implement a variable to put in local storage through whole site (dataplant ID). Help create filter functions and assist with API intergration. Helped in debugging the code for try again function in the quiz.
