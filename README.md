@@ -5,7 +5,7 @@ Garden Guardians is an interactive and engaging educational website that educate
 
 
 INSTALLATION INSTRUCTIONS: 
-All files are in Filezilla and all connections are done in the files themselves. Simply click to open the index.html file to peruse the website!
+All files are in Filezilla and all connections are done in the files themselves. Simply click to open the index.html file to peruse the website! If your screen is smaller or narrower and renders more compact, it is recommnded to zoom out for the best experience!
 
 
 TECHNOLOGY USED:
