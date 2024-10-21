@@ -145,12 +145,12 @@ teatreesmall: { //Tea Tree Small
     back: 'img/backcard_tts.png'
 },
 thyme: { //Thyme Honey Myrtle
-    front: 'img/thyme_front.jpg',
-    back: 'img/thyme_back.jpg'
+    front: 'img/frontcard_t.png',
+    back: 'img/backcard_t.png'
 },
 banksia: { //Banksia
-    front: 'img/banksia_front.jpg',
-    back: 'img/banksia_back.jpg'
+    front: 'img/frontcard_b.png',
+    back: 'img/backcard_b.png'
 },
 grevillea: { //Grevillea
     front: 'img/grevillea_front.jpg',
