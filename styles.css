@@ -88,6 +88,13 @@ body.main {
 }
 
 /* Tutorial */
+
+.tutorial {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .back_to_mainpage {
   justify-content: flex-end;
   align-items: flex-end;
@@ -97,8 +104,9 @@ body.main {
 
 .back_to_home_button {
   font-family: "Katibeh", serif;
-  font-size: 6vh;
+  font-size: 4.5vh;
   padding: 2% 2% 1% 2%;
+  margin: 5vw 5vw 0 0;
   width: 20%;
   border-radius: 30px;
   background-color: var(--light_yellow);
