@@ -87,7 +87,21 @@ body.main {
   background-color: #c4f5a0;
 }
 
-/* Tutorial */
+/*TUTORIAL*/
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.walkthrough-video {
+  margin-top: 6%;
+  max-width: 75vw;
+  width: 75vw;
+  height: 75vh;
+}
 
 .back_to_mainpage {
   display: flex;
@@ -101,7 +115,6 @@ body.main {
   font-family: "Katibeh", serif;
   font-size: 4.5vh;
   padding: 1% 2% 0.5% 2%;
-  width: 20%;
   border-radius: 30px;
   background-color: var(--light_yellow);
   border: 1px solid black;
@@ -218,22 +231,6 @@ body.main {
   .sidenav a {
     font-size: 18px;
   }
-}
-
-/*TUTORIAL*/
-
-.tutorial {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.walkthrough-video {
-  margin-top: 6%;
-  max-width: 75vw;
-  width: 75vw;
-  height: 75vh;
 }
 
 /* MAINPAGE */
@@ -355,7 +352,7 @@ body.mainpage {
 }
 
 .icon {
-  width: 200px; /*used to change size of all icons*/
+  width: 200px; 
   height: auto;
   user-select: none;
 }
@@ -499,7 +496,7 @@ body.mainpage {
   left: 2em;
   height: 20em;
   max-width: 18em;
-  max-height: 25em; /*Optional*/
+  max-height: 25em; 
 }
 
 .yellowcard {
@@ -529,7 +526,6 @@ body.mainpage {
 }
 
 /* Back of the card */
-
 .plant_information {
   display: flex;
   flex-direction: row;
@@ -677,7 +673,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  z-index: 999; /* Just below the info_card */
+  z-index: 999; 
 }
 
 .link_to_quiz {
@@ -779,7 +775,7 @@ body {
 }
 
 .feedback {
-  display: none; /* Hide feedback until needed */
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -801,7 +797,7 @@ body {
   font-style: "Arial";
 }
 
-/* Try again button for Quiz */
+/* TRY AGAIN BUTTON for Quiz */
 .try-again {
   background-color: #f7d8a8;
   border-radius: 10px;
@@ -835,11 +831,11 @@ body {
 }
 
 .result-score {
-  font-size: 1.5em; /* Slightly smaller font size for the score */
-  color: #16a085; /* Different color for the score */
-  text-align: center; /* Center the score text */
-  margin-top: 10px; /* Add space above the score */
-  font-weight: bold; /* Make the score bold */
+  font-size: 1.5em;
+  color: #16a085; 
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold; 
 }
 
 .mascot_quiz {
@@ -866,7 +862,7 @@ body {
   font-size: 3vw;
 }
 
-/*plant conditions box*/
+/*PLANT CONDITIONS*/
 .top_left_healthbar {
   position: absolute;
   top: 2vh;
@@ -961,6 +957,7 @@ body {
   white-space: nowrap;
 }
 
+/* RESPONSIVENESS */
 @media (max-width: 1200px) {
   .top_left_healthbar {
     width: 30vw;
