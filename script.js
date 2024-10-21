@@ -169,8 +169,8 @@ tulipwood: { //Tulipwood
     back: 'img/tulipwood_back.jpg'
 },
 fanflower: { //Fan Flower
-    front: 'img/fan_front.jpg',
-    back: 'img/fan_back.jpg'
+    front: 'img/frontcard_ff.png',
+    back: 'img/backcard_ff.png'
 },
 matrush: { // Mat Rush
     front: 'img/frontcard_mr.png',
