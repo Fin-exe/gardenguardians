@@ -11,7 +11,7 @@ All files are in Filezilla and all connections are done in the files themselves.
 TECHNOLOGY USED:
 -Brisbane City Council 'Native Plants Species' Dataset
 -Open Meteo Weather API 
--Flicker API 
+-Flickr API 
 -Javascript Papaparse Library - library that helps parsing through csv files. 
 -HTML
 -CSS
