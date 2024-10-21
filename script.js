@@ -711,6 +711,7 @@ async function initializeDataFetch() {
         return 'sunny';
       }
     
+    // Relates the rain intensity to a percentage for strating conditions
     function rainPercent (rain) {
         let rainIntense = 0
 
@@ -731,6 +732,7 @@ async function initializeDataFetch() {
         return rainIntense
     }
 
+    // Returns weather conditon into an array
     function weatherCond (rain, sun) {
       let rainCond = 0
       let sunCond = 0
@@ -761,6 +763,7 @@ async function initializeDataFetch() {
 
     }
 
+    // Changes plant constion based on rain and sun levels
     async function weatherMeter(rain, sun) {
         let rainIcons = 0
         let sunIcons = 0
@@ -797,6 +800,7 @@ async function initializeDataFetch() {
         }
     }
 
+    // Locally stored the starting water and sun level for the   
     function getStartingCond(rain, sun){
       let rainStart = 0
       let sunStart = 0
@@ -825,6 +829,7 @@ async function initializeDataFetch() {
       localStorage.setItem("startingCond", JSON.stringify([rainStart, sunStart]))
     }
 
+    // Loads the plants growth data
     async function loadCSV() {
       try {
         const response = await fetch(nativePlantsURL);
@@ -840,18 +845,8 @@ async function initializeDataFetch() {
         console.error('Error fetching CSV:', error);
       }
     }
-
-    async function fetchData(URL) {
-      try {
-          const response = await fetch(URL);
-          const data = await response.json();
-          return data;
-      } catch (error) {
-          console.error('Couldn\'t fetch the data :(', error);
-      }
-    }
     
-
+    // Extracts details from the filtered plant API
     function extractDetails(descriptions) {
       const description = descriptions 
   
@@ -891,7 +886,8 @@ async function initializeDataFetch() {
       };
       return heightColor
       }
-  
+      
+    // Removes unwanted plants coming from the API and orders plants by index 
     async function sortPlants() {
       const data = await fetchData('https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/free-native-plants-species/records?limit=40');
       const usedPlants = [1,2,3,4,5,6,7,8,16,17,18,20,22,23,27]
@@ -903,7 +899,7 @@ async function initializeDataFetch() {
       }
     }
   
-  
+    // Creates new object which has each plants details for the quiz
     async function cardProperties() {
       const data = await sortPlants();
       if (data) {
@@ -921,6 +917,7 @@ async function initializeDataFetch() {
       }
     }
 
+    // Loads the csv for plant quiz data
     async function loadCSVQuiz() {
       await fetch('https://raw.githubusercontent.com/Fin-exe/gardenguardians/main/csv/plant_quiz_data.csv')
         .then(response => response.text())
@@ -936,11 +933,11 @@ async function initializeDataFetch() {
       .catch(error => console.error('Error fetching CSV:', error));
     }
 
-    loadCSV()
-    loadCSVQuiz()
-    weatherProperties()
-    evaluateWeather()
-    cardProperties()
+    loadCSV() // load plant growth csv
+    loadCSVQuiz() // load plant quiz csv
+    weatherProperties() // Returns and stores filtered weather API
+    evaluateWeather() // Ascertains the strongest weather conditon at the time 
+    cardProperties() // Important properties needed for the quiz
     const weatherImg = await evaluateWeather()
     // Get the body element with the class 'mainpage'
     const weatherElement = document.querySelector("body.mainpage");
