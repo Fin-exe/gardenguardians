@@ -161,8 +161,8 @@ teatreemedium: { //Tea Tree Medium
     back: 'img/backcard_ttm.png'
 },
 blushsatinash: { //Blush Satinash
-    front: 'img/blue_front.jpg',
-    back: 'img/blue_back.jpg'   
+    front: 'img/frontcard_bb.png',
+    back: 'img/backcard_bb.png'   
 },
 tulipwood: { //Tulipwood
     front: 'img/tulipwood_front.jpg',
