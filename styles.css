@@ -88,23 +88,35 @@ body.main {
 }
 
 /* Tutorial */
+
+.tutorial {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .back_to_mainpage {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  height: 90vh;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   margin: 2em;
 }
 
 .back_to_home_button {
   font-family: "Katibeh", serif;
-  font-size: 6vh;
-  padding: 3% 3% 1% 3%;
-  width: 30%;
+  font-size: 4.5vh;
+  padding: 0.5% 2% 0.5% 2%;
+  width: 20%;
   border-radius: 30px;
   background-color: var(--light_yellow);
   border: 1px solid black;
+  width: 75vw;
+}
+
+.back_to_home_button:hover {
+  background-color: #f7e3c3;
+  cursor: pointer;
 }
 
 /* NAV BAR */
@@ -189,7 +201,7 @@ body.main {
   bottom: 10.5em;
   font-size: 40px;
   cursor: pointer;
-  left: 1em;
+  left: 4em;
 }
 
 #nav_overlay {
@@ -214,7 +226,23 @@ body.main {
   }
 }
 
-/* Main Home Page  */
+/*TUTORIAL*/
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.walkthrough-video {
+  margin-top: 6%;
+  max-width: 75vw;
+  width: 75vw;
+  height: 75vh;
+}
+
+/* MAINPAGE */
 body {
   margin: 0;
   padding: 0;
@@ -406,7 +434,7 @@ body.mainpage {
     opacity: 1;
 }
 
-/*VIRTUAL GARDEN*/
+/*FLIP CARD*/
 .info_card {
   width: 100%;
   min-height: 100vh;

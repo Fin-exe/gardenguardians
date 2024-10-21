@@ -157,12 +157,12 @@ grevillea: { //Grevillea
     back: 'img/backcard_g.png'
 },
 teatreemedium: { //Tea Tree Medium
-    front: 'img/teatreemedium_front.jpg',
-    back: 'img/teatreemedium_back.jpg'
+    front: 'img/frontcard_ttm.png',
+    back: 'img/backcard_ttm.png'
 },
 blushsatinash: { //Blush Satinash
-    front: 'img/blue_front.jpg',
-    back: 'img/blue_back.jpg'   
+    front: 'img/frontcard_bb.png',
+    back: 'img/backcard_bb.png'   
 },
 tulipwood: { //Tulipwood
     front: 'img/tulipwood_front.jpg',
