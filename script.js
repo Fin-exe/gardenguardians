@@ -948,6 +948,7 @@ async function initializeDataFetch() {
 // SEED PAGE FILTERING
 
 // Initial call to display all items
+// The code below was taken from https://www.w3schools.com/howto/howto_js_filter_elements.asp in its original form//
 filterSelection("all");
 
 function filterSelection(c) {
@@ -995,6 +996,8 @@ Array.from(btns).forEach(function(btn) {
     this.className += " active";
   });
 });
+
+//End of code snippet//
 
 // SEEDPAGE PHOTO LOADING
 // document.addEventListener('DOMContentLoaded', function() {
