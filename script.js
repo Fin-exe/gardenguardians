@@ -909,7 +909,8 @@ async function initializeDataFetch() {
               descript: plant.description_and_growing_requirements,
               attract: plant.attracts,
               color: extractDetails(plant.description_and_growing_requirements).colors,
-              height: extractDetails(plant.description_and_growing_requirements).height
+              height: extractDetails(plant.description_and_growing_requirements).height,
+              grown: 'testing'
           }));
           sessionStorage.setItem("plantData", JSON.stringify(indexAndSpecies));
       }
