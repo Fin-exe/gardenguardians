@@ -339,7 +339,7 @@ body.mainpage {
 }
 
 .healthbar {
-  width: 700px; /* needed specifically for healthbar, bigger than others*/
+  width: 700px;
   height: auto;
 }
 
