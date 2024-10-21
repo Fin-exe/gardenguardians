@@ -153,8 +153,8 @@ banksia: { //Banksia
     back: 'img/backcard_b.png'
 },
 grevillea: { //Grevillea
-    front: 'img/grevillea_front.jpg',
-    back: 'img/grevillea_back.jpg'
+    front: 'img/frontcard_g.png',
+    back: 'img/backcard_g.png'
 },
 teatreemedium: { //Tea Tree Medium
     front: 'img/teatreemedium_front.jpg',
