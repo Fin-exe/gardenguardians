@@ -705,7 +705,7 @@ async function initializeDataFetch() {
           if (rainLevel === 'Medium') return 'rain';
         }
       
-        return 'sunny';
+        return 'sunny2';
       }
     
     function rainPercent (rain) {
