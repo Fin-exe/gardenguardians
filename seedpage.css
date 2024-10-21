@@ -176,7 +176,7 @@ img{border-radius: 8px;
 }
 
 .btn:hover {
-  background-color: #ddd;
+  background-color: #e9e8e8;
 }
     
 .btn.active {
@@ -191,6 +191,7 @@ img{border-radius: 8px;
   outline: none;
   padding: 15px 32px;
   border-radius: 15px;
+  background-color: #D9D9D9;
 }
 
 .back_button{
@@ -260,7 +261,6 @@ img{border-radius: 8px;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
 
 /* FLIPCARDS */
 
