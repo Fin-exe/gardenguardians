@@ -96,8 +96,9 @@ body.main {
 }
 
 .back_to_mainpage {
-  justify-content: flex-end;
-  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   margin: 2em;
 }
@@ -106,7 +107,6 @@ body.main {
   font-family: "Katibeh", serif;
   font-size: 4.5vh;
   padding: 2% 2% 1% 2%;
-  margin: 5vw 5vw 0 0;
   width: 20%;
   border-radius: 30px;
   background-color: var(--light_yellow);
