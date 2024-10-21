@@ -92,7 +92,6 @@ body.main {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  height: 90vh;
   width: 100vw;
   margin: 2em;
 }
@@ -214,7 +213,18 @@ body.main {
   }
 }
 
-/* Main Home Page  */
+/*TUTORIAL*/
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+}
+
+.walkthrough-video {
+  width: 90vh;
+}
+
+/* MAINPAGE */
 body {
   margin: 0;
   padding: 0;
@@ -406,7 +416,7 @@ body.mainpage {
     opacity: 1;
 }
 
-/*VIRTUAL GARDEN*/
+/*FLIP CARD*/
 .info_card {
   width: 100%;
   min-height: 100vh;
