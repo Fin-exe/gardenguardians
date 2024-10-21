@@ -132,13 +132,17 @@ knobcr: { // Knobby Club Rush
     front: 'img/frontcover_kcr.png',
     back: 'img/backcover_kcr.png'
 },
+blueflax: { //Blue Flax
+  front: 'img/frontcard_bf.png',
+  back: 'img/backcard_bf.png'
+},
 guinea: { //Guinea Vine
     front: 'img/frontcover_gv.png',
     back: 'img/backcover_gv.png'
 },
 teatreesmall: { //Tea Tree Small
-    front: 'img/teatreesmall_front.jpg',
-    back: 'img/teatreesmall_back.jpg'
+    front: 'img/frontcard_tts.png',
+    back: 'img/backcard_tts.png'
 },
 thyme: { //Thyme Honey Myrtle
     front: 'img/thyme_front.jpg',
@@ -168,13 +172,9 @@ fanflower: { //Fan Flower
     front: 'img/fan_front.jpg',
     back: 'img/fan_back.jpg'
 },
-blueflax: { //Blue Flax
-    front: 'img/blue_flax_front.jpg',
-    back: 'img/blue_flax_back.jpg'
-},
 matrush: { // Mat Rush
-    front: 'img/mat_front.jpg',
-    back: 'img/mat_back.jpg'
+    front: 'img/frontcard_mr.png',
+    back: 'img/backcard_mr.png'
 }
 };
 
@@ -207,7 +207,6 @@ letsPlantButton.addEventListener('click', function(event) {
     }
 });
 
-// Existing functions
 function selectPlant(plantId) {
     sessionStorage.setItem('selectedPlant', plantId);
     const plantsGrowCond = JSON.parse(sessionStorage.getItem("plantGrow"));      
@@ -266,15 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
           backImage.alt = 'Default Back Image';
       }
   }
-
-  // Utility function to capitalize words for alt text
-  function capitalizeWords(str) {
-      return str.replace(/([A-Z])/g, ' $1') // Add space before capital letters
-                .replace(/^./, function(str){ return str.toUpperCase(); }) // Capitalize first letter
-                .trim();
-  }
 });
-
 
 let currentPlantId = null;
 sessionStorage.setItem('stage', 1)
