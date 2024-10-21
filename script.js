@@ -125,20 +125,20 @@ creepingboobialla: { //Creeping Boobialla
     back: 'img/backcard_cb.png'
 },
 nativeviolet: { //Native Violet
-    front: 'img/frontcover_nv.png',
-    back: 'img/backcover_nv.png'
+    front: 'img/frontcard_nv.png',
+    back: 'img/backcard_nv.png'
 },
 knobcr: { // Knobby Club Rush
-    front: 'img/frontcover_kcr.png',
-    back: 'img/backcover_kcr.png'
+    front: 'img/frontcard_kcr.png',
+    back: 'img/backcard_kcr.png'
 },
 blueflax: { //Blue Flax
   front: 'img/frontcard_bf.png',
   back: 'img/backcard_bf.png'
 },
 guinea: { //Guinea Vine
-    front: 'img/frontcover_gv.png',
-    back: 'img/backcover_gv.png'
+    front: 'img/frontcard_gv.png',
+    back: 'img/backcard_gv.png'
 },
 teatreesmall: { //Tea Tree Small
     front: 'img/frontcard_tts.png',
