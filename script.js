@@ -311,7 +311,6 @@ function setupDragDrop() {
   const growingCond = getPlantCond()
   // Startes at stage 1
   let stage = 1
-  console.log()
   // Main page modal (congratulation message)
   const modal = document.getElementById('congratsModal');
   const closeBtn = document.querySelector('.close-btn-modal');
